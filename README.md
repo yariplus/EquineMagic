@@ -1,4 +1,4 @@
-SuperChinesePeanutButter
+EquineMagic
 ========================
 
-Minecraft Mod
+A base mod for other Yaricraft Modded Minecraft mods.
