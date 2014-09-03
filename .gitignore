@@ -1,12 +1,13 @@
-@ Hide build directories
-.gradle/*
-build/*
+#gradle stuff
+/.gradle
+/build/
+/run/
 
-
-*.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+#IDEA files from Gradle
+.idea/
+/*.iml
+/*.ipr
+/*.iws
 
 # Package Files #
 *.jar
