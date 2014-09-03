@@ -1,4 +1,7 @@
-eclipse/.metadata/*
+@ Hide build directories
+.gradle/*
+build/*
+
 
 *.class
 

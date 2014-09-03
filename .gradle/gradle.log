@@ -1,5 +1,3 @@
-The assetDir is deprecated!  Use runDir instead! runDir set to ../run/assets/..The assetDir is deprecated!  Use runDir instead! runDir set to ../run/assets/..
-
 ****************************
  Powered By MCP:            
  http://mcp.ocean-labs.de/  
@@ -7,32 +5,29 @@ The assetDir is deprecated!  Use runDir instead! runDir set to ../run/assets/..T
  R4wk, ZeuX, IngisKahn      
  MCP Data version : unknown
 ****************************
-:extractUserDev
-:genSrgs SKIPPED
-:extractNatives
+:compileApiJava UP-TO-DATE
+:processApiResources UP-TO-DATE
+:apiClasses UP-TO-DATE
+:sourceMainJava UP-TO-DATE
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:jar
+:extractUserDev UP-TO-DATE
+:extractNatives UP-TO-DATE
 :getAssetsIndex
 :getAssets
 :makeStart SKIPPED
-:downloadMcpTools
-:downloadClient SKIPPED
-:downloadServer SKIPPED
-:mergeJars SKIPPED
-:deobfuscateJar SKIPPED
-:decompile SKIPPED
-:processSources
-Injecting fml files
-Applying fml patches
-Applying forge patches
-:remapJar SKIPPED
-:extractMinecraftSrc SKIPPED
-:recompMinecraft SKIPPED
-:repackMinecraft SKIPPED
-:setupDecompWorkspace UP-TO-DATE
-:eclipseClasspath
-:eclipseJdt
-:eclipseProject
-:eclipse
+:compileTestJava UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:genSrgs SKIPPED
+:reobf
+:assemble
+:check UP-TO-DATE
+:build
 
 BUILD SUCCESSFUL
 
-Total time: 17.335 secs
+Total time: 10.457 secs
