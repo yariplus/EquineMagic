@@ -1,6 +1,8 @@
 
 package com.yaricraft.equinemagic;
 
+import com.yaricraft.equinemagic.blocks.EquineMagicBlock;
+import com.yaricraft.equinemagic.items.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
 
@@ -24,7 +26,8 @@ public class EquineMagic
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-
+        EquineMagicItem.init();
+        EquineMagicBlock.init();
 	}
 
 	@Mod.EventHandler

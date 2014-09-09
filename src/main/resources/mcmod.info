@@ -1,7 +1,7 @@
 [
 {
-  "modid": "EquineMagic",
-  "name": "EquineMagic",
+  "modid": "SpectraTech",
+  "name": "SpectraTech",
   "description": "Base mod for other Equestrian mods.",
   "version": "${version}",
   "mcversion": "${mcversion}",
