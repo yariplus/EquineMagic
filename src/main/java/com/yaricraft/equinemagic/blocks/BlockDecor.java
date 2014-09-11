@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic.blocks;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
+import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.material.Material;
 
 public class BlockDecor extends EquineMagicBlock
@@ -11,8 +12,8 @@ public class BlockDecor extends EquineMagicBlock
 	{
 		super(material);
 		this.setHardness(2.0f);
-            this.setBlockName("oreSpectra");
-        this.setBlockTextureName("oreSpectra");
+        this.setBlockName(ModNames.BLOCK_DECOR);
+        this.setBlockTextureName(ModNames.BLOCK_DECOR);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
 	}
 

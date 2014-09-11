@@ -14,7 +14,7 @@ public class CreativeTabEquineMagic
 		@Override
 		public Item getTabIconItem()
 		{
-			return EquineMagicItem.warmTear;
+			return EquineMagicItem.dustAlicorn;
 		}
 	};
 }

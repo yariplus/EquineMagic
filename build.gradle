@@ -17,12 +17,12 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-0.0.0"
+version = "1.7.10-0.0.1"
 group= "com.yaricraft.equinemagic"
 archivesBaseName = "EquineMagic"
 
 minecraft {
-    version = "1.7.10-10.13.0.1205"
+    version = "1.7.10-10.13.0.1207"
     runDir = "./run"
 }
 

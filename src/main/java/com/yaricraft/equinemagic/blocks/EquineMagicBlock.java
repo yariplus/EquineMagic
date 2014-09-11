@@ -13,13 +13,17 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 
 public class EquineMagicBlock extends Block
 {
-    public static final EquineMagicBlock blockDecor			= new BlockDecor();
-    public static final EquineMagicBlock blockOreChroma		= new BlockOreChroma();
+    public static final EquineMagicBlock blockDecor      = new BlockDecor();
+    public static final EquineMagicBlock blockOreChroma  = new BlockOreChroma();
+    public static final EquineMagicBlock blockOrePegagin = new BlockOrePegagin();
+    public static final EquineMagicBlock blockOreSpectra = new BlockOreSpectra();
 
     public static void init()
     {
         GameRegistry.registerBlock(blockDecor, blockDecor.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerBlock(blockOreChroma, blockOreChroma.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(blockOrePegagin, blockOrePegagin.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(blockOreSpectra, blockOreSpectra.getUnlocalizedName().substring(6 + ModData.MODID.length()));
     }
 
 	protected EquineMagicBlock(Material material)

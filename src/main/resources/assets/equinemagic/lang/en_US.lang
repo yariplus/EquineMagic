@@ -1,6 +1,7 @@
 tile.EquineMagic:orePegagin.name=Pegagin Ore
 tile.EquineMagic:oreChroma.name=Chroma Ore
 tile.EquineMagic:oreSpectra.name=Spectra Ore
+
 item.EquineMagic:warmRod.name=Glowing Blaze Rod
 item.EquineMagic:warmMycelium.name=Warm Mycelium
 item.EquineMagic:warmTear.name=Warm Tear
@@ -8,7 +9,9 @@ item.EquineMagic:warmEgg.name=Warm Egg
 item.EquineMagic:warmScale.name=Warm Scale
 item.EquineMagic:warmFeather.name=Warm Feather
 item.EquineMagic:warmWing.name=Warm Bat Wing
+
 item.EquineMagic:dustAlicorn.name=Alicorn Dust
 item.EquineMagic:dustChroma.name=Chroma Dust
 item.EquineMagic:dustSpectra.name=Spectra Dust
+
 itemGroup.EquineMagic=EquineMagic
