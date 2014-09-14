@@ -20,7 +20,8 @@ public class EquineMagicBlock extends Block
 
     public static void init()
     {
-        GameRegistry.registerBlock(blockDecor, blockDecor.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(blockDecor, EquineMagicItemBlock.class, blockDecor.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+
         GameRegistry.registerBlock(blockOreChroma, blockOreChroma.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerBlock(blockOrePegagin, blockOrePegagin.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerBlock(blockOreSpectra, blockOreSpectra.getUnlocalizedName().substring(6 + ModData.MODID.length()));
