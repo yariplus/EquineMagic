@@ -15,4 +15,6 @@ public class ModNames
     public static final String	ORE_CHROMA  = "oreChroma";
     public static final String	ORE_PEGAGIN = "orePegagin";
     public static final String	ORE_SPECTRA = "oreSpectra";
+
+    public static final String	ITEM_BOOK_RESEARCH = "bookResearch";
 }

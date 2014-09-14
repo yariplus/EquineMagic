@@ -10,6 +10,7 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.gen.structure.StructureStrongholdPieces;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DungeonHooks;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 /**
