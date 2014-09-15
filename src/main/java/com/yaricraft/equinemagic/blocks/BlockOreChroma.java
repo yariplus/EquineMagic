@@ -11,16 +11,17 @@ import java.util.Random;
 
 public class BlockOreChroma extends EquineMagicBlock
 {
-	public BlockOreChroma()
-	{
-		super(Material.iron);
-		this.setBlockName(ModNames.ORE_CHROMA);
-		this.setBlockTextureName(ModNames.ORE_CHROMA);
-		this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-	}
+    public BlockOreChroma()
+    {
+        super(Material.iron);
+        this.setBlockName(ModNames.ORE_CHROMA);
+        this.setBlockTextureName(ModNames.ORE_CHROMA);
+        this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+    }
 
     @Override
-    public Item getItemDropped(int meta, Random rand, int fortune) {
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
         return EquineMagicItem.dustChroma;
     }
 

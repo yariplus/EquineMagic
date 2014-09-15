@@ -15,6 +15,23 @@ tile.EquineMagic:blockDecor.13.name=Decorium Block Variation 13
 tile.EquineMagic:blockDecor.14.name=Decorium Block Variation 14
 tile.EquineMagic:blockDecor.15.name=Decorium Block Variation 15
 
+tile.EquineMagic:blockDecor.0.desc=Decorium Block
+tile.EquineMagic:blockDecor.1.desc=Decorium Block Variation 1
+tile.EquineMagic:blockDecor.2.desc=Decorium Block Variation 2
+tile.EquineMagic:blockDecor.3.desc=Decorium Block Variation 3
+tile.EquineMagic:blockDecor.4.desc=Decorium Block Variation 4
+tile.EquineMagic:blockDecor.5.desc=Decorium Block Variation 5
+tile.EquineMagic:blockDecor.6.desc=Decorium Block Variation 6
+tile.EquineMagic:blockDecor.7.desc=Decorium Block Variation 7
+tile.EquineMagic:blockDecor.8.desc=Decorium Block Variation 8
+tile.EquineMagic:blockDecor.9.desc=Decorium Block Variation 9
+tile.EquineMagic:blockDecor.10.desc=Decorium Block Variation 10
+tile.EquineMagic:blockDecor.11.desc=Decorium Block Variation 11
+tile.EquineMagic:blockDecor.12.desc=Decorium Block Variation 12
+tile.EquineMagic:blockDecor.13.desc=Decorium Block Variation 13
+tile.EquineMagic:blockDecor.14.desc=Decorium Block Variation 14
+tile.EquineMagic:blockDecor.15.desc=Decorium Block Variation 15
+
 tile.EquineMagic:orePegagin.name=Pegagin Ore
 tile.EquineMagic:oreChroma.name=Chroma Ore
 tile.EquineMagic:oreSpectra.name=Spectra Ore

@@ -26,6 +26,17 @@ minecraft {
     runDir = "./run"
 }
 
+repositories {
+    maven {
+        name = "ChickenBones"
+        url = "http://chickenbones.net/maven"
+    }
+    maven {
+        name = "ProfMobius"
+        url = "http://mobiusstrip.eu/maven"
+    }
+}
+
 dependencies {
 
 }

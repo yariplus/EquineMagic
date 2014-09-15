@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic.blocks;
 
 import com.yaricraft.equinemagic.reference.ModData;
 
+import com.yaricraft.equinemagic.reference.ModNames;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,6 +14,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 
 public class EquineMagicBlock extends Block
 {
+    // Static declarations
     public static final EquineMagicBlock blockDecor      = new BlockDecor();
     public static final EquineMagicBlock blockOreChroma  = new BlockOreChroma();
     public static final EquineMagicBlock blockOrePegagin = new BlockOrePegagin();
@@ -20,6 +22,7 @@ public class EquineMagicBlock extends Block
 
     public static void init()
     {
+
         GameRegistry.registerBlock(blockDecor, EquineMagicItemBlock.class, blockDecor.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
         GameRegistry.registerBlock(blockOreChroma, blockOreChroma.getUnlocalizedName().substring(6 + ModData.MODID.length()));
