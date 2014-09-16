@@ -57,4 +57,14 @@ public class BlockFluidSpectraSlurry extends BlockFluidClassic
         return super.displaceIfPossible(world, x, y, z);
     }
 
+    @Override
+    public String getUnlocalizedName()
+    {
+        return String.format("tile.%s%s", ModData.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+    }
+
+    protected String getUnwrappedUnlocalizedName(String unlocalizedName)
+    {
+        return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
+    }
 }

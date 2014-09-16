@@ -4,6 +4,7 @@ package com.yaricraft.equinemagic.blocks;
 import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
 import com.yaricraft.equinemagic.reference.ModData;
 
+import com.yaricraft.equinemagic.tileentities.TESolarCauldron;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -11,6 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -25,6 +27,8 @@ public abstract class EquineMagicBlock extends Block
 
     public static final EquineMagicBlock blockSilkyTNT = new BlockSilkyTNT();
 
+    public static final EquineMagicBlock solarCauldron = new BlockSolarCauldron();
+
     public static void init()
     {
 
@@ -36,8 +40,8 @@ public abstract class EquineMagicBlock extends Block
 
         GameRegistry.registerBlock(blockSilkyTNT, blockSilkyTNT.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
-
-
+        GameRegistry.registerBlock(solarCauldron, solarCauldron.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerTileEntity(TESolarCauldron.class, "solarCauldronLogic");
     }
 
 	protected EquineMagicBlock(Material material)
@@ -52,17 +56,17 @@ public abstract class EquineMagicBlock extends Block
 	}
 
 	@Override
-	public String getUnlocalizedName()
-	{
-		return String.format("tile.%s%s", ModData.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-	}
-
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		blockIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
 	}
+
+    @Override
+    public String getUnlocalizedName()
+    {
+        return String.format("tile.%s%s", ModData.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+    }
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName)
 	{

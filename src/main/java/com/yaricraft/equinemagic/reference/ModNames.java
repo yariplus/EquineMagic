@@ -9,6 +9,7 @@ public class ModNames
     public static final String[] BLOCK_DECOR_SUFFIX  = new String[] {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
 
     public static final String BLOCK_SILKY_TNT = "blockSilkyTNT";
+    public static final String BLOCK_SOLAR_CAULDRON = "cauldronSolar";
 
     public static final String DUST_ALICORN  = "dustAlicorn";
     public static final String DUST_CHROMA   = "dustChroma";
