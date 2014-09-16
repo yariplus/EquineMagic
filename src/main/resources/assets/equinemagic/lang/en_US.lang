@@ -44,8 +44,11 @@ item.EquineMagic:warmScale.name=Warm Scale
 item.EquineMagic:warmFeather.name=Warm Feather
 item.EquineMagic:warmWing.name=Warm Bat Wing
 
+item.EquineMagic:bookResearch.name=Equine Research Notes
+
 item.EquineMagic:dustAlicorn.name=Alicorn Dust
 item.EquineMagic:dustChroma.name=Chroma Dust
+item.EquineMagic:dustPegagin.name=Pegagin Dust
 item.EquineMagic:dustSpectra.name=Spectra Dust
 
 itemGroup.EquineMagic=EquineMagic

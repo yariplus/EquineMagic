@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 /**
@@ -26,11 +27,24 @@ public class ItemBookResearch extends EquineMagicItem
     @Override
     public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
     {
-        if(!world.isRemote && !(world.getBlock(x, y, z) instanceof BlockAir))
+        if(!world.isRemote)
         {
-            player.addChatMessage(new ChatComponentText("I don't think this " + world.getBlock(x, y, z).getLocalizedName() + " is relevant to my Equine research."));
+            Block hit = world.getBlock(x, y, z);
+            String hitname = hit.getLocalizedName();
+            if(hitname.contains("."))
+            {
+                hitname = hitname.substring(0, hitname.length() - 5);
+                if(hitname.contains("."))
+                {
+                    hitname = hitname.substring(5, hitname.length());
+                }
+            }
+            hitname = hitname.toLowerCase();
+
+            player.addChatMessage(new ChatComponentText("I don't think this " + hitname + " is relevant to my Equine research."));
+            return true;
         }
 
-        return true;
+        return false;
     }
 }

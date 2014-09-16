@@ -2,6 +2,7 @@
 package com.yaricraft.equinemagic;
 
 import com.yaricraft.equinemagic.blocks.EquineMagicBlock;
+import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
 import com.yaricraft.equinemagic.items.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
@@ -36,6 +37,7 @@ public class EquineMagic
         // Register things
         EquineMagicItem.init();
         EquineMagicBlock.init();
+        EquineMagicFluid.init();
 
         OreDictionary.registerOre(ModNames.ORE_CHROMA, EquineMagicBlock.blockOreChroma);
         OreDictionary.registerOre(ModNames.ORE_PEGAGIN, EquineMagicBlock.blockOrePegagin);

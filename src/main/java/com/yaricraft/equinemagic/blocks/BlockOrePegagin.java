@@ -17,4 +17,15 @@ public class BlockOrePegagin extends EquineMagicBlock
 		this.setBlockTextureName(ModNames.ORE_PEGAGIN);
 		this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
 	}
+
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune) {
+        return EquineMagicItem.dustPegagin;
+    }
+
+    @Override
+    public int quantityDropped(int meta, int fortune, Random random)
+    {
+        return 1 + random.nextInt(3);
+    }
 }

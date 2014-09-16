@@ -47,9 +47,9 @@ public class BlockDecor extends EquineMagicBlock
 
         for (int i = 0; i < icons.length / MCData.THREE_SIDED; i++)
         {
-            icons[i * MCData.THREE_SIDED + 0] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETPREF_ICON_TOP + "0");
-            icons[i * MCData.THREE_SIDED + 1] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETPREF_ICON_BOTTOM + "0");
-            icons[i * MCData.THREE_SIDED + 2] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETPREF_ICON_SIDE + "0");
+            icons[i * MCData.THREE_SIDED + 0] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON_TOP + "0");
+            icons[i * MCData.THREE_SIDED + 1] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON_BOTTOM + "0");
+            icons[i * MCData.THREE_SIDED + 2] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON_SIDE + "0");
         }
     }
 

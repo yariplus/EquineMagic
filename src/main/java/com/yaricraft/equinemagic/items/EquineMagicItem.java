@@ -22,8 +22,9 @@ public class EquineMagicItem extends Item
     public static final EquineMagicItem warmTear = new ItemWarmTear();
     public static final EquineMagicItem warmWing = new ItemWarmWing();
 
-    public static final EquineMagicItem dustChroma = new ItemDustChroma();
     public static final EquineMagicItem dustAlicorn = new ItemDustAlicorn();
+    public static final EquineMagicItem dustChroma  = new ItemDustChroma();
+    public static final EquineMagicItem dustPegagin = new ItemDustPegagin();
     public static final EquineMagicItem dustSpectra = new ItemDustSpectra();
 
     public static final EquineMagicItem bookResearch = new ItemBookResearch();
@@ -40,6 +41,7 @@ public class EquineMagicItem extends Item
 
         GameRegistry.registerItem(dustAlicorn, dustAlicorn.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(dustChroma, dustChroma.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerItem(dustPegagin, dustPegagin.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(dustSpectra, dustSpectra.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
         GameRegistry.registerItem(bookResearch, bookResearch.getUnlocalizedName().substring(6 + ModData.MODID.length()));
