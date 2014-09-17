@@ -1,7 +1,10 @@
 package com.yaricraft.equinemagic.items;
 
+import com.yaricraft.equinemagic.EquineMagic;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
+import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
+import com.yaricraft.equinemagic.utility.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockBookshelf;
@@ -12,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import org.lwjgl.input.Keyboard;
 
 /**
  * Created by Yari on 9/14/2014.
@@ -25,7 +29,30 @@ public class ItemBookResearch extends EquineMagicItem
     }
 
     @Override
-    public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
+    public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
+    {
+        if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+        {
+            if(!world.isRemote)
+            {
+            }else
+            {
+                LogHelper.info("Pressed Right Click with Book");
+                player.openGui(EquineMagic.instance, ModData.GUIID_BOOK_RESEARCH, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+            }
+        }else
+        {
+            if(!world.isRemote)
+            {
+            }else{
+            }
+        }
+
+        return itemstack;
+    }
+
+    @Override
+    public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
     {
         if(!world.isRemote)
         {
@@ -42,9 +69,10 @@ public class ItemBookResearch extends EquineMagicItem
             hitname = hitname.toLowerCase();
 
             player.addChatMessage(new ChatComponentText("I don't think this " + hitname + " is relevant to my Equine research."));
-            return true;
+        }else{
+
         }
 
-        return false;
+        return true;
     }
 }

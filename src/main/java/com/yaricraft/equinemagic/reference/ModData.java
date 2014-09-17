@@ -22,4 +22,6 @@ public class ModData
     public static final String ASSETSUF_ICON_RIGHT  = "Right";
 
     public static final String[] ASSETSUF_ICONS = new String[] {ASSETSUF_ICON_TOP, ASSETSUF_ICON_BOTTOM, ASSETSUF_ICON_FRONT, ASSETSUF_ICON_BACK, ASSETSUF_ICON_LEFT, ASSETSUF_ICON_RIGHT};
+
+    public static final int GUIID_BOOK_RESEARCH = 1;
 }

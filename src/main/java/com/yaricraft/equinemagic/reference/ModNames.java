@@ -25,4 +25,6 @@ public class ModNames
     public static final String ITEM_BUCKET_SPECTRA_SLURRY = "itemBucketSpectraSlurry";
 
     public static final String ITEM_BOOK_RESEARCH = "bookResearch";
+
+    public static final String GUI_BOOK_RESEARCH = "bookResearch";
 }
