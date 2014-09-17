@@ -2,6 +2,9 @@ package com.yaricraft.equinemagic.items;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModNames;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 /**
  * Created by Yari on 9/8/2014.
