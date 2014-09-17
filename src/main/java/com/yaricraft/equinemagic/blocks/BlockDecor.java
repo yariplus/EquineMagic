@@ -7,6 +7,7 @@ import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 
+import com.yaricraft.equinemagic.utility.LogHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -41,31 +42,26 @@ public class BlockDecor extends EquineMagicBlock
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister iconRegister)
     {
         icons = new IIcon[MCData.THREE_SIDED * MCData.BLOCK_META_MAX];
 
         for (int i = 0; i < icons.length / MCData.THREE_SIDED; i++)
         {
-            icons[i * MCData.THREE_SIDED + 0] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON_TOP + "0");
-            icons[i * MCData.THREE_SIDED + 1] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON_BOTTOM + "0");
-            icons[i * MCData.THREE_SIDED + 2] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON_SIDE + "0");
+            for(int j = 0; j < MCData.THREE_SIDED; j++)
+            {
+                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[j] + ModData.ASSETSUF_META[i]);
+                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[j] + "_0");
+            }
         }
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int par1, int par2)
+    public IIcon getIcon(int side, int meta)
     {
-        switch (par1)
-        {
-            case 0:
-                return icons[par2 * MCData.THREE_SIDED + 0];
-            case 1:
-                return icons[par2 * MCData.THREE_SIDED + 1];
-            default:
-                return icons[par2 * MCData.THREE_SIDED + 2];
-        }
+        if(side>2) side = 2;
+        return icons[meta * MCData.THREE_SIDED + side];
     }
 
     @Override

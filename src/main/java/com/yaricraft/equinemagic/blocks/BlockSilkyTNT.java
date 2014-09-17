@@ -32,13 +32,13 @@ public class BlockSilkyTNT extends EquineMagicBlock
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister iconRegister)
     {
         icons = new IIcon[MCData.THREE_SIDED];
 
         for(int i = 0; i < MCData.THREE_SIDED; i++)
         {
-            icons[i] = par1IconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICONS[i]);
+            icons[i] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[i]);
         }
     }
 

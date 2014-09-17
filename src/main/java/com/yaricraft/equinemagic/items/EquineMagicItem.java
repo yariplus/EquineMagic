@@ -26,6 +26,8 @@ public class EquineMagicItem extends Item
     public static final EquineMagicItem dustChroma  = new ItemDustChroma();
     public static final EquineMagicItem dustPegagin = new ItemDustPegagin();
     public static final EquineMagicItem dustSpectra = new ItemDustSpectra();
+    public static final EquineMagicItem dustSilky = new ItemDustSilky();
+    public static final EquineMagicItem getDustSilkyGunpowder = new ItemDustSilkyGunpowder();
 
     public static final EquineMagicItem bookResearch = new ItemBookResearch();
 
@@ -43,6 +45,9 @@ public class EquineMagicItem extends Item
         GameRegistry.registerItem(dustChroma, dustChroma.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(dustPegagin, dustPegagin.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(dustSpectra, dustSpectra.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerItem(dustSilky, dustSilky.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerItem(getDustSilkyGunpowder, getDustSilkyGunpowder.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+
 
         GameRegistry.registerItem(bookResearch, bookResearch.getUnlocalizedName().substring(6 + ModData.MODID.length()));
     }

@@ -9,7 +9,7 @@ public class ItemDustSilkyGunpowder extends EquineMagicItem
     public ItemDustSilkyGunpowder()
     {
         super();
-        this.setUnlocalizedName(ModNames.DUST_CHROMA);
+        this.setUnlocalizedName(ModNames.DUST_SILKY_GUNPOWDER);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
     }
 }

@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.blocks;
 
+import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -15,11 +16,11 @@ public class EquineMagicItemBlock extends ItemBlock
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
         int i = itemStack.getItemDamage();
-        if (i < 0 || i >= ModNames.BLOCK_DECOR_SUFFIX.length) {
+        if (i < 0 || i >= 16) {
             i = 0;
         }
 
-        return super.getUnlocalizedName() + "." + ModNames.BLOCK_DECOR_SUFFIX[i];
+        return super.getUnlocalizedName() + "." + Integer.toString(i);
     }
 
     @Override
