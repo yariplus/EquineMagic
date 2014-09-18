@@ -14,7 +14,6 @@
 /*.iws
 
 # Package Files #
-*.jar
 *.war
 *.ear
 *.class
