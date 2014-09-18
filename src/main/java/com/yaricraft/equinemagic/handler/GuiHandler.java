@@ -1,6 +1,5 @@
 package com.yaricraft.equinemagic.handler;
 
-import com.yaricraft.equinemagic.inventory.ContainerResearchNotes;
 import com.yaricraft.equinemagic.gui.GuiEquineResearch;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.utility.LogHelper;
@@ -22,7 +21,7 @@ public class GuiHandler implements IGuiHandler
         switch (ID)
         {
             case ModData.GUIID_BOOK_RESEARCH:
-                return new GuiEquineResearch(new ContainerResearchNotes());
+                return new GuiEquineResearch();
         }
         return null;
     }
@@ -34,7 +33,7 @@ public class GuiHandler implements IGuiHandler
         switch (ID)
         {
             case ModData.GUIID_BOOK_RESEARCH:
-                return new GuiEquineResearch(new ContainerResearchNotes());
+                return new GuiEquineResearch();
         }
         return null;
     }

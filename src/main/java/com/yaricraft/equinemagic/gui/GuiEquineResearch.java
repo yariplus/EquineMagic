@@ -8,6 +8,7 @@ import openmods.gui.ComponentGui;
 import openmods.gui.DummyContainer;
 import openmods.gui.component.BaseComposite;
 import openmods.gui.component.GuiComponentBook;
+import openmods.gui.component.page.IntroPage;
 import openmods.gui.component.page.PageBase;
 import openmods.gui.component.page.TitledPage;
 import org.lwjgl.opengl.GL11;
@@ -22,9 +23,9 @@ public class GuiEquineResearch extends ComponentGui implements GuiYesNoCallback
     private int miscIndex;
     private int blocksIndex;
 
-    public static ResourceLocation background = new ResourceLocation(ModData.MODID.toLowerCase(), "textures/gui/bookbase.png");
+    //public static ResourceLocation background = new ResourceLocation(ModData.MODID.toLowerCase(), "textures/gui/book.png");
 
-    public GuiEquineResearch(Container container)
+    public GuiEquineResearch()
     {
         super(new DummyContainer(), 0, 0);
     }
@@ -45,6 +46,8 @@ public class GuiEquineResearch extends ComponentGui implements GuiYesNoCallback
     protected BaseComposite createRoot() {
         final GuiComponentBook book = new GuiComponentBook();
         PageBase contentsPage = new TitledPage("title", "content");
+
+        book.addPage(new IntroPage());
 
         /*
         GuiComponentLabel lblBlocks = new GuiComponentLabel(27, 90, "- " + StatCollector.translateToLocal("openblocks.gui.blocks"));

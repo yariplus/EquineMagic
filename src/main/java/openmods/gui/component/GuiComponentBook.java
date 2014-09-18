@@ -2,6 +2,7 @@ package openmods.gui.component;
 
 import java.util.List;
 
+import com.yaricraft.equinemagic.reference.ModData;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -19,7 +20,7 @@ import com.google.common.collect.Lists;
 
 public class GuiComponentBook extends BaseComposite {
 
-	private static final ResourceLocation PAGETURN = new ResourceLocation("openmodslib", "pageturn");
+	private static final ResourceLocation PAGETURN = new ResourceLocation(ModData.MODID.toLowerCase(), "pageturn");
 
 	private GuiComponentSprite imgLeftBackground;
 	private GuiComponentSprite imgRightBackground;
@@ -35,7 +36,7 @@ public class GuiComponentBook extends BaseComposite {
 	public static IIcon iconPrevHover = FakeIcon.createSheetIcon(80, 226, 18, 10);
 	public static IIcon iconNextHover = FakeIcon.createSheetIcon(80, 213, 18, 10);
 
-	private static final ResourceLocation texture = new ResourceLocation("openmodslib:textures/gui/book.png");
+	private static final ResourceLocation texture = new ResourceLocation(ModData.MODID.toLowerCase(), "textures/gui/book.png");
 
 	public List<BaseComponent> pages;
 
@@ -152,8 +153,10 @@ public class GuiComponentBook extends BaseComposite {
 
 		imgNext.setEnabled(index < pages.size() - 2);
 		imgPrev.setEnabled(index > 0);
-		pageNumberLeft.setText(StatCollector.translateToLocalFormatted("openblocks.misc.page", index + 1, totalPageCount));
-		pageNumberRight.setText(StatCollector.translateToLocalFormatted("openblocks.misc.page", index + 2, totalPageCount));
+		//pageNumberLeft.setText(StatCollector.translateToLocalFormatted("openblocks.misc.page", index + 1, totalPageCount));
+		//pageNumberRight.setText(StatCollector.translateToLocalFormatted("openblocks.misc.page", index + 2, totalPageCount));
+        pageNumberLeft.setText((index + 1) + "/" + totalPageCount);
+        pageNumberRight.setText((index + 2) + "/" + totalPageCount);
 	}
 
 	@Override

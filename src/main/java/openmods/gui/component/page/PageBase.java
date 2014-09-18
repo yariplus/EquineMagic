@@ -1,5 +1,6 @@
 package openmods.gui.component.page;
 
+import com.yaricraft.equinemagic.reference.ModData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import openmods.gui.component.BaseComposite;
@@ -8,7 +9,7 @@ public abstract class PageBase extends BaseComposite {
 
 	public static final PageBase BLANK_PAGE = new PageBase() {};
 
-	public static final ResourceLocation BOOK_TEXTURE = new ResourceLocation("openmodslib:textures/gui/book.png");
+	public static final ResourceLocation BOOK_TEXTURE = new ResourceLocation(ModData.MODID.toLowerCase(), "textures/gui/book.png");
 
 	public PageBase() {
 		super(0, 0);
