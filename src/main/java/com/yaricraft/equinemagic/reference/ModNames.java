@@ -27,4 +27,7 @@ public class ModNames
     public static final String ITEM_BOOK_RESEARCH = "bookResearch";
 
     public static final String GUI_BOOK_RESEARCH = "bookResearch";
+
+    public static final String LOGIC_SOLAR_CAULDRON = "logicCauldronSolar";
+    public static final String LOGIC_SPECTRAL_ASCENSION_DEVICE = "logicSpectralAscensionDevice";
 }

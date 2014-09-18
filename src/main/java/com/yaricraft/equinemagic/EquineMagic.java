@@ -4,6 +4,7 @@ package com.yaricraft.equinemagic;
 import com.yaricraft.equinemagic.blocks.EquineMagicBlock;
 import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
 import com.yaricraft.equinemagic.items.EquineMagicItem;
+import com.yaricraft.equinemagic.logic.EquineMagicLogic;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
 
@@ -40,6 +41,7 @@ public class EquineMagic
         EquineMagicItem.init();
         EquineMagicBlock.init();
         EquineMagicFluid.init();
+        EquineMagicLogic.init();
 
         registerDictionaryItems();
 	}

@@ -1,10 +1,9 @@
 
 package com.yaricraft.equinemagic.blocks;
 
-import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
 import com.yaricraft.equinemagic.reference.ModData;
 
-import com.yaricraft.equinemagic.tileentities.TESolarCauldron;
+import com.yaricraft.equinemagic.logic.EquineMagicLogic;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -12,9 +11,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public abstract class EquineMagicBlock extends Block
 {
@@ -41,7 +37,7 @@ public abstract class EquineMagicBlock extends Block
         GameRegistry.registerBlock(blockSilkyTNT, blockSilkyTNT.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
         GameRegistry.registerBlock(solarCauldron, solarCauldron.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        GameRegistry.registerTileEntity(TESolarCauldron.class, "solarCauldronLogic");
+        GameRegistry.registerTileEntity(EquineMagicLogic.class, "solarCauldronLogic");
     }
 
 	protected EquineMagicBlock(Material material)
@@ -62,12 +58,14 @@ public abstract class EquineMagicBlock extends Block
 		blockIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
 	}
 
+    // Returns tile.MOD:BLOCK
     @Override
     public String getUnlocalizedName()
     {
         return String.format("tile.%s%s", ModData.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
 
+    // Return BLOCK
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName)
 	{
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
