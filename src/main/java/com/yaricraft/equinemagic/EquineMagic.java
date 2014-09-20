@@ -4,7 +4,6 @@ package com.yaricraft.equinemagic;
 import com.yaricraft.equinemagic.blocks.EquineMagicBlock;
 import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
 import com.yaricraft.equinemagic.items.EquineMagicItem;
-import com.yaricraft.equinemagic.logic.EquineMagicLogic;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
 
@@ -16,7 +15,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.BlockStone;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -41,7 +39,9 @@ public class EquineMagic
         EquineMagicItem.init();
         EquineMagicBlock.init();
         EquineMagicFluid.init();
-        EquineMagicLogic.init();
+
+        // Register TESR
+        proxy.registerRenderers();
 
         registerDictionaryItems();
 	}
@@ -81,7 +81,9 @@ public class EquineMagic
 
         OreDictionary.registerOre(ModNames.BLOCK_DECOR, EquineMagicBlock.blockDecor);
         OreDictionary.registerOre(ModNames.BLOCK_SILKY_TNT, EquineMagicBlock.blockSilkyTNT);
+
         OreDictionary.registerOre(ModNames.BLOCK_SOLAR_CAULDRON, EquineMagicBlock.solarCauldron);
+        OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE, EquineMagicBlock.spectralAscensionDevice);
 
         if(OreDictionary.getOres("blockWool").size() < 16)
         {
@@ -136,6 +138,15 @@ public class EquineMagic
                 "SDS",
                 'D', Blocks.sand,
                 'S', new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY_GUNPOWDER).get(0).getItem())
+        });
+
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SOLAR_CAULDRON).get(0).getItem()), new Object[]{
+                "IGI",
+                "GCG",
+                "IGI",
+                'G', Blocks.glass_pane,
+                'I', Items.iron_ingot,
+                'C', Items.cauldron
         });
 
         GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SOLAR_CAULDRON).get(0).getItem()), new Object[]{

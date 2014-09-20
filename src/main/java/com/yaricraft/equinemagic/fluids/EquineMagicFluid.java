@@ -1,13 +1,15 @@
 package com.yaricraft.equinemagic.fluids;
 
+import com.yaricraft.equinemagic.blocks.EquineMagicBlock;
+import com.yaricraft.equinemagic.items.ItemBucketSpectraSlurry;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.*;
 
 import java.util.ArrayList;
@@ -18,7 +20,6 @@ import java.util.ArrayList;
 public class EquineMagicFluid
 {
     public static ArrayList<BlockFluidBase> fluidBlocks = new ArrayList<BlockFluidBase>();
-    public static ArrayList<ItemBucket> fluidBuckets = new ArrayList<ItemBucket>();
 
     public static Fluid fluidSpectraSlurry;
     public static BlockFluidClassic blockFluidSpectraSlurry;
@@ -35,7 +36,7 @@ public class EquineMagicFluid
 
         itemBucketSpectraSlurry = new ItemBucketSpectraSlurry(blockFluidSpectraSlurry);
         GameRegistry.registerItem(itemBucketSpectraSlurry, itemBucketSpectraSlurry.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        fluidBuckets.add(itemBucketSpectraSlurry);
+        //fluidBuckets.add(itemBucketSpectraSlurry);
 
         FluidContainerRegistry.registerFluidContainer(
                 FluidRegistry.getFluidStack(
@@ -44,8 +45,8 @@ public class EquineMagicFluid
                 new ItemStack(itemBucketSpectraSlurry),
                 new ItemStack(Items.bucket));
 
-        fluidSpectraSlurry.setUnlocalizedName(ModNames.FLUID_SPECTRA_SLURRY);
-        itemBucketSpectraSlurry.setUnlocalizedName(ModNames.FLUID_SPECTRA_SLURRY).setContainerItem(Items.bucket);
+        //fluidSpectraSlurry.setUnlocalizedName(ModNames.FLUID_SPECTRA_SLURRY);
+        //itemBucketSpectraSlurry.setUnlocalizedName(ModNames.FLUID_SPECTRA_SLURRY).setContainerItem(Items.bucket);
 
 
     }

@@ -1,4 +1,4 @@
-package com.yaricraft.equinemagic.fluids;
+package com.yaricraft.equinemagic.items;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModData;

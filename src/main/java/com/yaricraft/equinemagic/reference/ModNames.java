@@ -5,9 +5,10 @@ package com.yaricraft.equinemagic.reference;
  */
 public class ModNames
 {
-    public static final String BLOCK_DECOR          = "blockDecor";
-    public static final String BLOCK_SILKY_TNT      = "blockSilkyTNT";
-    public static final String BLOCK_SOLAR_CAULDRON = "cauldronSolar";
+    public static final String BLOCK_DECOR               = "blockDecor";
+    public static final String BLOCK_SILKY_TNT           = "blockSilkyTNT";
+    public static final String BLOCK_SOLAR_CAULDRON      = "cauldronSolar";
+    public static final String BLOCK_SPECTRAL_ASCENSION_DEVICE = "spectralAscensionDevice";
 
     public static final String DUST_ALICORN          = "dustAlicorn";
     public static final String DUST_CHROMA           = "dustChroma";

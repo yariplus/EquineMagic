@@ -69,7 +69,7 @@ public class ItemDustAlicorn extends EquineMagicItem
                         for(int yClearing = 0; yClearing <= 2; yClearing++)
                         {
                             Block active = world.getBlock(x + xClearing, y + yClearing, z + zClearing);
-                            if(!(active instanceof BlockAir))
+                            if(!(active instanceof BlockAir || world.getTileEntity(x + xClearing, y + yClearing, z + zClearing) != null))
                             {
                                 world.setBlock(x + xClearing, y + yClearing, z + zClearing, Blocks.air);
                                 world.spawnEntityInWorld(new EntityItem(world, x + xClearing, y + yClearing, z + zClearing, new ItemStack(active)));
@@ -85,7 +85,7 @@ public class ItemDustAlicorn extends EquineMagicItem
                         for(int yClearing = 0; yClearing <= 4; yClearing++)
                         {
                             Block active = world.getBlock(x + xClearing, y + yClearing, z + zClearing);
-                            if(!(active instanceof BlockAir))
+                            if(!(active instanceof BlockAir || world.getTileEntity(x + xClearing, y + yClearing, z + zClearing) != null))
                             {
                                 world.setBlock(x + xClearing, y + yClearing, z + zClearing, Blocks.air);
                                 world.spawnEntityInWorld(new EntityItem(world, x + xClearing, y + yClearing, z + zClearing, new ItemStack(active)));
@@ -99,7 +99,7 @@ public class ItemDustAlicorn extends EquineMagicItem
                     for(int zClearing = -3; zClearing <= 3; zClearing++)
                     {
                         Block active = world.getBlock(x + xClearing, y + 5, z + zClearing);
-                        if(!(active instanceof BlockAir))
+                        if(!(active instanceof BlockAir || world.getTileEntity(x + xClearing, y + 5, z + zClearing) != null))
                         {
                             world.setBlock(x + xClearing, y + 5, z + zClearing, Blocks.air);
                             world.spawnEntityInWorld(new EntityItem(world, x + xClearing, y + 5, z + zClearing, new ItemStack(active)));
@@ -112,7 +112,7 @@ public class ItemDustAlicorn extends EquineMagicItem
                     for(int zClearing = -2; zClearing <= 2; zClearing++)
                     {
                         Block active = world.getBlock(x + xClearing, y + 6, z + zClearing);
-                        if(!(active instanceof BlockAir))
+                        if(!(active instanceof BlockAir || world.getTileEntity(x + xClearing, y + 6, z + zClearing) != null))
                         {
                             world.setBlock(x + xClearing, y + 6, z + zClearing, Blocks.air);
                             world.spawnEntityInWorld(new EntityItem(world, x + xClearing, y + 6, z + zClearing, new ItemStack(active)));
@@ -125,7 +125,7 @@ public class ItemDustAlicorn extends EquineMagicItem
                     for(int zClearing = -1; zClearing <= 1; zClearing++)
                     {
                         Block active = world.getBlock(x + xClearing, y + 7, z + zClearing);
-                        if(!(active instanceof BlockAir))
+                        if(!(active instanceof BlockAir || world.getTileEntity(x + xClearing, y + 7, z + zClearing) != null))
                         {
                             world.setBlock(x + xClearing, y + 7, z + zClearing, Blocks.air);
                             world.spawnEntityInWorld(new EntityItem(world, x + xClearing, y + 7, z + zClearing, new ItemStack(active)));
@@ -140,7 +140,10 @@ public class ItemDustAlicorn extends EquineMagicItem
                         for(int yClearing = -1; yClearing >= -3; yClearing--)
                         {
                             Block active = world.getBlock(x + xClearing, y + yClearing, z + zClearing);
-                            if(!(active instanceof BlockDirt || active instanceof BlockGrass || active instanceof BlockAir))
+                            if(!(active instanceof BlockDirt || active instanceof BlockGrass ||
+                                 active instanceof BlockAir || y + yClearing < 2 ||
+                                 world.getTileEntity(x + xClearing, y + yClearing, z + zClearing) != null ||
+                                 y + yClearing < 5))
                             {
                                 if(yClearing == -1)
                                 {

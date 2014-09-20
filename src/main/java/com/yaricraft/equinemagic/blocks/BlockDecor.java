@@ -26,9 +26,8 @@ public class BlockDecor extends EquineMagicBlock
     public BlockDecor(Material material)
     {
         super(material);
-        this.setHardness(2.0f);
+        this.setHardness(1.5f);
         this.setBlockName(ModNames.BLOCK_DECOR);
-        //this.setBlockTextureName(ModNames.BLOCK_DECOR);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
     }
 
