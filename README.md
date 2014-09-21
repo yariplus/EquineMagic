@@ -2,12 +2,19 @@ EquineMagic
 ========================
 An Equestrian-themed mod and API.
 
+Created by Radio Free Derp:
+yariplus–Project Lead
+cocopenguin–Modeller
+
 Licenses
 ------------------------
 Code, textures, and binaries are public domain under Creative Commons 0 unless otherwise under another license already. Any alternate licenses are noted where appropriate.
 
 Some textures are based on the Faithful Pack.
 http://www.minecraftforum.net/forums/mapping-and-modding/resource-packs/1223254
+
+Some code from OpenMods, used under the included MIT license.
+http://openmods.info/
 
 Pull Requests
 ------------------------
