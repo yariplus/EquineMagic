@@ -2,7 +2,6 @@
 package com.yaricraft.equinemagic.blocks;
 
 import com.yaricraft.equinemagic.logic.EquineMagicTile;
-import com.yaricraft.equinemagic.logic.TileCauldron;
 import com.yaricraft.equinemagic.reference.ModData;
 
 import com.yaricraft.equinemagic.utility.LogHelper;

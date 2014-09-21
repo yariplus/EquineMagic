@@ -9,7 +9,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 
 public class EquineMagicItem extends Item
@@ -29,7 +28,7 @@ public class EquineMagicItem extends Item
     public static final EquineMagicItem dustSilky = new ItemDustSilky();
     public static final EquineMagicItem getDustSilkyGunpowder = new ItemDustSilkyGunpowder();
 
-    public static final EquineMagicItem bookResearch = new ItemBookResearch();
+    public static final EquineMagicItem bookResearch = new ItemBookResearchNotes();
 
     public static void init()
     {
