@@ -1,9 +1,5 @@
-package com.yaricraft.equinemagic.logic;
+package com.yaricraft.equinemagic.tileentity;
 
-import com.yaricraft.equinemagic.reference.GuiId;
-import com.yaricraft.equinemagic.reference.ModNames;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;

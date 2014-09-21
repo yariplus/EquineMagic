@@ -1,7 +1,6 @@
 package com.yaricraft.equinemagic.items;
 
-import com.yaricraft.equinemagic.blocks.BlockSilkyTNT;
-import com.yaricraft.equinemagic.blocks.EquineMagicBlock;
+import com.yaricraft.equinemagic.block.BlockSilkyTNT;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.*;
@@ -11,12 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatStyle;
-import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
-
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by Yari on 9/8/2014.

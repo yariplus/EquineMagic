@@ -1,7 +1,6 @@
-package com.yaricraft.equinemagic.blocks;
+package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
-import com.yaricraft.equinemagic.items.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -9,13 +8,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-
-import java.util.List;
-import java.util.Random;
 
 public class BlockSilkyTNT extends EquineMagicBlock
 {

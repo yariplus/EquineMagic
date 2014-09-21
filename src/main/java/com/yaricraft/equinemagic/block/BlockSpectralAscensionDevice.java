@@ -1,9 +1,8 @@
-package com.yaricraft.equinemagic.blocks;
+package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
-import com.yaricraft.equinemagic.logic.TileSpectralAscensionDevice;
+import com.yaricraft.equinemagic.tileentity.TileSpectralAscensionDevice;
 import com.yaricraft.equinemagic.reference.ModNames;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;

@@ -1,7 +1,7 @@
-package com.yaricraft.equinemagic.blocks;
+package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
-import com.yaricraft.equinemagic.logic.TileSolarCauldron;
+import com.yaricraft.equinemagic.tileentity.TileSolarCauldron;
 import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

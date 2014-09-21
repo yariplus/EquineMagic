@@ -1,4 +1,4 @@
-package com.yaricraft.equinemagic.logic;
+package com.yaricraft.equinemagic.tileentity;
 
 import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
 import com.yaricraft.equinemagic.items.EquineMagicItem;

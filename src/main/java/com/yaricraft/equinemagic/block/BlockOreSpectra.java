@@ -1,4 +1,4 @@
-package com.yaricraft.equinemagic.blocks;
+package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.items.EquineMagicItem;

@@ -1,7 +1,5 @@
-package com.yaricraft.equinemagic.blocks;
+package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.reference.ModData;
-import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

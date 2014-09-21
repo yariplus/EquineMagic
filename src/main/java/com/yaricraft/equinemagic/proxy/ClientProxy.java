@@ -1,7 +1,7 @@
 
 package com.yaricraft.equinemagic.proxy;
 
-import com.yaricraft.equinemagic.logic.TileSolarCauldron;
+import com.yaricraft.equinemagic.tileentity.TileSolarCauldron;
 import com.yaricraft.equinemagic.renderer.RendererTileSolarCauldron;
 import cpw.mods.fml.client.registry.ClientRegistry;
 

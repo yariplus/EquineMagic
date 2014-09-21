@@ -1,7 +1,7 @@
 
-package com.yaricraft.equinemagic.blocks;
+package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.logic.EquineMagicTile;
+import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
 import com.yaricraft.equinemagic.reference.ModData;
 
 import com.yaricraft.equinemagic.utility.LogHelper;

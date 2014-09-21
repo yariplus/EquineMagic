@@ -1,6 +1,5 @@
 package com.yaricraft.equinemagic.fluids;
 
-import com.yaricraft.equinemagic.blocks.EquineMagicBlock;
 import com.yaricraft.equinemagic.items.ItemBucketSpectraSlurry;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -9,7 +8,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import net.minecraftforge.fluids.*;
 
 import java.util.ArrayList;
