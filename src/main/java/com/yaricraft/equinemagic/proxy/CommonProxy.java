@@ -7,6 +7,7 @@ import com.yaricraft.equinemagic.handler.BlockEventHandler;
 import com.yaricraft.equinemagic.handler.BucketHandler;
 import com.yaricraft.equinemagic.handler.GuiHandler;
 import com.yaricraft.equinemagic.handler.LivingEventHandler;
+import com.yaricraft.equinemagic.handler.PlayerHandler;
 import com.yaricraft.equinemagic.tileentity.TileSolarCauldron;
 import com.yaricraft.equinemagic.tileentity.TileSpectralAscensionDevice;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -23,6 +24,7 @@ public abstract class CommonProxy implements IProxy
         MinecraftForge.EVENT_BUS.register(new LivingEventHandler());
         MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
         MinecraftForge.EVENT_BUS.register(new BucketHandler());
+        MinecraftForge.EVENT_BUS.register(new PlayerHandler());
 
         NetworkRegistry.INSTANCE.registerGuiHandler(EquineMagic.instance, new GuiHandler());
 

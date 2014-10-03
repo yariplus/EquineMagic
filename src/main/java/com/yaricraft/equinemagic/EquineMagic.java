@@ -20,6 +20,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 @Mod(modid = ModData.MODID, version = ModData.VERSION)
@@ -43,7 +45,7 @@ public class EquineMagic
         proxy.registerRenderers();
 
         registerDictionaryItems();
-	}
+    }
 
     @Mod.EventHandler
 	public void init(FMLInitializationEvent event)
@@ -81,8 +83,8 @@ public class EquineMagic
         OreDictionary.registerOre(ModNames.BLOCK_DECOR, EquineMagicBlock.blockDecor);
         OreDictionary.registerOre(ModNames.BLOCK_SILKY_TNT, EquineMagicBlock.blockSilkyTNT);
 
-        OreDictionary.registerOre(ModNames.BLOCK_SOLAR_CAULDRON, EquineMagicBlock.solarCauldron);
-        OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE, EquineMagicBlock.spectralAscensionDevice);
+        OreDictionary.registerOre(ModNames.BLOCK_SOLAR_CAULDRON, EquineMagicItem.solarCauldron);
+        OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE, EquineMagicItem.spectralAscensionDevice);
 
         if(OreDictionary.getOres("blockWool").size() < 16)
         {
@@ -148,13 +150,13 @@ public class EquineMagic
                 'C', Items.cauldron
         });
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SOLAR_CAULDRON).get(0).getItem()), new Object[]{
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE).get(0).getItem()), new Object[]{
                 "IGI",
                 "GCG",
                 "IGI",
                 'G', Blocks.glass_pane,
-                'I', Items.iron_ingot,
-                'C', Items.cauldron
+                'I', Items.gold_ingot,
+                'C', Items.nether_star
         });
     }
 }

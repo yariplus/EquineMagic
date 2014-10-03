@@ -2,6 +2,7 @@ package com.yaricraft.equinemagic.items;
 
 import com.yaricraft.equinemagic.block.BlockSilkyTNT;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
+import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.*;
 import net.minecraft.block.material.MaterialLiquid;
@@ -33,6 +34,9 @@ public class ItemDustAlicorn extends EquineMagicItem
         {
             Block hit = world.getBlock(x, y, z);
             if(hit instanceof BlockBookshelf) {
+
+                if (ModData.DEBUG) return false;
+
                 world.setBlock(x, y, z, Blocks.air);
                 world.notifyBlockOfNeighborChange(x, y, z, Blocks.air);
 

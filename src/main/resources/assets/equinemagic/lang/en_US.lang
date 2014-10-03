@@ -57,8 +57,10 @@ item.EquineMagic:dustSilkyGunpowder.name=Silky Gunpowder
 
 tile.EquineMagic:cauldronSolar.name=Solar Cauldron
 tile.EquineMagic:cauldronSolar.desc=A primitive means of purifying Spectra.
+item.EquineMagic:itemSolarCauldron.name=Solar Cauldron
 
 tile.EquineMagic:spectralAscensionDevice.name=Spectral Ascension Device
+item.EquineMagic:itemSpectralAscensionDevice.name=Spectral Ascension Device
 
 tile.EquineMagic:blockFluidSpectraSlurry.name=Spectra Slurry
 

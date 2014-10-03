@@ -1,6 +1,7 @@
 
 package com.yaricraft.equinemagic.items;
 
+import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
 import com.yaricraft.equinemagic.reference.ModData;
@@ -9,6 +10,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemStack;
 
 public class EquineMagicItem extends Item
@@ -30,6 +32,9 @@ public class EquineMagicItem extends Item
 
     public static final EquineMagicItem bookResearch = new ItemBookResearchNotes();
 
+    public static final Item solarCauldron = (new ItemReed(EquineMagicBlock.solarCauldron)).setUnlocalizedName("EquineMagic:itemSolarCauldron").setTextureName("cauldron").setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+    public static final Item spectralAscensionDevice = (new ItemReed(EquineMagicBlock.spectralAscensionDevice)).setUnlocalizedName("EquineMagic:itemSpectralAscensionDevice").setTextureName("magma_cream").setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+
     public static void init()
     {
         GameRegistry.registerItem(warmFluxingRod, warmFluxingRod.getUnlocalizedName().substring(6 + ModData.MODID.length()));
@@ -47,8 +52,10 @@ public class EquineMagicItem extends Item
         GameRegistry.registerItem(dustSilky, dustSilky.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(getDustSilkyGunpowder, getDustSilkyGunpowder.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
-
         GameRegistry.registerItem(bookResearch, bookResearch.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+
+        GameRegistry.registerItem(solarCauldron, solarCauldron.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerItem(spectralAscensionDevice, spectralAscensionDevice.getUnlocalizedName().substring(6 + ModData.MODID.length()));
     }
 
 	public EquineMagicItem()
