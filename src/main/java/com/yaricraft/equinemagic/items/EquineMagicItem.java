@@ -35,6 +35,8 @@ public class EquineMagicItem extends Item
     public static final Item solarCauldron = (new ItemReed(EquineMagicBlock.solarCauldron)).setUnlocalizedName("EquineMagic:itemSolarCauldron").setTextureName("cauldron").setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
     public static final Item spectralAscensionDevice = (new ItemReed(EquineMagicBlock.spectralAscensionDevice)).setUnlocalizedName("EquineMagic:itemSpectralAscensionDevice").setTextureName("magma_cream").setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
 
+    public static final Item crystalPrimatic = new ItemCrystalPrimatic();
+
     public static void init()
     {
         GameRegistry.registerItem(warmFluxingRod, warmFluxingRod.getUnlocalizedName().substring(6 + ModData.MODID.length()));
@@ -56,6 +58,8 @@ public class EquineMagicItem extends Item
 
         GameRegistry.registerItem(solarCauldron, solarCauldron.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(spectralAscensionDevice, spectralAscensionDevice.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+
+        GameRegistry.registerItem(crystalPrimatic, crystalPrimatic.getUnlocalizedName().substring(6 + ModData.MODID.length()));
     }
 
 	public EquineMagicItem()

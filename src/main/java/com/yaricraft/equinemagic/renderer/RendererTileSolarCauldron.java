@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 public class RendererTileSolarCauldron extends TileEntitySpecialRenderer
 {
     IModelCustom model;
-    public static final ResourceLocation texture = new ResourceLocation(ModData.MODID.toLowerCase(), "textures/blocks/blockDecor_Bottom_0.png");
+    public static final ResourceLocation texture = new ResourceLocation(ModData.MODID.toLowerCase(), "textures/blocks/blockDecor_Front_0.png");
 
     public RendererTileSolarCauldron(){
         model = AdvancedModelLoader.loadModel(new ResourceLocation(ModData.MODID.toLowerCase(), "models/solarCauldron.obj"));

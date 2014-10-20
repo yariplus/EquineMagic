@@ -8,6 +8,7 @@ import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
 
 import com.yaricraft.equinemagic.reference.ModNames;
+import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -17,6 +18,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
@@ -36,14 +38,12 @@ public class EquineMagic
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-        // Register things
+        // Register all the things
         EquineMagicItem.init();
         EquineMagicBlock.init();
         EquineMagicFluid.init();
-
-        // Register TESR
         proxy.registerRenderers();
-
+        EquineMagicTile.init();
         registerDictionaryItems();
     }
 
@@ -84,7 +84,12 @@ public class EquineMagic
         OreDictionary.registerOre(ModNames.BLOCK_SILKY_TNT, EquineMagicBlock.blockSilkyTNT);
 
         OreDictionary.registerOre(ModNames.BLOCK_SOLAR_CAULDRON, EquineMagicItem.solarCauldron);
+
         OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE, EquineMagicItem.spectralAscensionDevice);
+        OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_CANNON, EquineMagicBlock.spectralCannon);
+        OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_MINER, EquineMagicBlock.spectralMiner);
+
+        OreDictionary.registerOre(ModNames.ITEM_CRYSTAL_PRIMATIC, EquineMagicItem.crystalPrimatic);
 
         if(OreDictionary.getOres("blockWool").size() < 16)
         {
@@ -151,12 +156,41 @@ public class EquineMagic
         });
 
         GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE).get(0).getItem()), new Object[]{
-                "IGI",
+                "DED",
                 "GCG",
-                "IGI",
+                "DGD",
+                'D', new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem()),
                 'G', Blocks.glass_pane,
-                'I', Items.gold_ingot,
-                'C', Items.nether_star
+                'C', EquineMagicItem.crystalPrimatic,
+                'E', Items.ender_eye
+        });
+
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.ITEM_CRYSTAL_PRIMATIC).get(0).getItem()), new Object[]{
+                " O ",
+                "ODO",
+                " O ",
+                'O', Blocks.obsidian,
+                'D', Items.diamond
+        });
+
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SPECTRAL_MINER).get(0).getItem()), new Object[]{
+                "DHD",
+                "DCD",
+                "DPD",
+                'D', new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem()),
+                'P', Items.diamond_pickaxe,
+                'H', Blocks.hopper,
+                'C', new ItemStack(OreDictionary.getOres(ModNames.ITEM_CRYSTAL_PRIMATIC).get(0).getItem())
+        });
+
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SPECTRAL_CANNON).get(0).getItem()), new Object[]{
+                "DDD",
+                "BCP",
+                "DDD",
+                'D', new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem()),
+                'P', Items.diamond_pickaxe,
+                'B', Items.bow,
+                'C', new ItemStack(OreDictionary.getOres(ModNames.ITEM_CRYSTAL_PRIMATIC).get(0).getItem())
         });
     }
 }

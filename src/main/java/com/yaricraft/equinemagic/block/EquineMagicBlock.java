@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 public abstract class EquineMagicBlock extends Block
 {
     // Static declarations
+    // TODO: Refactor these assholes into interfaces.
     public static final EquineMagicBlock blockDecor      = new BlockDecor();
 
     public static final EquineMagicBlock blockOreChroma  = new BlockOreChroma();
@@ -29,10 +30,14 @@ public abstract class EquineMagicBlock extends Block
     public static final EquineMagicBlock blockSilkyTNT = new BlockSilkyTNT();
 
     public static final EquineMagicBlock solarCauldron           = new BlockSolarCauldron();
+
     public static final EquineMagicBlock spectralAscensionDevice = new BlockSpectralAscensionDevice();
+    public static final EquineMagicBlock spectralMiner = new BlockSpectralMiner();
+    public static final EquineMagicBlock spectralCannon = new BlockSpectralCannon();
 
     public static void init()
     {
+        // TODO: Fix naming methods so that they are less messy looking.
         GameRegistry.registerBlock(blockDecor, EquineMagicItemBlock.class, blockDecor.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
         GameRegistry.registerBlock(blockOreChroma, blockOreChroma.getUnlocalizedName().substring(6 + ModData.MODID.length()));
@@ -42,7 +47,10 @@ public abstract class EquineMagicBlock extends Block
         GameRegistry.registerBlock(blockSilkyTNT, blockSilkyTNT.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
         GameRegistry.registerBlock(solarCauldron, solarCauldron.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+
         GameRegistry.registerBlock(spectralAscensionDevice, spectralAscensionDevice.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(spectralMiner, spectralMiner.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(spectralCannon, spectralCannon.getUnlocalizedName().substring(6 + ModData.MODID.length()));
     }
 
     @Override
@@ -54,6 +62,8 @@ public abstract class EquineMagicBlock extends Block
         return ((EquineMagicTile)tile).onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ, tile);
     }
 
+    // Protected so only called by init method and subclasses.
+    // or is that wrong?
 	protected EquineMagicBlock(Material material)
 	{
 		super(material);

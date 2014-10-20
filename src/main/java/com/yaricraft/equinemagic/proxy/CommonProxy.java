@@ -27,9 +27,6 @@ public abstract class CommonProxy implements IProxy
         MinecraftForge.EVENT_BUS.register(new PlayerHandler());
 
         NetworkRegistry.INSTANCE.registerGuiHandler(EquineMagic.instance, new GuiHandler());
-
-        GameRegistry.registerTileEntity(TileSolarCauldron.class, ModNames.BLOCK_SOLAR_CAULDRON);
-        GameRegistry.registerTileEntity(TileSpectralAscensionDevice.class, ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE);
     }
 
     public void registerRenderers() {}

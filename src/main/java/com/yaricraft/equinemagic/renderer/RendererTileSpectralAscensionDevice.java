@@ -14,7 +14,7 @@ import org.lwjgl.opengl.GL11;
 public class RendererTileSpectralAscensionDevice extends TileEntitySpecialRenderer
 {
     IModelCustom model;
-    public static final ResourceLocation texture = new ResourceLocation(ModData.MODID.toLowerCase(), "models/spectralAscensionDevice.png");
+    public static final ResourceLocation texture = new ResourceLocation(ModData.MODID.toLowerCase(), "textures/blocks/blockDecor_Front_0.png");
 
     public RendererTileSpectralAscensionDevice(){
         model = AdvancedModelLoader.loadModel(new ResourceLocation(ModData.MODID.toLowerCase(), "models/spectralAscensionDevice.obj"));

@@ -42,6 +42,7 @@ public class TileSpectralAscensionDevice extends EquineMagicTile
 
     public TileSpectralAscensionDevice() { }
 
+    // TODO: Properly send sync packets from server for client MP
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ, TileEntity tile)
     {

@@ -59,8 +59,17 @@ tile.EquineMagic:cauldronSolar.name=Solar Cauldron
 tile.EquineMagic:cauldronSolar.desc=A primitive means of purifying Spectra.
 item.EquineMagic:itemSolarCauldron.name=Solar Cauldron
 
-tile.EquineMagic:spectralAscensionDevice.name=Spectral Ascension Device
-item.EquineMagic:itemSpectralAscensionDevice.name=Spectral Ascension Device
+tile.EquineMagic:spectralAscensionDevice.name=Spectral Ascender
+tile.EquineMagic:blockSpectralAscender.name=Spectral Ascender
+tile.EquineMagic:blockSpectralCannon.name=Spectral Cannon
+tile.EquineMagic:blockSpectralMiner.name=Spectral Miner
+
+item.EquineMagic:itemSpectralAscensionDevice.name=Spectral Ascender
+item.EquineMagic:itemSpectralAscender.name=Spectral Ascender
+item.EquineMagic:itemSpectralCannon.name=Spectral Cannon
+item.EquineMagic:itemSpectralMiner.name=Spectral Miner
+
+item.EquineMagic:crystalPrimatic.name=Primatic Crystal
 
 tile.EquineMagic:blockFluidSpectraSlurry.name=Spectra Slurry
 

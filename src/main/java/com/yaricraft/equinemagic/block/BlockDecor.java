@@ -16,7 +16,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraftforge.common.MinecraftForge;
 
+import java.io.File;
 import java.util.List;
 
 public class BlockDecor extends EquineMagicBlock
@@ -47,8 +49,8 @@ public class BlockDecor extends EquineMagicBlock
         {
             for(int j = 0; j < MCData.THREE_SIDED; j++)
             {
-                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[j] + ModData.ASSETSUF_META[i]);
-                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[j] + "_0");
+                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[2] + ModData.ASSETSUF_META[i]);
+                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[j] + "_0");
             }
         }
     }
