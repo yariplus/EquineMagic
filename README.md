@@ -3,7 +3,7 @@ EquineMagic
 An Equestrian-themed mod and API.
 
 Weekly Goals and Review  
-https://docs.google.com/document/d/198ECChuKIuXRdGTTLZFJ2lj1kOJ7KF24jbKtnlOGY8Y/edit?usp=sharing
+http://goo.gl/IKxoOR
 
 Created by Radio Free Derp:  
 yariplus—Project Lead  
