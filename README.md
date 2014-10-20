@@ -6,8 +6,8 @@ Weekly Goals and Review
 https://docs.google.com/document/d/198ECChuKIuXRdGTTLZFJ2lj1kOJ7KF24jbKtnlOGY8Y/edit?usp=sharing
 
 Created by Radio Free Derp:
-yariplus–Project Lead
-cocopenguin–Modeller
+yariplusï¿½Project Lead
+cocopenguinï¿½Modeller
 
 Licenses
 ------------------------
