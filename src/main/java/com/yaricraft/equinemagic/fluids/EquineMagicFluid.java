@@ -5,10 +5,13 @@ import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.BlockFluidBase;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
 
 import java.util.ArrayList;
 
@@ -34,18 +37,10 @@ public class EquineMagicFluid
 
         itemBucketSpectraSlurry = new ItemBucketSpectraSlurry(blockFluidSpectraSlurry);
         GameRegistry.registerItem(itemBucketSpectraSlurry, itemBucketSpectraSlurry.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        //fluidBuckets.add(itemBucketSpectraSlurry);
 
         FluidContainerRegistry.registerFluidContainer(
-                FluidRegistry.getFluidStack(
-                    ModNames.FLUID_SPECTRA_SLURRY.toLowerCase(),
-                    FluidContainerRegistry.BUCKET_VOLUME),
+                fluidSpectraSlurry,
                 new ItemStack(itemBucketSpectraSlurry),
-                new ItemStack(Items.bucket));
-
-        //fluidSpectraSlurry.setUnlocalizedName(ModNames.FLUID_SPECTRA_SLURRY);
-        //itemBucketSpectraSlurry.setUnlocalizedName(ModNames.FLUID_SPECTRA_SLURRY).setContainerItem(Items.bucket);
-
-
+                FluidContainerRegistry.EMPTY_BUCKET);
     }
 }

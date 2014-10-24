@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
@@ -22,8 +23,7 @@ public class ItemBucketSpectraSlurry extends ItemBucket
         super(fluid);
         setUnlocalizedName(ModNames.ITEM_BUCKET_SPECTRA_SLURRY);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        Item item = (new ItemBucket(Blocks.air)).setUnlocalizedName("bucket").setMaxStackSize(16).setTextureName("bucket_empty");
-        setContainerItem(item);
+        setContainerItem(Items.bucket);
     }
 
     @Override
