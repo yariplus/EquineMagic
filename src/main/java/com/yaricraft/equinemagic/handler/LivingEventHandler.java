@@ -1,16 +1,10 @@
 package com.yaricraft.equinemagic.handler;
 
-import com.yaricraft.equinemagic.items.EquineMagicItem;
+import com.yaricraft.equinemagic.item.EquineMagicItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraft.world.gen.structure.StructureStrongholdPieces;
-import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.DungeonHooks;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 /**

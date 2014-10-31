@@ -2,17 +2,15 @@
 package com.yaricraft.equinemagic.proxy;
 
 import com.yaricraft.equinemagic.EquineMagic;
-import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
+import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
 import com.yaricraft.equinemagic.handler.BlockEventHandler;
 import com.yaricraft.equinemagic.handler.BucketHandler;
 import com.yaricraft.equinemagic.handler.GuiHandler;
 import com.yaricraft.equinemagic.handler.LivingEventHandler;
 import com.yaricraft.equinemagic.handler.PlayerHandler;
-import com.yaricraft.equinemagic.tileentity.TileSolarCauldron;
-import com.yaricraft.equinemagic.tileentity.TileSpectralAscensionDevice;
-import com.yaricraft.equinemagic.reference.ModNames;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.world.World;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 
 public abstract class CommonProxy implements IProxy
@@ -30,4 +28,14 @@ public abstract class CommonProxy implements IProxy
     }
 
     public void registerRenderers() {}
+
+    // cpw
+    public World getClientWorld()
+    {
+        return null;
+    }
+
+    public void registerIcons(TextureStitchEvent.Pre event) {};
+
+    public void initializeIcons(TextureStitchEvent.Post event) {};
 }

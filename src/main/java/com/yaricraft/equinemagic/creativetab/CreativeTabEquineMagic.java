@@ -1,7 +1,7 @@
 
 package com.yaricraft.equinemagic.creativetab;
 
-import com.yaricraft.equinemagic.items.EquineMagicItem;
+import com.yaricraft.equinemagic.item.EquineMagicItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 

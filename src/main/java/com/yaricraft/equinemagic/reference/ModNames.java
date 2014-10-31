@@ -5,38 +5,36 @@ package com.yaricraft.equinemagic.reference;
  */
 public class ModNames
 {
-    public static final String BLOCK_DECOR               = "blockDecor";
-    public static final String BLOCK_SILKY_TNT           = "blockSilkyTNT";
-    public static final String BLOCK_SOLAR_CAULDRON      = "cauldronSolar";
+    public static final String EQUINE_DECOR            = "block_decor";
 
-    public static final String BLOCK_SPECTRAL_ASCENSION_DEVICE  = "spectralAscensionDevice";
+    public static final String EQUINE_CRAFTER          = "equine_crafter";
 
-    public static final String BLOCK_SPECTRAL_ASCENDER          = "blockSpectralAscender";
-    public static final String BLOCK_SPECTRAL_CANNON            = "blockSpectralCannon";
-    public static final String BLOCK_SPECTRAL_MINER             = "blockSpectralMiner";
+    public static final String EQUINE_TNT              = "equine_tnt";
 
-    public static final String DUST_ALICORN          = "dustAlicorn";
-    public static final String DUST_CHROMA           = "dustChroma";
-    public static final String DUST_PEGAGIN          = "dustPegagin";
-    public static final String DUST_SPECTRA          = "dustSpectra";
-    public static final String DUST_SILKY            = "dustSilky";
-    public static final String DUST_SILKY_GUNPOWDER  = "dustSilkyGunpowder";
+    public static final String SPECTRAL_CAULDRON       = "spectral_cauldron";
 
-    public static final String ORE_CHROMA  = "oreChroma";
-    public static final String ORE_PEGAGIN = "orePegagin";
-    public static final String ORE_SPECTRA = "oreSpectra";
+    public static final String SPECTRAL_DEVICE         = "spectral_device";
+    public static final String SPECTRAL_ASCENDER       = "spectral_ascender";
+    public static final String SPECTRAL_CANNON         = "spectral_cannon";
+    public static final String SPECTRAL_MINER          = "spectral_miner";
 
-    public static final String FLUID_SPECTRA_SLURRY       = "fluidSpectraSlurry";
-    public static final String BLOCK_FLUID_SPECTRA_SLURRY = "blockFluidSpectraSlurry";
-    public static final String ITEM_BUCKET_SPECTRA_SLURRY = "itemBucketSpectraSlurry";
+    public static final String DUST_ALICORN            = "dust_alicorn";
+    public static final String DUST_CHROMA             = "dust_chroma";
+    public static final String DUST_PEGAGIN            = "dust_pegagin";
+    public static final String DUST_SPECTRA            = "dust_spectra";
+    public static final String DUST_SILKY              = "dust_silky";
+    public static final String DUST_SILKY_GUNPOWDER    = "dust_silky_gunpowder";
 
-    public static final String ITEM_BOOK_RESEARCH = "bookResearch";
+    public static final String ORE_CHROMA              = "ore_chroma";
+    public static final String ORE_PEGAGIN             = "ore_pegagin";
+    public static final String ORE_SPECTRA             = "ore_spectra";
 
-    public static final String ITEM_CRYSTAL_PRIMATIC = "crystalPrimatic";
+    public static final String SPECTRA_SLURRY          = "spectra_slurry";
+    public static final String BUCKET_SPECTRA_SLURRY   = "bucket_spectra_slurry";
 
-    public static final String GUI_BOOK_RESEARCH = "bookResearch";
+    public static final String BOOK_RESEARCH           = "book_research";
 
-    public static final String LOGIC_SOLAR_CAULDRON = "logicCauldronSolar";
+    public static final String CRYSTAL_PRIMATIC        = "crystal_primatic";
 
-    public static final String LOGIC_SPECTRAL_ASCENSION_DEVICE = "logicSpectralAscensionDevice";
+    public static final String SPECTRAL_CHIP           = "spectral_chip";
 }

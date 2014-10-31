@@ -1,14 +1,18 @@
 
 package com.yaricraft.equinemagic;
 
+import codechicken.nei.api.API;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
-import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
-import com.yaricraft.equinemagic.items.EquineMagicItem;
+import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
+import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
 
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
+import com.yaricraft.equinemagic.utility.LogHelper;
+import cpw.mods.fml.common.FMLModContainer;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -18,12 +22,10 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 @Mod(modid = ModData.MODID, version = ModData.VERSION)
@@ -52,6 +54,7 @@ public class EquineMagic
 	{
         // Register the Items Event Handler
         proxy.registerEventHandlers();
+        MinecraftForge.EVENT_BUS.register(proxy);
 
         // Add loots
         ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(EquineMagicItem.dustAlicorn, 0, 1, 2, 5));
@@ -65,7 +68,11 @@ public class EquineMagic
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-        // NOOP
+        if (Loader.isModLoaded("NotEnoughItems"))
+        {
+            API.hideItem(new ItemStack(EquineMagicBlock.spectral_ascender));
+            API.hideItem(new ItemStack(EquineMagicBlock.spectral_cauldron));
+        }
     }
 
     private void registerDictionaryItems()
@@ -78,18 +85,20 @@ public class EquineMagic
         OreDictionary.registerOre(ModNames.DUST_PEGAGIN, EquineMagicItem.dustPegagin);
         OreDictionary.registerOre(ModNames.DUST_SPECTRA, EquineMagicItem.dustSpectra);
         OreDictionary.registerOre(ModNames.DUST_SILKY, EquineMagicItem.dustSilky);
-        OreDictionary.registerOre(ModNames.DUST_SILKY_GUNPOWDER, EquineMagicItem.getDustSilkyGunpowder);
+        OreDictionary.registerOre(ModNames.DUST_SILKY_GUNPOWDER, EquineMagicItem.dustSilkyGunpowder);
 
-        OreDictionary.registerOre(ModNames.BLOCK_DECOR, EquineMagicBlock.blockDecor);
-        OreDictionary.registerOre(ModNames.BLOCK_SILKY_TNT, EquineMagicBlock.blockSilkyTNT);
+        OreDictionary.registerOre(ModNames.EQUINE_DECOR, EquineMagicBlock.blockDecor);
+        OreDictionary.registerOre(ModNames.EQUINE_TNT, EquineMagicBlock.blockSilkyTNT);
 
-        OreDictionary.registerOre(ModNames.BLOCK_SOLAR_CAULDRON, EquineMagicItem.solarCauldron);
+        OreDictionary.registerOre(ModNames.SPECTRAL_CAULDRON, EquineMagicItem.spectral_cauldron);
 
-        OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE, EquineMagicItem.spectralAscensionDevice);
-        OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_CANNON, EquineMagicBlock.spectralCannon);
-        OreDictionary.registerOre(ModNames.BLOCK_SPECTRAL_MINER, EquineMagicBlock.spectralMiner);
+        OreDictionary.registerOre(ModNames.SPECTRAL_ASCENDER, EquineMagicItem.spectral_ascender);
+        OreDictionary.registerOre(ModNames.SPECTRAL_CANNON, EquineMagicBlock.spectralCannon);
+        OreDictionary.registerOre(ModNames.SPECTRAL_MINER, EquineMagicBlock.spectralMiner);
 
-        OreDictionary.registerOre(ModNames.ITEM_CRYSTAL_PRIMATIC, EquineMagicItem.crystalPrimatic);
+        OreDictionary.registerOre(ModNames.CRYSTAL_PRIMATIC, EquineMagicItem.crystalPrimatic);
+
+        OreDictionary.registerOre(ModNames.EQUINE_CRAFTER, EquineMagicBlock.blockEquineCrafter);
 
         if(OreDictionary.getOres("blockWool").size() < 16)
         {
@@ -106,8 +115,8 @@ public class EquineMagic
         for ( int i = 15; i >= 0; i--)
         {
             GameRegistry.addShapelessRecipe(
-                    new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem(), 1, (i + 1) % 16),
-                    new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem(), 1, i)
+                    new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem(), 1, (i + 1) % 16),
+                    new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem(), 1, i)
             );
         }
 
@@ -130,7 +139,7 @@ public class EquineMagic
                 new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY).get(0).getItem()),
                 Items.gunpowder);
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem(), 32), new Object[]{
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem(), 32), new Object[]{
                 "SDS",
                 "DSD",
                 "SDS",
@@ -138,7 +147,7 @@ public class EquineMagic
                 'S', Blocks.stone
         });
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SILKY_TNT).get(0).getItem()), new Object[]{
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.EQUINE_TNT).get(0).getItem()), new Object[]{
                 "SDS",
                 "DSD",
                 "SDS",
@@ -146,7 +155,7 @@ public class EquineMagic
                 'S', new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY_GUNPOWDER).get(0).getItem())
         });
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SOLAR_CAULDRON).get(0).getItem()), new Object[]{
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.SPECTRAL_CAULDRON).get(0).getItem()), new Object[]{
                 "IGI",
                 "GCG",
                 "IGI",
@@ -155,17 +164,17 @@ public class EquineMagic
                 'C', Items.cauldron
         });
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE).get(0).getItem()), new Object[]{
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.SPECTRAL_ASCENDER).get(0).getItem()), new Object[]{
                 "DED",
                 "GCG",
                 "DGD",
-                'D', new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem()),
+                'D', new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem()),
                 'G', Blocks.glass_pane,
                 'C', EquineMagicItem.crystalPrimatic,
                 'E', Items.ender_eye
         });
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.ITEM_CRYSTAL_PRIMATIC).get(0).getItem()), new Object[]{
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.CRYSTAL_PRIMATIC).get(0).getItem()), new Object[]{
                 " O ",
                 "ODO",
                 " O ",
@@ -173,24 +182,34 @@ public class EquineMagic
                 'D', Items.diamond
         });
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SPECTRAL_MINER).get(0).getItem()), new Object[]{
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.SPECTRAL_MINER).get(0).getItem()), new Object[]{
                 "DHD",
                 "DCD",
                 "DPD",
-                'D', new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem()),
+                'D', new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem()),
                 'P', Items.diamond_pickaxe,
                 'H', Blocks.hopper,
-                'C', new ItemStack(OreDictionary.getOres(ModNames.ITEM_CRYSTAL_PRIMATIC).get(0).getItem())
+                'C', new ItemStack(OreDictionary.getOres(ModNames.CRYSTAL_PRIMATIC).get(0).getItem())
         });
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.BLOCK_SPECTRAL_CANNON).get(0).getItem()), new Object[]{
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.SPECTRAL_CANNON).get(0).getItem()), new Object[]{
                 "DDD",
                 "BCP",
                 "DDD",
-                'D', new ItemStack(OreDictionary.getOres(ModNames.BLOCK_DECOR).get(0).getItem()),
+                'D', new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem()),
                 'P', Items.diamond_pickaxe,
                 'B', Items.bow,
-                'C', new ItemStack(OreDictionary.getOres(ModNames.ITEM_CRYSTAL_PRIMATIC).get(0).getItem())
+                'C', new ItemStack(OreDictionary.getOres(ModNames.CRYSTAL_PRIMATIC).get(0).getItem())
+        });
+
+        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.EQUINE_CRAFTER).get(0).getItem()), new Object[]{
+                "III",
+                "PCP",
+                "DDD",
+                'D', new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem()),
+                'P', Blocks.piston,
+                'I', Items.iron_ingot,
+                'C', Blocks.crafting_table
         });
     }
 }
