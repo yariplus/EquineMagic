@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-0.0.5"
+version = "1.7.10-0.0.7.1"
 group= "com.yaricraft.equinemagic"
 archivesBaseName = "EquineMagic"
 
@@ -26,19 +26,10 @@ minecraft {
     runDir = "./run"
 }
 
-repositories {
-    maven {
-        name = "ChickenBones"
-        url = "http://chickenbones.net/maven"
-    }
-    maven {
-        name = "ProfMobius"
-        url = "http://mobiusstrip.eu/maven"
-    }
-}
-
 dependencies {
-
+    compile files("jars/CoFHCore-[1.7.10]3.0.0B6-32.jar")
+    compile files("jars/NotEnoughItems-1.7.10-1.0.3.64-universal.jar")
+    compile files("jars/OpenModsLib-1.7.10-0.6-snapshot-231.jar")
 }
 
 processResources
