@@ -1,30 +1,29 @@
 package com.yaricraft.equinemagic.tileentity;
 
-import com.yaricraft.equinemagic.api.tileentity.ITileSpectralManipulator;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
-import com.yaricraft.equinemagic.item.IItemSpectralChip;
 import com.yaricraft.equinemagic.item.ItemSpectralChip;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
-import net.minecraft.block.BlockLiquid;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.fluids.*;
-
-import java.util.Random;
+import net.minecraftforge.fluids.FluidStack;
 
 /**
- * Created by Yari on 10/17/2014.
+ * Created by Yari on 9/17/2014.
  */
-public class TileSpectralMiner extends TileSpectralInventory implements ITileSpectralManipulator
+public class TileSpectralAscender extends TileSpectralInventory
 {
-    private int syncedFluid = 0;
+    public int activeX = 0;
+    public int activeY = 0;
+    public int activeZ = 0;
+    public int activeLayer = 0;
+
+    private int height = 8;
+    private int width = 4;
 
     private int chargeNeeded = 20 * 60;
     private int chargeAmount = 0;
@@ -114,83 +113,46 @@ public class TileSpectralMiner extends TileSpectralInventory implements ITileSpe
     @Override
     public void updateEntity()
     {
-        if (!worldObj.isRemote)
-        {
-            // Server
+        // Don't do anything on the clientside
+        if (worldObj.isRemote) return;
 
-            if (tank.getFluidAmount() == 1000)
-            {
-                chargeAmount++;
-            }
-
-            if (chargeAmount >= chargeNeeded)
-            {
-                Shoot();
-                chargeAmount = 0;
-                tank.drain(1000, true);
-            }
-        }else
+        if (tank.getFluidAmount() != 0)
         {
-            // Client
-        }
-    }
+            tank.drain(1, true);
 
-    private void Shoot()
-    {
-        for (int y = -2; y >= -64; y--)
-        {
-            for (int x = -1; x <= 1; x++)
+            for (int i = 0; i < 10; i++)
             {
-                for (int z = -1; z <= 1; z++)
+                activeX++;
+                if (activeX > width * 2 + 1)
                 {
-                    MineBlock(x, y, z);
-                }
-            }
-        }
-    }
+                    activeX = 0;
 
-    @Override
-    public void MineBlock(int x, int y, int z)
-    {
-        Block minedBlock = worldObj.getBlock(xCoord + x, yCoord + y, zCoord + z);
-        int minedMeta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
-        TileEntity minedTile = worldObj.getTileEntity(xCoord + x, yCoord + y, zCoord + z);
-        Block replacedBlock = Blocks.air;
-        ItemStack minedStack = null;
+                    activeZ++;
+                    if (activeZ > width * 2 + 1)
+                    {
+                        activeZ = 0;
 
-        if (minedTile == null && !(minedBlock == Blocks.bedrock))
-        {
-            // Replace the mined block.
-            for (int i = 0; i < itemStacks.length; i++)
-            {
-                if (itemStacks[i] != null) replacedBlock = ((IItemSpectralChip) itemStacks[i].getItem()).ReplaceBlock(itemStacks[i].getItemDamage(), replacedBlock);
-            }
-            worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, replacedBlock);
-
-            if (!worldObj.isRemote && !(minedBlock instanceof BlockLiquid || minedBlock instanceof BlockAir))
-            {
-                // Get the itemStack dropped.
-                for (int i = 0; i < itemStacks.length; i++)
-                {
-                    if (itemStacks[i] != null) minedStack = ((IItemSpectralChip) itemStacks[i].getItem()).MineBlock(itemStacks[i].getItemDamage(), minedBlock);
-                    if (minedStack != null) i = itemStacks.length;
+                        activeY++;
+                        if (activeY > height + 4)
+                        {
+                            activeY = 0;
+                        }
+                    }
                 }
 
-                if (minedStack == null)
-                {
-                    Item minedItem = minedBlock.getItemDropped( minedMeta, new Random(), 0 );
-                    int minedQuantity = minedBlock.quantityDropped( minedMeta, 0, new Random() );
-                    minedStack = new ItemStack(minedItem, minedQuantity, minedMeta);
-                }
+                if (yCoord + height - activeY < 6) return;
+                if (worldObj.getTileEntity(xCoord - width + activeX, yCoord + height - activeY + 2, zCoord - width + activeZ) != null)
+                    return;
+                if (worldObj.getTileEntity(xCoord - width + activeX, yCoord + height - activeY + 2 - 1, zCoord - width + activeZ) != null)
+                    return;
 
-                if(minedStack != null)
+                Block activeBlock = worldObj.getBlock(xCoord - width + activeX, yCoord + height - activeY + 2, zCoord - width + activeZ);
+                Block lowerBlock = worldObj.getBlock(xCoord - width + activeX, yCoord + height - activeY + 2 - 1, zCoord - width + activeZ);
+
+                if (activeBlock instanceof BlockAir && !(lowerBlock instanceof BlockAir))
                 {
-                    worldObj.spawnEntityInWorld(
-                            new EntityItem(worldObj,
-                                    xCoord + 0.5D,
-                                    yCoord + 3.5D,
-                                    zCoord + 0.5D,
-                                    minedStack));
+                    worldObj.setBlock(xCoord - width + activeX, yCoord + height - activeY + 2, zCoord - width + activeZ, lowerBlock);
+                    worldObj.setBlock(xCoord - width + activeX, yCoord + height - activeY + 2 - 1, zCoord - width + activeZ, Blocks.air);
                 }
             }
         }

@@ -26,8 +26,8 @@ public class BlockSpectralCannon extends BlockHorizontalPillar implements ITileE
     public BlockSpectralCannon()
     {
         super(Material.iron);
-        this.setBlockName(ModNames.BLOCK_SPECTRAL_CANNON);
-        this.setBlockTextureName("blockSpectralCannon");
+        this.setBlockName(ModNames.SPECTRAL_CANNON);
+        this.setBlockTextureName(ModNames.SPECTRAL_CANNON);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
     }
 
@@ -57,8 +57,8 @@ public class BlockSpectralCannon extends BlockHorizontalPillar implements ITileE
     public void registerBlockIcons(IIconRegister iconRegister)
     {
         icons = new IIcon[2];
-        icons[0] = iconRegister.registerIcon("EquineMagic:blockSpectralCannon");
-        icons[1] = iconRegister.registerIcon("EquineMagic:blockSpectralActive");
+        icons[0] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName());
+        icons[1] = iconRegister.registerIcon("EquineMagic:spectral_active");
     }
 
     @Override

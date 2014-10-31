@@ -15,16 +15,27 @@ import net.minecraft.world.World;
  */
 public abstract class EquineMagicTile extends TileEntity
 {
+    /**
+     * Called in the mod init methods.
+     */
     public static void init()
     {
-        GameRegistry.registerTileEntity(TileSolarCauldron.class, ModNames.BLOCK_SOLAR_CAULDRON);
-        GameRegistry.registerTileEntity(TileSpectralAscensionDevice.class, ModNames.BLOCK_SPECTRAL_ASCENSION_DEVICE);
-        GameRegistry.registerTileEntity(TileSpectralCannon.class, ModNames.BLOCK_SPECTRAL_CANNON);
-        GameRegistry.registerTileEntity(TileSpectralMiner.class, ModNames.BLOCK_SPECTRAL_MINER);
+        GameRegistry.registerTileEntity(TileSpectralCauldron.class, ModNames.SPECTRAL_CAULDRON);
+        GameRegistry.registerTileEntity(TileSpectralAscender.class, ModNames.SPECTRAL_ASCENDER);
+        GameRegistry.registerTileEntity(TileSpectralCannon.class, ModNames.SPECTRAL_CANNON);
+        GameRegistry.registerTileEntity(TileSpectralMiner.class, ModNames.SPECTRAL_MINER);
+        GameRegistry.registerTileEntity(TileEquineCrafter.class, ModNames.EQUINE_CRAFTER);
     }
 
     /**
-     * TODO: Find out why this is important.
+     * Called when an EquineMagicBlock in the same tile is activated.
+     */
+    public boolean onBlockActivated(EntityPlayer player, int side, float hitX, float hitY, float hitZ) { return true; }
+
+    // TileEntity //
+    /**
+     * Server calls this to get the packet data when markBlockForUpdate() is called on the server.
+     * Then sends the packet to the clients.
      */
     @Override
     public Packet getDescriptionPacket()
@@ -35,7 +46,7 @@ public abstract class EquineMagicTile extends TileEntity
     }
 
     /**
-     * TODO: Find out why this is important.
+     * Client calls to read the NBT when it receives the above packet.
      */
     @Override
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
@@ -43,9 +54,4 @@ public abstract class EquineMagicTile extends TileEntity
         super.onDataPacket(net, packet);
         readFromNBT(packet.func_148857_g());
     }
-
-    /**
-     * Called when an EquineMagicBlock in the same tile is activated.
-     */
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ, TileEntity tile) { return true; }
 }

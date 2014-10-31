@@ -27,7 +27,7 @@ public class BlockDecor extends EquineMagicBlock
     {
         super(material);
         this.setHardness(1.5f);
-        this.setBlockName(ModNames.BLOCK_DECOR);
+        this.setBlockName(ModNames.EQUINE_DECOR);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
     }
 
@@ -49,8 +49,8 @@ public class BlockDecor extends EquineMagicBlock
         {
             for(int j = 0; j < MCData.THREE_SIDED; j++)
             {
-                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[2] + ModData.ASSETSUF_META[i]);
-                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[j] + "_0");
+                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName() + ModData.ASSETSUF_ICON[2] + ModData.ASSETSUF_META[i]);
+                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName() + ModData.ASSETSUF_ICON[j] + "_0");
             }
         }
     }

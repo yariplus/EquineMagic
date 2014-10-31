@@ -1,6 +1,8 @@
 package com.yaricraft.equinemagic.tileentity;
 
-import com.yaricraft.equinemagic.fluids.EquineMagicFluid;
+import com.yaricraft.equinemagic.api.tileentity.ITileSpectralManipulator;
+import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
+import com.yaricraft.equinemagic.item.ItemSpectralChip;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockLiquid;
@@ -10,116 +12,115 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.*;
 
 import java.util.Random;
 
 /**
  * Created by Yari on 10/17/2014.
  */
-public class TileSpectralCannon extends EquineMagicTile
+public class TileSpectralCannon extends TileSpectralInventory implements ITileSpectralManipulator
 {
-    private FluidStack fluid;
+    private int syncedFluid = 0;
 
     private int chargeNeeded = 20 * 60;
     private int chargeAmount = 0;
 
-    public TileSpectralCannon()
-    {
-
-    }
-
     @Override
-    public void readFromNBT(NBTTagCompound nbt)
+    public boolean onBlockActivated(EntityPlayer player, int side, float hitX, float hitY, float hitZ)
     {
-        super.readFromNBT(nbt);
-        fluid = FluidStack.loadFluidStackFromNBT(nbt);
-        fluid = FluidStack.loadFluidStackFromNBT(nbt);
-    }
-
-    @Override
-    public void writeToNBT(NBTTagCompound nbt)
-    {
-        super.writeToNBT(nbt);
-        if(fluid != null) fluid.writeToNBT(nbt);
-        if(fluid != null) fluid.writeToNBT(nbt);
-    }
-
-    // TODO: Properly send sync packets from server for client MP
-    @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ, TileEntity tile)
-    {
-        //TileSpectralCannon tileCauldron = (TileSpectralCannon) tile;
+        // Don't do anything on the clientside
+        if (worldObj.isRemote) return true;
 
         if(player.getHeldItem() == null)
         {
-            if(world.isRemote)
-            {
-                if(fluid != null)
-                {
-                    if (fluid.amount == 0)
-                    {
-                        player.addChatMessage(new ChatComponentText("The device is empty."));
-                    } else
-                    {
-                        player.addChatMessage(new ChatComponentText("Fluid inside: " + fluid.amount + "mb"));
-                    }
-                }else
-                {
-                    player.addChatMessage(new ChatComponentText("The device is empty."));
-                }
-            }
+            doStatusClick(player);
             return true;
         }
 
-        Item held = player.getHeldItem().getItem();
+        ItemStack heldStack = player.getHeldItem();
+        Item heldItem = heldStack.getItem();
 
-        if(held == EquineMagicFluid.itemBucketSpectraSlurry)
+        if(heldItem == EquineMagicFluid.itemBucketSpectraSlurry)
         {
-            if(fluid == null)
+            if(tank.getFluidAmount() == 0)
             {
-                fluid = new FluidStack(FluidContainerRegistry.getFluidForFilledItem(player.getHeldItem()), 1000);
+                tank.setFluid(new FluidStack(EquineMagicFluid.fluidSpectraSlurry, 1000));
                 player.inventory.getCurrentItem().stackSize--;
                 player.inventory.addItemStackToInventory(new ItemStack(Items.bucket));
-                if (world.isRemote) player.addChatMessage(new ChatComponentText("Placed spectra in the device."));
-            }else
+                player.addChatMessage(new ChatComponentText("Placed spectra in the device."));
+                this.markDirty();
+            }
+        }else if(heldItem instanceof ItemSpectralChip)
+        {
+            if(tank.getFluidAmount() == 0)
             {
-                if(fluid.amount + 1000 <= 5000)
+                int openSocket = -1;
+                if(itemStacks[2] == null) openSocket = 2;
+                if(itemStacks[1] == null) openSocket = 1;
+                if(itemStacks[0] == null) openSocket = 0;
+
+                if (openSocket != -1)
                 {
-                    fluid.amount += 1000;
+                    itemStacks[openSocket] = new ItemStack(heldItem, 1, heldStack.getItemDamage());
                     player.inventory.getCurrentItem().stackSize--;
-                    player.inventory.addItemStackToInventory(new ItemStack(Items.bucket));
-                    if (world.isRemote) player.addChatMessage(new ChatComponentText("Placed spectra in the device."));
-                }else
-                {
-                    if (world.isRemote) player.addChatMessage(new ChatComponentText("The device is full."));
+                    this.markDirty();
                 }
             }
+        }else{
+            doStatusClick(player);
         }
 
         return true;
     }
 
+    private void doStatusClick(EntityPlayer player)
+    {
+        if (tank.getFluidAmount() == 0)
+        {
+            player.addChatMessage(new ChatComponentText("No spectra in the miner."));
+        } else
+        {
+            player.addChatMessage(new ChatComponentText("Fluid inside: " + String.valueOf(tank.getFluidAmount()) + "mb"));
+        }
+
+        player.addChatMessage(new ChatComponentText("Charge: " + chargeAmount + "/" + chargeNeeded));
+
+        if (itemStacks[2] != null)
+        {
+            player.addChatMessage(new ChatComponentText("Three upgrade chips are inside."));
+        }else if (itemStacks[1] != null)
+        {
+            player.addChatMessage(new ChatComponentText("Two upgrade chips are inside."));
+        }else if (itemStacks[0] != null)
+        {
+            player.addChatMessage(new ChatComponentText("An upgrade chip is inside."));
+        }
+    }
+
     @Override
     public void updateEntity()
     {
-        if (fluid != null && fluid.amount > 0)
+        if (!worldObj.isRemote)
         {
-            if (chargeAmount != -1)
+            // Server
+
+            if (tank.getFluidAmount() == 1000)
             {
                 chargeAmount++;
-                if (chargeAmount == chargeNeeded)
-                {
-                    Shoot();
-                    chargeAmount = -1;
-                    fluid = null;
-                }
             }
+
+            if (chargeAmount >= chargeNeeded)
+            {
+                Shoot();
+                chargeAmount = 0;
+                tank.drain(1000, true);
+            }
+        }else
+        {
+            // Client
         }
     }
 
@@ -178,7 +179,8 @@ public class TileSpectralCannon extends EquineMagicTile
         }
     }
 
-    private void MineBlock(int x, int y, int z)
+    @Override
+    public void MineBlock(int x, int y, int z)
     {
         Block mined = worldObj.getBlock(xCoord + x, yCoord + y, zCoord + z);
         int minedMeta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);

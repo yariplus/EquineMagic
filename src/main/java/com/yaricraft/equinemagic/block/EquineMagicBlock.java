@@ -27,30 +27,33 @@ public abstract class EquineMagicBlock extends Block
     public static final EquineMagicBlock blockOrePegagin = new BlockOrePegagin();
     public static final EquineMagicBlock blockOreSpectra = new BlockOreSpectra();
 
-    public static final EquineMagicBlock blockSilkyTNT = new BlockSilkyTNT();
+    public static final EquineMagicBlock blockEquineCrafter = new BlockEquineCrafter();
 
-    public static final EquineMagicBlock solarCauldron           = new BlockSolarCauldron();
+    public static final EquineMagicBlock blockSilkyTNT = new BlockEquineTNT();
 
-    public static final EquineMagicBlock spectralAscensionDevice = new BlockSpectralAscensionDevice();
-    public static final EquineMagicBlock spectralMiner = new BlockSpectralMiner();
-    public static final EquineMagicBlock spectralCannon = new BlockSpectralCannon();
+    public static final EquineMagicBlock spectral_cauldron = new BlockSpectralCauldron();
+
+    public static final EquineMagicBlock spectral_ascender  = new BlockSpectralAscender();
+    public static final EquineMagicBlock spectralMiner      = new BlockSpectralMiner();
+    public static final EquineMagicBlock spectralCannon     = new BlockSpectralCannon();
 
     public static void init()
     {
-        // TODO: Fix naming methods so that they are less messy looking.
-        GameRegistry.registerBlock(blockDecor, EquineMagicItemBlock.class, blockDecor.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(blockDecor, EquineMagicItemBlock.class, blockDecor.getRegistryName());
 
-        GameRegistry.registerBlock(blockOreChroma, blockOreChroma.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        GameRegistry.registerBlock(blockOrePegagin, blockOrePegagin.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        GameRegistry.registerBlock(blockOreSpectra, blockOreSpectra.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(blockOreChroma, blockOreChroma.getRegistryName());
+        GameRegistry.registerBlock(blockOrePegagin, blockOrePegagin.getRegistryName());
+        GameRegistry.registerBlock(blockOreSpectra, blockOreSpectra.getRegistryName());
 
-        GameRegistry.registerBlock(blockSilkyTNT, blockSilkyTNT.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(blockEquineCrafter, blockEquineCrafter.getRegistryName());
 
-        GameRegistry.registerBlock(solarCauldron, solarCauldron.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(blockSilkyTNT, blockSilkyTNT.getRegistryName());
 
-        GameRegistry.registerBlock(spectralAscensionDevice, spectralAscensionDevice.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        GameRegistry.registerBlock(spectralMiner, spectralMiner.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        GameRegistry.registerBlock(spectralCannon, spectralCannon.getUnlocalizedName().substring(6 + ModData.MODID.length()));
+        GameRegistry.registerBlock(spectral_cauldron, spectral_cauldron.getRegistryName());
+
+        GameRegistry.registerBlock(spectral_ascender, spectral_ascender.getRegistryName());
+        GameRegistry.registerBlock(spectralMiner, spectralMiner.getRegistryName());
+        GameRegistry.registerBlock(spectralCannon, spectralCannon.getRegistryName());
     }
 
     @Override
@@ -58,8 +61,8 @@ public abstract class EquineMagicBlock extends Block
     {
         if(!(this instanceof ITileEntityProvider)) return false;
         TileEntity tile = world.getTileEntity(x, y, z);
-        if (tile == null) { LogHelper.error("Block missing tile entity at " + x + "," + y + "," + z); return false; }
-        return ((EquineMagicTile)tile).onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ, tile);
+        if (tile == null) { LogHelper.error("Block was missing a tile entity at " + x + "," + y + "," + z); return false; }
+        return ((EquineMagicTile)tile).onBlockActivated(player, side, hitX, hitY, hitZ);
     }
 
     // Protected so only called by init method and subclasses.
@@ -82,16 +85,34 @@ public abstract class EquineMagicBlock extends Block
 		blockIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
 	}
 
-    // Returns tile.MOD:BLOCK
+    // Returns tile.MODID:BLOCK
     @Override
     public String getUnlocalizedName()
     {
         return String.format("tile.%s%s", ModData.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
 
-    // Return BLOCK
-	protected String getUnwrappedUnlocalizedName(String unlocalizedName)
+    // Returns MODID:BLOCK
+	public String getUnwrappedUnlocalizedName()
 	{
-		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
+		return this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1);
 	}
+
+    // Takes off "tile."
+    protected String getUnwrappedUnlocalizedName(String unlocalizedName)
+    {
+        return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
+    }
+
+    // Returns BLOCK
+    public String getRegistryName()
+    {
+        return this.getUnwrappedUnlocalizedName(super.getUnlocalizedName());
+    }
+
+    // Returns BLOCK_ASITEM
+    public String getRegisteryNameAsItem()
+    {
+        return this.getUnwrappedUnlocalizedName(super.getUnlocalizedName()) + "_asitem";
+    }
 }

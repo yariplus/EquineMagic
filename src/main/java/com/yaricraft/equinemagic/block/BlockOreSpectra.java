@@ -1,7 +1,7 @@
 package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
-import com.yaricraft.equinemagic.items.EquineMagicItem;
+import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
