@@ -8,7 +8,6 @@ import openmods.gui.ComponentGui;
 import openmods.gui.DummyContainer;
 import openmods.gui.component.BaseComposite;
 import openmods.gui.component.GuiComponentBook;
-import openmods.gui.component.page.IntroPage;
 import openmods.gui.component.page.PageBase;
 import openmods.gui.component.page.TitledPage;
 import org.lwjgl.opengl.GL11;
@@ -46,8 +45,6 @@ public class GuiEquineResearch extends ComponentGui implements GuiYesNoCallback
     protected BaseComposite createRoot() {
         final GuiComponentBook book = new GuiComponentBook();
         PageBase contentsPage = new TitledPage("title", "content");
-
-        book.addPage(new IntroPage());
 
         /*
         GuiComponentLabel lblBlocks = new GuiComponentLabel(27, 90, "- " + StatCollector.translateToLocal("openblocks.gui.blocks"));
@@ -103,5 +100,11 @@ public class GuiEquineResearch extends ComponentGui implements GuiYesNoCallback
         root.renderOverlay(this.mc, this.guiLeft, this.guiTop, par1 - this.guiLeft, par2 - this.guiTop);
         GL11.glPopMatrix();
         restoreRenderState();
+    }
+
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
+    {
+
     }
 }
