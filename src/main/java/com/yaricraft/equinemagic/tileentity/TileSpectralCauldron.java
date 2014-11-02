@@ -33,23 +33,7 @@ public class TileSpectralCauldron extends TileSpectralInventory
         ItemStack heldStack = player.getHeldItem();
         Item heldItem = heldStack.getItem();
 
-        if(heldItem == EquineMagicFluid.itemBucketSpectraSlurry)
-        {
-            if(tank.getFluidAmount() == 0)
-            {
-                player.addChatMessage(new ChatComponentText("Placed spectra in the cauldron."));
-
-                tank.setFluid(new FluidStack(EquineMagicFluid.fluidSpectraSlurry, 1000));
-                player.inventory.getCurrentItem().stackSize--;
-                player.inventory.addItemStackToInventory(new ItemStack(Items.bucket));
-
-                worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-                this.markDirty();
-            }else
-            {
-                player.addChatMessage(new ChatComponentText("Not enough room for the bucket."));
-            }
-        }else if(heldItem == Items.bucket)
+        if(heldItem == Items.bucket)
         {
             if(tank.getFluidAmount() == 1000)
             {

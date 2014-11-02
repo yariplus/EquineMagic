@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -30,6 +31,7 @@ public class BlockSpectralMiner extends EquineMagicBlock implements ITileEntityP
         this.setBlockName(ModNames.SPECTRAL_MINER);
         this.setBlockTextureName(ModNames.SPECTRAL_MINER);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+        this.foci = EquineFoci.PEGASUS;
     }
 
     @Override
@@ -53,23 +55,5 @@ public class BlockSpectralMiner extends EquineMagicBlock implements ITileEntityP
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
     {
         return new TileSpectralMiner();
-    }
-
-    @Override
-    public int onBlockPlaced(World p_149660_1_, int p_149660_2_, int p_149660_3_, int p_149660_4_, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_)
-    {
-        return p_149660_9_;
-    }
-
-    @Override
-    public Item getItemDropped(int meta, Random rand, int fortune)
-    {
-        return EquineMagicItem.dustChroma;
-    }
-
-    @Override
-    public int quantityDropped(int meta, int fortune, Random random)
-    {
-        return 1 + random.nextInt(3);
     }
 }

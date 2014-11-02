@@ -1,6 +1,7 @@
 
 package com.yaricraft.equinemagic.item;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
@@ -9,12 +10,17 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemStack;
 
+import java.util.List;
+
 public class EquineMagicItem extends Item
 {
+    public EquineFoci foci = EquineFoci.PONY;
+
     public static final EquineMagicItem warmFluxingRod = new ItemFluxingRod();
     public static final EquineMagicItem warmEgg = new ItemWarmEgg();
     public static final EquineMagicItem warmFeather = new ItemWarmFeather();
@@ -71,6 +77,13 @@ public class EquineMagicItem extends Item
 		super();
 		this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
 	}
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
+    {
+        list.add(1, "Focus: " + foci.toString());
+    }
 
 	@Override
     // Returns "item.MODID:ITEMNAME.name"

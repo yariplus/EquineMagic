@@ -10,16 +10,21 @@ import net.minecraft.item.ItemStack;
 
 import java.util.List;
 
-public class EquineMagicItemBlock extends ItemBlock
+public class EquineMagicItemBlockWithMeta extends ItemBlock
 {
-    public EquineMagicItemBlock(Block block) {
+    public EquineMagicItemBlockWithMeta(Block block) {
         super(block);
         setHasSubtypes(true);
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack itemStack) {
-        return super.getUnlocalizedName();
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        int i = itemStack.getItemDamage();
+
+        if (i < 0 || i >= 16) i = 0;
+
+        return super.getUnlocalizedName() + "." + Integer.toString(i);
     }
 
     @Override
@@ -37,4 +42,5 @@ public class EquineMagicItemBlock extends ItemBlock
     public int getMetadata(int meta) {
         return meta;
     }
+
 }

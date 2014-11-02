@@ -1,6 +1,7 @@
 
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
 import com.yaricraft.equinemagic.reference.MCData;
@@ -29,6 +30,7 @@ public class BlockDecor extends EquineMagicBlock
         this.setHardness(1.5f);
         this.setBlockName(ModNames.EQUINE_DECOR);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+        this.foci = EquineFoci.PEGASUS;
     }
 
     public BlockDecor()

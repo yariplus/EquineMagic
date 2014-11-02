@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
@@ -29,6 +30,7 @@ public class BlockSpectralCannon extends BlockHorizontalPillar implements ITileE
         this.setBlockName(ModNames.SPECTRAL_CANNON);
         this.setBlockTextureName(ModNames.SPECTRAL_CANNON);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+        this.foci = EquineFoci.PEGASUS;
     }
 
     @Override

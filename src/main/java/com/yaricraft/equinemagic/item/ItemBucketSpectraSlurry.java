@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.item;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;

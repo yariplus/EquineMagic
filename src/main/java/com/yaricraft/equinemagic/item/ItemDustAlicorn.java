@@ -1,10 +1,9 @@
 package com.yaricraft.equinemagic.item;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.block.BlockEquineTNT;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModNames;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.*;
 import net.minecraft.block.material.MaterialLiquid;
 import net.minecraft.entity.item.EntityItem;
@@ -13,8 +12,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 /**
  * Created by Yari on 9/8/2014.
@@ -25,13 +22,7 @@ public class ItemDustAlicorn extends EquineMagicItem
         super();
         this.setUnlocalizedName(ModNames.DUST_ALICORN);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
-    {
-        list.add(1, "Focus: §dUnicorn");
+        this.foci = EquineFoci.UNICORN;
     }
 
     @Override

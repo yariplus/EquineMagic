@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.item;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModNames;
 import cpw.mods.fml.relauncher.Side;
@@ -31,6 +32,7 @@ public class ItemSpectralChip extends EquineMagicItem implements IItemSpectralCh
         this.setMaxDamage(0);
         this.setUnlocalizedName(ModNames.SPECTRAL_CHIP);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+        this.foci = EquineFoci.PEGASUS;
     }
 
     @SideOnly(Side.CLIENT)

@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic.tileentity;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.item.ItemDustChroma;
 import com.yaricraft.equinemagic.item.ItemDustSilky;
+import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -74,9 +75,21 @@ public class TileEquineCrafter extends TileSpectralInventory
                 }else{
                     sendText(player, "The fabricator already has a pattern inside.");
                 }
-            }else if(held instanceof ItemDustChroma)
+            }else if(held == Item.getItemFromBlock(Blocks.stone_slab))
             {
+                if (itemStacks[1] == null)
+                {
+                    sendText(player, "Placed stone slab in the pattern slot.");
 
+                    player.inventory.getCurrentItem().stackSize--;
+
+                    this.itemStacks[1] = new ItemStack(Blocks.stone_slab, 1);
+
+                    worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+                    markDirty();
+                }else{
+                    sendText(player, "The fabricator already has a pattern inside.");
+                }
             }else if(held instanceof ItemDustChroma)
             {
 
@@ -159,9 +172,11 @@ public class TileEquineCrafter extends TileSpectralInventory
                         craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, 2));
                         worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                         this.markDirty();
-                    }else if(pattern instanceof ItemRedstone)
+                    }else if(pattern == Item.getItemFromBlock(Blocks.stone_slab))
                     {
-
+                        craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, 5));
+                        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+                        this.markDirty();
                     }else if(pattern instanceof ItemRedstone)
                     {
 

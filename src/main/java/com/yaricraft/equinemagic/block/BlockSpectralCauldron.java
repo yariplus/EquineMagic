@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.tileentity.TileSpectralCauldron;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -19,8 +20,10 @@ public class BlockSpectralCauldron extends EquineMagicBlock implements ITileEnti
     public BlockSpectralCauldron()
     {
         super(Material.iron);
+        this.setBlockTextureName(ModNames.SPECTRAL_CAULDRON);
         this.setBlockName(ModNames.SPECTRAL_CAULDRON);
         disableStats();
+        this.foci = EquineFoci.PEGASUS;
     }
 
     @Override

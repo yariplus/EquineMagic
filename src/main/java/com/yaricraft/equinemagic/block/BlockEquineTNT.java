@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
@@ -18,6 +19,7 @@ public class BlockEquineTNT extends EquineMagicBlock
         this.setBlockName(ModNames.EQUINE_TNT);
         this.setBlockTextureName(ModNames.EQUINE_TNT);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+        this.foci = EquineFoci.EQUICORN;
     }
 
     @SideOnly(Side.CLIENT)

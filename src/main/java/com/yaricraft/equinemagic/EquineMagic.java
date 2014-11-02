@@ -10,8 +10,6 @@ import com.yaricraft.equinemagic.proxy.IProxy;
 
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
-import com.yaricraft.equinemagic.utility.LogHelper;
-import cpw.mods.fml.common.FMLModContainer;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod;
@@ -88,13 +86,13 @@ public class EquineMagic
         OreDictionary.registerOre(ModNames.DUST_SILKY_GUNPOWDER, EquineMagicItem.dustSilkyGunpowder);
 
         OreDictionary.registerOre(ModNames.EQUINE_DECOR, EquineMagicBlock.blockDecor);
-        OreDictionary.registerOre(ModNames.EQUINE_TNT, EquineMagicBlock.blockSilkyTNT);
+        OreDictionary.registerOre(ModNames.EQUINE_TNT, EquineMagicBlock.equine_tnt);
 
         OreDictionary.registerOre(ModNames.SPECTRAL_CAULDRON, EquineMagicItem.spectral_cauldron);
 
         OreDictionary.registerOre(ModNames.SPECTRAL_ASCENDER, EquineMagicItem.spectral_ascender);
-        OreDictionary.registerOre(ModNames.SPECTRAL_CANNON, EquineMagicBlock.spectralCannon);
-        OreDictionary.registerOre(ModNames.SPECTRAL_MINER, EquineMagicBlock.spectralMiner);
+        OreDictionary.registerOre(ModNames.SPECTRAL_CANNON, EquineMagicBlock.spectral_cannon);
+        OreDictionary.registerOre(ModNames.SPECTRAL_MINER, EquineMagicBlock.spectral_miner);
 
         OreDictionary.registerOre(ModNames.CRYSTAL_PRIMATIC, EquineMagicItem.crystalPrimatic);
 

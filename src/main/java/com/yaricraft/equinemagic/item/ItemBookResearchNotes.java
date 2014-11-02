@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.item;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.EquineMagic;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModData;
@@ -21,6 +22,7 @@ public class ItemBookResearchNotes extends EquineMagicItem
         super();
         this.setUnlocalizedName(ModNames.BOOK_RESEARCH);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+        this.foci = EquineFoci.UNICORN;
     }
 
     @Override

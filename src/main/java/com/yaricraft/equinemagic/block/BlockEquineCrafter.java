@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -31,6 +32,7 @@ public class BlockEquineCrafter extends EquineMagicBlock implements ITileEntityP
         this.setBlockName(ModNames.EQUINE_CRAFTER);
         this.setBlockTextureName(ModNames.EQUINE_CRAFTER);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+        this.foci = EquineFoci.PEGASUS;
     }
 
     @Override

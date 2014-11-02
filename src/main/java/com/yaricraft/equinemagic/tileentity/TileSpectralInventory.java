@@ -112,10 +112,7 @@ public abstract class TileSpectralInventory extends TileSpectraTank implements I
     public void setInventorySlotContents(int slot, ItemStack itemStack)
     {
         this.itemStacks[slot] = itemStack;
-        if (worldObj != null)
-        {
-            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-        }
+        if (worldObj != null) worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         this.markDirty();
     }
 

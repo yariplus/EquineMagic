@@ -1,6 +1,7 @@
 
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
 import com.yaricraft.equinemagic.reference.ModData;
 
@@ -20,7 +21,6 @@ import net.minecraft.world.World;
 public abstract class EquineMagicBlock extends Block
 {
     // Static declarations
-    // TODO: Refactor these assholes into interfaces.
     public static final EquineMagicBlock blockDecor      = new BlockDecor();
 
     public static final EquineMagicBlock blockOreChroma  = new BlockOreChroma();
@@ -29,32 +29,34 @@ public abstract class EquineMagicBlock extends Block
 
     public static final EquineMagicBlock blockEquineCrafter = new BlockEquineCrafter();
 
-    public static final EquineMagicBlock blockSilkyTNT = new BlockEquineTNT();
+    public static final EquineMagicBlock equine_tnt = new BlockEquineTNT();
 
     public static final EquineMagicBlock spectral_cauldron = new BlockSpectralCauldron();
 
     public static final EquineMagicBlock spectral_ascender  = new BlockSpectralAscender();
-    public static final EquineMagicBlock spectralMiner      = new BlockSpectralMiner();
-    public static final EquineMagicBlock spectralCannon     = new BlockSpectralCannon();
+    public static final EquineMagicBlock spectral_miner = new BlockSpectralMiner();
+    public static final EquineMagicBlock spectral_cannon = new BlockSpectralCannon();
 
     public static void init()
     {
-        GameRegistry.registerBlock(blockDecor, EquineMagicItemBlock.class, blockDecor.getRegistryName());
+        GameRegistry.registerBlock(blockDecor, EquineMagicItemBlockWithMeta.class, blockDecor.getRegistryName());
 
-        GameRegistry.registerBlock(blockOreChroma, blockOreChroma.getRegistryName());
-        GameRegistry.registerBlock(blockOrePegagin, blockOrePegagin.getRegistryName());
-        GameRegistry.registerBlock(blockOreSpectra, blockOreSpectra.getRegistryName());
+        GameRegistry.registerBlock(blockOreChroma, EquineMagicItemBlock.class, blockOreChroma.getRegistryName());
+        GameRegistry.registerBlock(blockOrePegagin, EquineMagicItemBlock.class, blockOrePegagin.getRegistryName());
+        GameRegistry.registerBlock(blockOreSpectra, EquineMagicItemBlock.class, blockOreSpectra.getRegistryName());
 
-        GameRegistry.registerBlock(blockEquineCrafter, blockEquineCrafter.getRegistryName());
+        GameRegistry.registerBlock(blockEquineCrafter, EquineMagicItemBlock.class, blockEquineCrafter.getRegistryName());
 
-        GameRegistry.registerBlock(blockSilkyTNT, blockSilkyTNT.getRegistryName());
+        GameRegistry.registerBlock(equine_tnt, EquineMagicItemBlock.class, equine_tnt.getRegistryName());
 
-        GameRegistry.registerBlock(spectral_cauldron, spectral_cauldron.getRegistryName());
+        GameRegistry.registerBlock(spectral_cauldron, EquineMagicItemBlock.class, spectral_cauldron.getRegistryName());
 
-        GameRegistry.registerBlock(spectral_ascender, spectral_ascender.getRegistryName());
-        GameRegistry.registerBlock(spectralMiner, spectralMiner.getRegistryName());
-        GameRegistry.registerBlock(spectralCannon, spectralCannon.getRegistryName());
+        GameRegistry.registerBlock(spectral_ascender, EquineMagicItemBlock.class, spectral_ascender.getRegistryName());
+        GameRegistry.registerBlock(spectral_miner, EquineMagicItemBlock.class, spectral_miner.getRegistryName());
+        GameRegistry.registerBlock(spectral_cannon, EquineMagicItemBlock.class, spectral_cannon.getRegistryName());
     }
+
+    public EquineFoci foci;
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)

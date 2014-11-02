@@ -1,6 +1,7 @@
 
 package com.yaricraft.equinemagic.item;
 
+import com.yaricraft.equinemagic.EquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
 public class ItemWarmTear extends EquineMagicItem
@@ -10,6 +11,7 @@ public class ItemWarmTear extends EquineMagicItem
 		super();
 		this.setUnlocalizedName("warm_tear");
 		this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+        this.foci = EquineFoci.PEGASUS;
 	}
 
 }
