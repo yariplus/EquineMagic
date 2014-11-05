@@ -156,7 +156,9 @@ public class TileSpectralMiner extends TileSpectralInventory implements ITileSpe
         int minedMeta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
         TileEntity minedTile = worldObj.getTileEntity(xCoord + x, yCoord + y, zCoord + z);
         Block replacedBlock = Blocks.air;
-        ItemStack minedStack = null;
+        Item minedItem = minedBlock.getItemDropped( minedMeta, new Random(), 0 );
+        int minedQuantity = minedBlock.quantityDropped( minedMeta, 0, new Random() );
+        ItemStack minedStack = new ItemStack(minedItem, minedQuantity, minedMeta);
 
         if (minedTile == null && !(minedBlock == Blocks.bedrock))
         {
@@ -170,17 +172,15 @@ public class TileSpectralMiner extends TileSpectralInventory implements ITileSpe
             if (!worldObj.isRemote && !(minedBlock instanceof BlockLiquid || minedBlock instanceof BlockAir))
             {
                 // Get the itemStack dropped.
+                ItemStack newStack = null;
                 for (int i = 0; i < itemStacks.length; i++)
                 {
-                    if (itemStacks[i] != null) minedStack = ((IItemSpectralChip) itemStacks[i].getItem()).MineBlock(itemStacks[i].getItemDamage(), minedBlock);
-                    if (minedStack != null) i = itemStacks.length;
-                }
-
-                if (minedStack == null)
-                {
-                    Item minedItem = minedBlock.getItemDropped( minedMeta, new Random(), 0 );
-                    int minedQuantity = minedBlock.quantityDropped( minedMeta, 0, new Random() );
-                    minedStack = new ItemStack(minedItem, minedQuantity, minedMeta);
+                    if (itemStacks[i] != null) newStack = ((IItemSpectralChip) itemStacks[i].getItem()).MineBlock(itemStacks[i].getItemDamage(), minedBlock, minedQuantity);
+                    if (newStack != null)
+                    {
+                        minedStack = newStack;
+                        i = itemStacks.length;
+                    }
                 }
 
                 if(minedStack != null)

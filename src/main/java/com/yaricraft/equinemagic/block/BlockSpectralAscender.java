@@ -1,6 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.tileentity.TileSpectralAscender;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -22,7 +22,7 @@ public class BlockSpectralAscender extends EquineMagicBlock implements ITileEnti
         super(Material.iron);
         this.setBlockTextureName(ModNames.SPECTRAL_ASCENDER);
         this.setBlockName(ModNames.SPECTRAL_ASCENDER);
-        this.foci = EquineFoci.PEGASUS;
+        this.foci = EEquineFoci.PEGASUS;
     }
 
     @Override

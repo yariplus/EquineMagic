@@ -1,6 +1,6 @@
 package com.yaricraft.equinemagic.item;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModNames;
 import cpw.mods.fml.relauncher.Side;
@@ -29,10 +29,10 @@ public class ItemSpectralChip extends EquineMagicItem implements IItemSpectralCh
     {
         super();
         this.setHasSubtypes(true);
-        this.setMaxDamage(0);
+        //this.setMaxDamage(0);
         this.setUnlocalizedName(ModNames.SPECTRAL_CHIP);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EquineFoci.PEGASUS;
+        this.foci = EEquineFoci.PEGASUS;
     }
 
     @SideOnly(Side.CLIENT)
@@ -101,12 +101,13 @@ public class ItemSpectralChip extends EquineMagicItem implements IItemSpectralCh
 
     // What do you get when the block is mined?
     @Override
-    public ItemStack MineBlock(int meta, Block block)
+    public ItemStack MineBlock(int meta, Block block, int quantity)
     {
         switch (meta)
         {
             // "Area", "Dome", "Fill", "Grind", "Helix", "Plane", "Silk", "Target", "Tiles", "Vortex"
-
+            case 6:
+                return new ItemStack(block);
         }
         return null;
     }

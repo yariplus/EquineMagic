@@ -1,3 +1,10 @@
+item.EquineMagic:equine_dust_opal.name=Opal Dust
+item.EquineMagic:equine_dust_black_opal.name=Magnesium Celestate Dust
+item.EquineMagic:equine_dust_zircon.name=Zircon Dust
+item.EquineMagic:equine_dust_chroma.name=Chroma Dust
+item.EquineMagic:equine_dust_spectra.name=Dirty Spectra Dust
+item.EquineMagic:equine_dust_magnesium.name=Magnesium Celestate Dust
+
 tile.EquineMagic:block_decor.0.name=Decorium Block
 tile.EquineMagic:block_decor.1.name=Decorium Block Variation 1
 tile.EquineMagic:block_decor.2.name=Decorium Block Variation 2

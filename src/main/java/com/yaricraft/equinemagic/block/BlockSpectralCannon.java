@@ -1,12 +1,9 @@
 package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
-import com.yaricraft.equinemagic.reference.MCData;
-import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.TileSpectralCannon;
-import com.yaricraft.equinemagic.utility.LogHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.ITileEntityProvider;
@@ -30,7 +27,7 @@ public class BlockSpectralCannon extends BlockHorizontalPillar implements ITileE
         this.setBlockName(ModNames.SPECTRAL_CANNON);
         this.setBlockTextureName(ModNames.SPECTRAL_CANNON);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EquineFoci.PEGASUS;
+        this.foci = EEquineFoci.PEGASUS;
     }
 
     @Override

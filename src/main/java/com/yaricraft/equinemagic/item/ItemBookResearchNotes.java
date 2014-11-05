@@ -1,11 +1,10 @@
 package com.yaricraft.equinemagic.item;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.EquineMagic;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
-import com.yaricraft.equinemagic.utility.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -22,7 +21,7 @@ public class ItemBookResearchNotes extends EquineMagicItem
         super();
         this.setUnlocalizedName(ModNames.BOOK_RESEARCH);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EquineFoci.UNICORN;
+        this.foci = EEquineFoci.UNICORN;
     }
 
     @Override

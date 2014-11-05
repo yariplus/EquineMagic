@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic;
 
 import codechicken.nei.api.API;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
+import com.yaricraft.equinemagic.entity.monster.EntityChangeling;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModData;
@@ -17,6 +18,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -61,6 +63,8 @@ public class EquineMagic
         ChestGenHooks.addItem(ChestGenHooks.PYRAMID_JUNGLE_CHEST, new WeightedRandomChestContent(EquineMagicItem.dustAlicorn, 0, 1, 2, 5));
 
         addRecipes();
+
+
 	}
 
 	@Mod.EventHandler
@@ -105,6 +109,9 @@ public class EquineMagic
                 OreDictionary.registerOre("blockWool", new ItemStack(Blocks.wool, 1, i));
             }
         }
+
+        EntityRegistry.registerGlobalEntityID(EntityChangeling.class, "changeling", 423, 128, 0);
+        EntityRegistry.registerModEntity(EntityChangeling.class, "changeling", 423, instance, 20, 5, true);
     }
 
     private void addRecipes()

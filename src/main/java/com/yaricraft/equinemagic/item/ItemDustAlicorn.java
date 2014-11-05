@@ -1,6 +1,6 @@
 package com.yaricraft.equinemagic.item;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.block.BlockEquineTNT;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -22,7 +22,7 @@ public class ItemDustAlicorn extends EquineMagicItem
         super();
         this.setUnlocalizedName(ModNames.DUST_ALICORN);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EquineFoci.UNICORN;
+        this.foci = EEquineFoci.UNICORN;
     }
 
     @Override

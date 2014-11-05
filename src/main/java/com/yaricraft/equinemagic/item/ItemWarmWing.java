@@ -1,7 +1,7 @@
 
 package com.yaricraft.equinemagic.item;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
 public class ItemWarmWing extends EquineMagicItem
@@ -11,6 +11,6 @@ public class ItemWarmWing extends EquineMagicItem
 		super();
 		this.setUnlocalizedName("warm_wing");
 		this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EquineFoci.PEGASUS;
+        this.foci = EEquineFoci.PEGASUS;
 	}
 }

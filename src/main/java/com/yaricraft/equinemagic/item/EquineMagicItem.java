@@ -1,7 +1,7 @@
 
 package com.yaricraft.equinemagic.item;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
@@ -19,7 +19,10 @@ import java.util.List;
 
 public class EquineMagicItem extends Item
 {
-    public EquineFoci foci = EquineFoci.PONY;
+    public EEquineFoci foci = EEquineFoci.PONY;
+
+    public static final EquineMagicItem equine_dust = new ItemEquineDust();
+    public static final EquineMagicItem equine_gem = new ItemEquineGem();
 
     public static final EquineMagicItem warmFluxingRod = new ItemFluxingRod();
     public static final EquineMagicItem warmEgg = new ItemWarmEgg();
@@ -47,6 +50,9 @@ public class EquineMagicItem extends Item
 
     public static void init()
     {
+        GameRegistry.registerItem(equine_dust, equine_dust.getRegistryName());
+        GameRegistry.registerItem(equine_gem, equine_gem.getRegistryName());
+
         GameRegistry.registerItem(warmFluxingRod, warmFluxingRod.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(warmEgg, warmEgg.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(warmFeather, warmFeather.getUnlocalizedName().substring(6 + ModData.MODID.length()));

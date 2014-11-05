@@ -1,11 +1,11 @@
-package com.yaricraft.equinemagic;
+package com.yaricraft.equinemagic.enums;
 
 import com.yaricraft.equinemagic.utility.StringHelper;
 
 /**
  * Created by Yari on 11/1/2014.
  */
-public enum EquineFoci
+public enum EEquineFoci
 {
     PONY      (StringHelper.Color.AQUA  + "Pony"),
     PEGASUS   (StringHelper.Color.GOLD  + "Pegasus"),
@@ -19,7 +19,7 @@ public enum EquineFoci
 
     private final String text;
 
-    EquineFoci(String text)
+    EEquineFoci(String text)
     {
         this.text = text;
     }

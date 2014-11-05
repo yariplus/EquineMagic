@@ -1,7 +1,7 @@
 
 package com.yaricraft.equinemagic.item;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
 public class ItemWarmMycelium extends EquineMagicItem
@@ -11,7 +11,7 @@ public class ItemWarmMycelium extends EquineMagicItem
 		super();
 		this.setUnlocalizedName("warm_mycelium");
 		this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EquineFoci.PEGASUS;
+        this.foci = EEquineFoci.PEGASUS;
 	}
 
 }

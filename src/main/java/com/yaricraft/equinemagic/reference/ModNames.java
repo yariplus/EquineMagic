@@ -5,6 +5,9 @@ package com.yaricraft.equinemagic.reference;
  */
 public class ModNames
 {
+    public static final String EQUINE_ORE              = "equine_ore";
+    public static final String EQUINE_DUST             = "equine_dust";
+    public static final String EQUINE_GEM              = "equine_gem";
     public static final String EQUINE_DECOR            = "block_decor";
 
     public static final String EQUINE_CRAFTER          = "equine_crafter";

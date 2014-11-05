@@ -1,7 +1,7 @@
 
 package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
 import com.yaricraft.equinemagic.reference.ModData;
 
@@ -21,6 +21,8 @@ import net.minecraft.world.World;
 public abstract class EquineMagicBlock extends Block
 {
     // Static declarations
+    public static final EquineMagicBlock equine_ore      = new BlockEquineOre();
+
     public static final EquineMagicBlock blockDecor      = new BlockDecor();
 
     public static final EquineMagicBlock blockOreChroma  = new BlockOreChroma();
@@ -39,6 +41,8 @@ public abstract class EquineMagicBlock extends Block
 
     public static void init()
     {
+        GameRegistry.registerBlock(equine_ore, EquineMagicItemBlockWithMeta.class, equine_ore.getRegistryName());
+
         GameRegistry.registerBlock(blockDecor, EquineMagicItemBlockWithMeta.class, blockDecor.getRegistryName());
 
         GameRegistry.registerBlock(blockOreChroma, EquineMagicItemBlock.class, blockOreChroma.getRegistryName());
@@ -56,7 +60,7 @@ public abstract class EquineMagicBlock extends Block
         GameRegistry.registerBlock(spectral_cannon, EquineMagicItemBlock.class, spectral_cannon.getRegistryName());
     }
 
-    public EquineFoci foci;
+    public EEquineFoci foci;
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)

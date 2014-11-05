@@ -16,7 +16,7 @@ public interface IItemSpectralChip
     public Block ReplaceBlock(int meta, Block block);
 
     // Return what a mined block should drop.
-    public ItemStack MineBlock(int meta, Block block);
+    public ItemStack MineBlock(int meta, Block block, int quantity);
 
     // Decides where to drop the ItemStack based on the Devices position.
     // Returns if the stack was successfully stored.

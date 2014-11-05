@@ -1,6 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
 import com.yaricraft.equinemagic.item.EquineMagicItem;
@@ -18,7 +18,7 @@ public class BlockOreChroma extends EquineMagicBlock
         this.setBlockName(ModNames.ORE_CHROMA);
         this.setBlockTextureName(ModNames.ORE_CHROMA);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EquineFoci.ELEMENTAL;
+        this.foci = EEquineFoci.ELEMENTAL;
     }
 
     @Override

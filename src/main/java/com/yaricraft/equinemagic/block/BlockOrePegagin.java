@@ -1,6 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.EquineFoci;
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -17,7 +17,7 @@ public class BlockOrePegagin extends EquineMagicBlock
 		this.setBlockName(ModNames.ORE_PEGAGIN);
 		this.setBlockTextureName(ModNames.ORE_PEGAGIN);
 		this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EquineFoci.PEGASUS;
+        this.foci = EEquineFoci.PEGASUS;
 	}
 
     @Override

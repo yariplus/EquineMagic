@@ -1,16 +1,14 @@
-
 package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
-
+import com.yaricraft.equinemagic.enums.EEquineOre;
+import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,21 +17,44 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 import java.util.List;
+import java.util.Random;
 
-public class BlockDecor extends EquineMagicBlock
+/**
+ * Created by Yari on 11/3/2014.
+ */
+public class BlockEquineOre extends EquineMagicBlock
 {
-    public BlockDecor(Material material)
+    public BlockEquineOre()
     {
-        super(material);
-        this.setHardness(1.5f);
-        this.setBlockName(ModNames.EQUINE_DECOR);
+        super(Material.iron);
+        this.setBlockName(ModNames.EQUINE_ORE);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EEquineFoci.PEGASUS;
+        this.foci = EEquineFoci.ELEMENTAL;
     }
 
-    public BlockDecor()
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
     {
-        this(Material.rock);
+        EEquineOre ore = EEquineOre.values()[meta];
+        switch (ore)
+        {
+            case OPAL:
+                break;
+            case ZIRCON:
+                break;
+            case DOLOMITE:
+                break;
+            case SPECTRA:
+                break;
+        }
+
+        return EquineMagicItem.dustChroma;
+    }
+
+    @Override
+    public int quantityDropped(int meta, int fortune, Random random)
+    {
+        return 1 + random.nextInt(3);
     }
 
     @SideOnly(Side.CLIENT)
@@ -67,7 +88,7 @@ public class BlockDecor extends EquineMagicBlock
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List)
     {
-        for (int i = 0; i < MCData.BLOCK_META_MAX; i++)
+        for (int i = 0; i < EEquineOre.values().length; i++)
         {
             par3List.add(new ItemStack(par1, 1, i));
         }
