@@ -30,6 +30,7 @@ public class BlockEquineOre extends EquineMagicBlock
         this.setBlockName(ModNames.EQUINE_ORE);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
         this.foci = EEquineFoci.ELEMENTAL;
+        for (int i = 0; i < EEquineOre.values().length; i++ ) this.subNames[i] = EEquineOre.values()[i].toString();
     }
 
     @Override
@@ -70,8 +71,8 @@ public class BlockEquineOre extends EquineMagicBlock
         {
             for(int j = 0; j < MCData.THREE_SIDED; j++)
             {
-                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName() + ModData.ASSETSUF_ICON[2] + ModData.ASSETSUF_META[i]);
-                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName() + ModData.ASSETSUF_ICON[j] + "_0");
+                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName() + ModData.ASSET_SPACER + subNames[i]);
+                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedName() + ModData.ASSETSUF_ICON[j] + "_0");
             }
         }
     }

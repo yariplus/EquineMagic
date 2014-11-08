@@ -36,7 +36,6 @@ public abstract class TileSpectralInventory extends TileSpectraTank implements I
         super.writeToNBT(tag);
         for (int i = 0; i < itemStacks.length; i++)
         {
-
             if (itemStacks[i] != null)
             {
                 NBTTagCompound tagItemStack = new NBTTagCompound();

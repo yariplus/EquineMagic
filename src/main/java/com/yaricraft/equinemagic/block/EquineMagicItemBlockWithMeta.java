@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.reference.ModData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -20,10 +21,9 @@ public class EquineMagicItemBlockWithMeta extends ItemBlock
     public String getUnlocalizedName(ItemStack itemStack)
     {
         int i = itemStack.getItemDamage();
-
-        if (i < 0 || i >= 16) i = 0;
-
-        return super.getUnlocalizedName() + "." + Integer.toString(i);
+        if (i < 0 || i > 15) i = 0;
+        String subName = ((EquineMagicBlock)Block.getBlockFromItem(itemStack.getItem())).subNames[i];
+        return super.getUnlocalizedName() + ModData.ASSET_SPACER + subName;
     }
 
     @Override
@@ -31,15 +31,11 @@ public class EquineMagicItemBlockWithMeta extends ItemBlock
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
     {
         EquineMagicBlock block = ((EquineMagicBlock)Block.getBlockFromItem(itemStack.getItem()));
-        if (block.foci != null)
-        {
-            list.add(1, "Focus: " + block.foci.toString());
-        }
+        if (block.foci != null) list.add(1, "Focus: " + block.foci.toString());
     }
 
     @Override
     public int getMetadata(int meta) {
         return meta;
     }
-
 }

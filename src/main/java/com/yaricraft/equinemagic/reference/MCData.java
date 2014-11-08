@@ -19,4 +19,6 @@ public class MCData
     public static final int SIDE_RIGHT  = 5;
 
     public static final int[] SIDES = new int[] {SIDE_TOP, SIDE_BOTTOM, SIDE_FRONT, SIDE_BACK, SIDE_LEFT, SIDE_RIGHT};
+
+    public static final int TICKS_PER_SECOND = 20;
 }

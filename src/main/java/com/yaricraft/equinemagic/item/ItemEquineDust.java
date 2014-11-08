@@ -28,7 +28,6 @@ public class ItemEquineDust extends EquineMagicItem
     {
         super();
         this.setHasSubtypes(true);
-        //this.setMaxDamage(0);
         this.setUnlocalizedName(ModNames.EQUINE_DUST);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
         this.foci = EEquineFoci.ELEMENTAL;
@@ -42,25 +41,17 @@ public class ItemEquineDust extends EquineMagicItem
     public void registerIcons(IIconRegister iconRegister)
     {
         this.icons = new IIcon[EEquineDust.values().length];
-
-        for (int i = 0; i < icons.length; i++)
-        {
-            this.icons[i] = iconRegister.registerIcon(ModData.MODID + ":" + getRegistryName() + "_" + EEquineDust.values()[i].toString());
-        }
+        for (int i = 0; i < icons.length; i++) this.icons[i] = iconRegister.registerIcon(getAssetBase() + ModData.ASSET_SPACER + EEquineDust.values()[i].toString());
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int meta)
-    {
-        int j = MathHelper.clamp_int(meta, 0, EEquineDust.values().length - 1);
-        return this.icons[j];
-    }
+    public IIcon getIconFromDamage(int meta) { return this.icons[MathHelper.clamp_int(meta, 0, EEquineDust.values().length - 1)]; }
 
     public String getUnlocalizedName(ItemStack itemStack)
     {
         int i = MathHelper.clamp_int(itemStack.getItemDamage(), 0, EEquineDust.values().length - 1);
-        return String.format("item.%s%s%s", ModData.MODID + ":", getRegistryName(), "_" + EEquineDust.values()[i].toString() );
+        return getUnlocalizedName() + ModData.ASSET_SPACER + EEquineDust.values()[i].toString();
     }
 
     /**
@@ -75,11 +66,5 @@ public class ItemEquineDust extends EquineMagicItem
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs tabs, List list)
-    {
-        for (int i = 0; i < EEquineDust.values().length; ++i)
-        {
-            list.add(new ItemStack(item, 1, i));
-        }
-    }
+    public void getSubItems(Item item, CreativeTabs tabs, List list) { for (int i = 0; i < EEquineDust.values().length; ++i) list.add(new ItemStack(item, 1, i)); }
 }

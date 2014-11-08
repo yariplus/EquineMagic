@@ -12,10 +12,10 @@ public enum EEquineDust
     ZIRCON_CELESTATE ("zircon_celestate"),
     DOLOMITE         ("dolomite"),
     MAGNESIUM        ("magnesium_celestate"),
-    IMPURE_SPECTRA   ("impure_spectra"),
-    COMMON_SPECTRA   ("common_spectra"),
-    RADIANT_SPECTRA  ("radiant_spectra"),
-    DIRTY_SPECTRA    ("dirty_spectra");
+    IMPURE_SPECTRA   ("spectra_impure"),
+    COMMON_SPECTRA   ("spectra_common"),
+    RADIANT_SPECTRA  ("spectra_radiant"),
+    DIRTY_SPECTRA    ("spectra_dirty");
 
     private final String name;
 

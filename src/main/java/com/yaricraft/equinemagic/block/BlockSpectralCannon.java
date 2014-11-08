@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 /**
  * Created by Yari on 9/20/2014.
  */
-public class BlockSpectralCannon extends BlockHorizontalPillar implements ITileEntityProvider
+public class BlockSpectralCannon extends BlockEHorizontalPillar implements ITileEntityProvider
 {
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;

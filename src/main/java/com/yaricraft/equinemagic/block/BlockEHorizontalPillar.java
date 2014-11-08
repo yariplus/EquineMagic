@@ -5,9 +5,9 @@ import net.minecraft.block.material.Material;
 /**
  * Created by Yari on 10/17/2014.
  */
-public class BlockHorizontalPillar extends EquineMagicBlock
+public class BlockEHorizontalPillar extends EquineMagicBlock
 {
-    public BlockHorizontalPillar(Material material)
+    public BlockEHorizontalPillar(Material material)
     {
         super(material);
     }

@@ -17,10 +17,10 @@ public class FluidSpectraSlurry extends Fluid
     @Override
     public String getUnlocalizedName()
     {
-        return String.format("fluid.%s%s", ModData.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        return String.format("fluid.%s%s", ModData.MODID + ":", getUnwrappedName(super.getUnlocalizedName()));
     }
 
-    protected String getUnwrappedUnlocalizedName(String unlocalizedName)
+    protected String getUnwrappedName(String unlocalizedName)
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }

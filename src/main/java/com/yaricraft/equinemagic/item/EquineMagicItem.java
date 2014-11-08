@@ -5,6 +5,7 @@ import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
+import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.reference.ModData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -14,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 
 import java.util.List;
 
@@ -86,47 +88,33 @@ public class EquineMagicItem extends Item
 
     @Override
     @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon(getAssetBase());
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
     {
         list.add(1, "Focus: " + foci.toString());
     }
 
-	@Override
-    // Returns "item.MODID:ITEMNAME.name"
-	public String getUnlocalizedName()
-	{
-		return String.format("item.%s%s", ModData.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-	}
+    // Returns item.MODID:ITEM
+    @Override
+    public String getUnlocalizedName() { return "item." + this.getAssetBase(); }
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack) { return "item." + this.getAssetBase(); }
 
-	@Override
-    // Returns "item.MODID:ITEMNAME.name"
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		return String.format("item.%s%s", ModData.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-	}
+    // Returns MODID:ITEM
+    public String getAssetBase() { return ModData.MODID + ":" + this.getRegistryName(); }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
-	}
-
-    // Returns "MODID:ITEMNAME.name"
-	protected String getUnwrappedUnlocalizedName(String unlocalizedName)
-	{
-		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
-	}
-
-    // Returns "MODID:ITEMNAME.name"
-    protected String getUnwrappedUnlocalizedName()
+    // Returns ITEM
+    public String getRegistryName()
     {
-        return this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1);
+        return this.getUnwrappedName(super.getUnlocalizedName());
     }
 
-    // Returns ITEM.name
-    protected String getRegistryName()
-    {
-        return this.getUnlocalizedName().substring(6 + ModData.MODID.length());
-    }
+    // Takes off "item."
+    protected String getUnwrappedName(String unlocalizedName) { return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1); }
 }
