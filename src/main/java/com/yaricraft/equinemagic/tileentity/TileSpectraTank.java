@@ -10,7 +10,7 @@ import net.minecraftforge.fluids.*;
  */
 public class TileSpectraTank extends EquineMagicTile implements IFluidHandler
 {
-    public FluidTank tank = new FluidTank(FluidContainerRegistry.BUCKET_VOLUME);
+    public FluidTank tank = new FluidTank(FluidContainerRegistry.BUCKET_VOLUME * 4);
 
     // TileEntity
     @Override

@@ -61,7 +61,7 @@ public class TileSpectralMiner extends TileSpectralManipulator
             {
                 workRow = 0;
                 if (workPattern + 1 == patterns.size()) workPattern = 0; else workPattern++;
-                if (workLayer + 1 >= 65)
+                if (workLayer + 1 >= this.depth)
                 {
                     workPattern = 0;
                     workRow = 0;

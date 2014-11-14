@@ -44,16 +44,22 @@ public class StringHelper
 
         if (oldArray.length > 1)
         {
-            String output = oldArray[0];
+            String output = "";
 
-            for (int i = 1; i < oldArray.length; i++)
+            for (int i = 0; i < oldArray.length; i++)
             {
-                output = output + oldArray[i].substring(0, 1).toUpperCase() + oldArray[i].substring(1);
+                output = output + oldArray[i].substring(0, 1).toUpperCase() + oldArray[i].substring(1).toLowerCase();
             }
 
             return output;
         }
 
-        return input;
+        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+    }
+
+    public static String dictPrefix(String input)
+    {
+        String[] oldArray = input.split("_");
+        return oldArray[oldArray.length-1].toLowerCase();
     }
 }

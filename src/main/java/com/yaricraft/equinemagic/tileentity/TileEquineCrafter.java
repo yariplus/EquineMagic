@@ -1,12 +1,13 @@
 package com.yaricraft.equinemagic.tileentity;
 
+import com.yaricraft.equinemagic.enums.EEquineDust;
+import com.yaricraft.equinemagic.enums.ESpectralChip;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
-import com.yaricraft.equinemagic.item.ItemDustChroma;
 import com.yaricraft.equinemagic.item.ItemDustSilky;
-import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemRedstone;
 import net.minecraft.item.ItemStack;
@@ -25,17 +26,14 @@ public class TileEquineCrafter extends TileSpectralInventory
 
         if (player.getHeldItem() != null)
         {
-            Item held = player.getHeldItem().getItem();
+            Item heldItem = player.getHeldItem().getItem();
+            ItemStack heldStack = player.getHeldItem();
 
-            // {"Silk", "Area", "Fill", "Helix", "Vortex", "Plane", "Dome", "Tiles", "Target", "Grind"}
-
-            //int chromaslot;
-
-            if (held instanceof ItemDustChroma)
+            if (heldItem == EquineMagicItem.equine_dust && heldStack.getItemDamage() == EEquineDust.CHROMA.ordinal())
             {
                 if (itemStacks[0] == null)
                 {
-                    this.itemStacks[0] = new ItemStack(EquineMagicItem.dustChroma, 1);
+                    this.itemStacks[0] = new ItemStack(EquineMagicItem.equine_dust, 1, EEquineDust.CHROMA.ordinal());
 
                     sendText(player, "Placed chroma dust inside.");
 
@@ -44,7 +42,7 @@ public class TileEquineCrafter extends TileSpectralInventory
                 }else{
                     sendText(player, "The fabricator already has chroma dust inside.");
                 }
-            }else if(held == Item.getItemFromBlock(Blocks.stone))
+            }else if(heldItem == Item.getItemFromBlock(Blocks.stone))
             {
                 if (itemStacks[1] == null)
                 {
@@ -60,7 +58,7 @@ public class TileEquineCrafter extends TileSpectralInventory
                     sendText(player, "The fabricator already has a pattern inside.");
                 }
 
-            }else if(held instanceof ItemDustSilky)
+            }else if(heldItem instanceof ItemDustSilky)
             {
                 if (itemStacks[1] == null)
                 {
@@ -75,7 +73,7 @@ public class TileEquineCrafter extends TileSpectralInventory
                 }else{
                     sendText(player, "The fabricator already has a pattern inside.");
                 }
-            }else if(held == Item.getItemFromBlock(Blocks.stone_slab))
+            }else if(heldItem == Item.getItemFromBlock(Blocks.stone_slab))
             {
                 if (itemStacks[1] == null)
                 {
@@ -83,34 +81,28 @@ public class TileEquineCrafter extends TileSpectralInventory
 
                     player.inventory.getCurrentItem().stackSize--;
 
-                    this.itemStacks[1] = new ItemStack(Blocks.stone_slab, 1);
+                    this.itemStacks[1] = new ItemStack(Blocks.stone_slab);
 
                     worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                     markDirty();
                 }else{
                     sendText(player, "The fabricator already has a pattern inside.");
                 }
-            }else if(held instanceof ItemDustChroma)
+            }else if(heldItem == Items.bowl)
             {
+                if (itemStacks[1] == null)
+                {
+                    sendText(player, "Placed a bowl in the pattern slot.");
 
-            }else if(held instanceof ItemDustChroma)
-            {
+                    player.inventory.getCurrentItem().stackSize--;
 
-            }else if(held instanceof ItemDustChroma)
-            {
+                    this.itemStacks[1] = new ItemStack(Items.bowl);
 
-            }else if(held instanceof ItemDustChroma)
-            {
-
-            }else if(held instanceof ItemDustChroma)
-            {
-
-            }else if(held instanceof ItemDustChroma)
-            {
-
-            }else if(held instanceof ItemDustChroma)
-            {
-
+                    worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+                    markDirty();
+                }else{
+                    sendText(player, "The fabricator already has a pattern inside.");
+                }
             }else{
                 emptyHand(player);
             }
@@ -159,33 +151,33 @@ public class TileEquineCrafter extends TileSpectralInventory
         {
             if (itemStacks[0] != null && itemStacks[1] != null)
             {
-                if (itemStacks[0].getItem() instanceof ItemDustChroma)
+                if (itemStacks[0].getItem() == EquineMagicItem.equine_dust && itemStacks[0].getItemDamage() == EEquineDust.CHROMA.ordinal())
                 {
                     Item pattern = itemStacks[1].getItem();
                     if(pattern instanceof ItemDustSilky)
                     {
-                        craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, 6));
+                        craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, ESpectralChip.SILK.ordinal()));
                         worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                         this.markDirty();
                     }else if(pattern == Item.getItemFromBlock(Blocks.stone))
                     {
-                        craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, 2));
+                        craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, ESpectralChip.FILL.ordinal()));
                         worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                         this.markDirty();
                     }else if(pattern == Item.getItemFromBlock(Blocks.stone_slab))
                     {
-                        craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, 5));
+                        craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, ESpectralChip.PLANE.ordinal()));
+                        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+                        this.markDirty();
+                    }else if(pattern == Items.bowl)
+                    {
+                        craft(new ItemStack(EquineMagicItem.itemSpectralChip, 1, ESpectralChip.DOME.ordinal()));
                         worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                         this.markDirty();
                     }else if(pattern instanceof ItemRedstone)
                     {
-
                     }else if(pattern instanceof ItemRedstone)
                     {
-
-                    }else if(pattern instanceof ItemRedstone)
-                    {
-
                     }
                 }
             }
@@ -215,11 +207,13 @@ public class TileEquineCrafter extends TileSpectralInventory
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack itemStack)
     {
-        if (slot == 0 && itemStack.getItem() == EquineMagicItem.dustChroma) return true;
+        if (slot == 0 && itemStack.getItem() == EquineMagicItem.equine_dust && itemStack.getItemDamage() == EEquineDust.CHROMA.ordinal()) return true;
         if (slot == 1)
         {
             if (itemStack.getItem() == EquineMagicItem.dustSilky) return true;
             if (itemStack.getItem() == Item.getItemFromBlock(Blocks.stone)) return true;
+            if (itemStack.getItem() == Items.bowl) return true;
+            if (itemStack.getItem() == Item.getItemFromBlock(Blocks.stone_slab)) return true;
         }
         return false;
     }

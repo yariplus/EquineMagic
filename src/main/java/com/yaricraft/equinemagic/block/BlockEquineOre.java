@@ -1,7 +1,9 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.enums.EEquineDust;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
+import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EEquineOre;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.MCData;
@@ -12,9 +14,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.Random;
@@ -31,6 +35,50 @@ public class BlockEquineOre extends EquineMagicBlock
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
         this.foci = EEquineFoci.ELEMENTAL;
         for (int i = 0; i < EEquineOre.values().length; i++ ) this.subNames[i] = EEquineOre.values()[i].toString();
+        setHardness(3.0F);
+        for (EEquineOre ore: EEquineOre.values())
+        {
+            switch (ore)
+            {
+                case OPAL:
+                    setHarvestLevel("pickaxe", 1, ore.ordinal());
+                    break;
+                case ZIRCON:
+                    setHarvestLevel("pickaxe", 2, ore.ordinal());
+                    break;
+                case DOLOMITE:
+                    setHarvestLevel("pickaxe", 1, ore.ordinal());
+                    break;
+                case SPECTRA:
+                    setHarvestLevel("pickaxe", 2, ore.ordinal());
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public int getDamageValue(World world, int x, int y, int z)
+    {
+        return world.getBlockMetadata(x, y, z);
+    }
+
+    public int damageDropped(int meta)
+    {
+        Random random = new Random();
+        EEquineOre ore = EEquineOre.values()[meta];
+        switch (ore)
+        {
+            case OPAL:
+                if (random.nextInt(3)==2) return EEquineGem.BLACK_OPAL.ordinal();
+                return EEquineGem.OPAL.ordinal();
+            case ZIRCON:
+                return EEquineGem.ZIRCON.ordinal();
+            case DOLOMITE:
+                return EEquineGem.DOLOMITE.ordinal();
+            case SPECTRA:
+                return EEquineDust.DIRTY_SPECTRA.ordinal();
+        }
+        return 0;
     }
 
     @Override
@@ -40,22 +88,30 @@ public class BlockEquineOre extends EquineMagicBlock
         switch (ore)
         {
             case OPAL:
-                break;
+                return EquineMagicItem.equine_gem;
             case ZIRCON:
-                break;
+                return EquineMagicItem.equine_gem;
             case DOLOMITE:
-                break;
+                return EquineMagicItem.equine_gem;
             case SPECTRA:
-                break;
+                return EquineMagicItem.equine_dust;
         }
-
-        return EquineMagicItem.dustChroma;
+        return Items.cookie;
     }
 
     @Override
     public int quantityDropped(int meta, int fortune, Random random)
     {
-        return 1 + random.nextInt(3);
+        switch (EEquineOre.values()[meta])
+        {
+            case OPAL:
+            case ZIRCON:
+            case DOLOMITE:
+                return 1 + random.nextInt(2);
+            case SPECTRA:
+                return 2 + random.nextInt(3);
+        }
+        return 1;
     }
 
     @SideOnly(Side.CLIENT)

@@ -22,14 +22,11 @@ public abstract class EquineMagicBlock extends Block
 {
     // Static declarations
     public static final EquineMagicBlock equine_log      = new BlockELog();
+    public static final EquineMagicBlock equine_leaves   = new BlockELeaves();
 
     public static final EquineMagicBlock equine_ore      = new BlockEquineOre();
 
     public static final EquineMagicBlock blockDecor      = new BlockDecor();
-
-    public static final EquineMagicBlock blockOreChroma  = new BlockOreChroma();
-    public static final EquineMagicBlock blockOrePegagin = new BlockOrePegagin();
-    public static final EquineMagicBlock blockOreSpectra = new BlockOreSpectra();
 
     public static final EquineMagicBlock blockEquineCrafter = new BlockEquineCrafter();
 
@@ -44,14 +41,11 @@ public abstract class EquineMagicBlock extends Block
     public static void init()
     {
         GameRegistry.registerBlock(equine_log, EquineMagicItemBlock.class, equine_log.getRegistryName());
+        GameRegistry.registerBlock(equine_leaves, EquineMagicItemBlock.class, equine_leaves.getRegistryName());
 
         GameRegistry.registerBlock(equine_ore, EquineMagicItemBlockWithMeta.class, equine_ore.getRegistryName());
 
         GameRegistry.registerBlock(blockDecor, EquineMagicItemBlockWithMeta.class, blockDecor.getRegistryName());
-
-        GameRegistry.registerBlock(blockOreChroma, EquineMagicItemBlock.class, blockOreChroma.getRegistryName());
-        GameRegistry.registerBlock(blockOrePegagin, EquineMagicItemBlock.class, blockOrePegagin.getRegistryName());
-        GameRegistry.registerBlock(blockOreSpectra, EquineMagicItemBlock.class, blockOreSpectra.getRegistryName());
 
         GameRegistry.registerBlock(blockEquineCrafter, EquineMagicItemBlock.class, blockEquineCrafter.getRegistryName());
 

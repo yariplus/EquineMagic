@@ -1,9 +1,8 @@
 package com.yaricraft.equinemagic.tileentity;
 
+import com.yaricraft.equinemagic.enums.EEquineDust;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
-import com.yaricraft.equinemagic.item.ItemDustPegagin;
-import com.yaricraft.equinemagic.item.ItemDustSpectra;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -48,42 +47,18 @@ public class TileSpectralCauldron extends TileSpectralInventory
             {
                 player.addChatMessage(new ChatComponentText("Not enough slurry in the cauldron."));
             }
-        }else if(heldItem == EquineMagicItem.dustPegagin)
+        }else if(heldItem == EquineMagicItem.equine_dust && heldStack.getItemDamage() == EEquineDust.DIRTY_SPECTRA.ordinal())
         {
             if(itemStacks[0] == null)
             {
-                itemStacks[0] = new ItemStack(EquineMagicItem.dustPegagin, 1);
-                player.inventory.getCurrentItem().stackSize--;
-                cooktime = 400;
-                player.addChatMessage(new ChatComponentText("Placed dust in cauldron."));
-
-                worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-                this.markDirty();
-            }else if(itemStacks[0].getItem() == EquineMagicItem.dustPegagin)
-            {
-                itemStacks[0].stackSize++;
-                player.inventory.getCurrentItem().stackSize--;
-                cooktime = 400;
-                player.addChatMessage(new ChatComponentText("Placed dust in cauldron."));
-
-                worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-                this.markDirty();
-            }else if(itemStacks[0].stackSize == itemStacks[0].getMaxStackSize())
-            {
-                player.addChatMessage(new ChatComponentText("The cauldron is full."));
-            }
-        }else if(heldItem == EquineMagicItem.dustSpectra)
-        {
-            if(itemStacks[0] == null)
-            {
-                itemStacks[0] = new ItemStack(EquineMagicItem.dustSpectra, 1);
+                itemStacks[0] = new ItemStack(EquineMagicItem.equine_dust, 1, EEquineDust.DIRTY_SPECTRA.ordinal());
                 player.inventory.getCurrentItem().stackSize--;
                 cooktime = 100;
                 player.addChatMessage(new ChatComponentText("Placed dust in cauldron."));
 
                 worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                 this.markDirty();
-            }else if(itemStacks[0].getItem() == EquineMagicItem.dustSpectra)
+            }else if(itemStacks[0].getItem() == EquineMagicItem.equine_dust && itemStacks[0].getItemDamage() == EEquineDust.DIRTY_SPECTRA.ordinal())
             {
                 itemStacks[0].stackSize++;
                 player.inventory.getCurrentItem().stackSize--;
@@ -145,8 +120,8 @@ public class TileSpectralCauldron extends TileSpectralInventory
     {
         if(itemStacks[0] != null)
         {
-            if (itemStacks[0].getItem() instanceof ItemDustSpectra) { cooktime = 100; } else
-            if (itemStacks[0].getItem() instanceof ItemDustPegagin) { cooktime = 400; }
+            //if (itemStacks[0].getItem() instanceof ItemDustSpectra) { cooktime = 100; } else
+            //if (itemStacks[0].getItem() instanceof ItemDustPegagin) { cooktime = 400; }
         }
     }
 
@@ -168,8 +143,7 @@ public class TileSpectralCauldron extends TileSpectralInventory
     {
         if (slot == 0)
         {
-            if (itemStack.getItem() == EquineMagicItem.dustPegagin) return true;
-            if (itemStack.getItem() == EquineMagicItem.dustSpectra) return true;
+            if (itemStack.getItem() == EquineMagicItem.equine_dust && itemStack.getItemDamage() == EEquineDust.DIRTY_SPECTRA.ordinal()) return true;
         }
         return false;
     }

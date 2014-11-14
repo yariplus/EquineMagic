@@ -14,11 +14,14 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockMycelium;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.Random;
 
 /**
  * Created by Yari on 9/10/2014.
@@ -33,6 +36,7 @@ public class BlockEventHandler
         int z = event.z;
         int meta = event.world.getBlockMetadata(x, y, z);
         double rand = Math.random();
+        Random random = new Random();
 
         if(event.block instanceof BlockMycelium)
         {
@@ -54,17 +58,12 @@ public class BlockEventHandler
                 if (stack != null)
                 {
                     Item tool = stack.getItem();
-                    EEquineOre ore = EEquineOre.values()[meta];
-                    switch (ore)
+                    switch (EEquineOre.values()[meta])
                     {
                         case OPAL:
-                            if (tool instanceof ItemPickaxe)
+                            if (tool == Items.diamond_pickaxe)
                             {
-                                LogHelper.info("Tried to get egg.");
-                                if (((ItemPickaxe) tool).getToolMaterialName() == Item.ToolMaterial.EMERALD.toString())
-                                {
-                                    event.world.spawnEntityInWorld(new EntityItem(event.world, event.x + 0.5D, event.y + 0.5D, event.z + 0.5D, new ItemStack(EquineMagicItem.equine_gem, 1, EEquineGem.OPAL.ordinal())));
-                                }
+                                event.world.spawnEntityInWorld(new EntityItem(event.world, event.x + 0.5D, event.y + 0.5D, event.z + 0.5D, new ItemStack(EquineMagicItem.equine_gem, random.nextInt(2)*(random.nextInt(2)+1), EEquineGem.CHROMA.ordinal())));
                             }
                             break;
                         case ZIRCON:

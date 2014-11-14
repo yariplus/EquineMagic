@@ -10,11 +10,15 @@ public class ModNames
     public static final String EQUINE_GEM              = "equine_gem";
     public static final String EQUINE_DECOR            = "block_decor";
 
+    public static final String EQUINE_LEAVES            = "equine_leaves";
+
     public static final String EQUINE_CRAFTER          = "equine_crafter";
 
     public static final String EQUINE_TNT              = "equine_tnt";
 
     public static final String SPECTRAL_CAULDRON       = "spectral_cauldron";
+
+    public static final String PEGAI_CONDUIT           = "pegai_conduit";
 
     public static final String SPECTRAL_DEVICE         = "spectral_device";
     public static final String SPECTRAL_ASCENDER       = "spectral_ascender";

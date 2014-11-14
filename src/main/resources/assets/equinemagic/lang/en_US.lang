@@ -1,9 +1,27 @@
 item.EquineMagic:equine_dust_opal.name=Opal Dust
-item.EquineMagic:equine_dust_black_opal.name=Magnesium Celestate Dust
+item.EquineMagic:equine_dust_black_opal.name=Black Opal Dust
 item.EquineMagic:equine_dust_zircon.name=Zircon Dust
-item.EquineMagic:equine_dust_chroma.name=Chroma Dust
-item.EquineMagic:equine_dust_spectra.name=Dirty Spectra Dust
-item.EquineMagic:equine_dust_magnesium.name=Magnesium Celestate Dust
+item.EquineMagic:equine_dust_zircon_celestate.name=Zircon Celestate Dust
+item.EquineMagic:equine_dust_chroma.name=Chroma Dust (Opal Celestate)
+item.EquineMagic:equine_dust_spectra.name=Spectra Dust (Poor Quality)
+item.EquineMagic:equine_dust_spectra_impure.name=Spectra Dust (Average Quality)
+item.EquineMagic:equine_dust_spectra_common.name=Spectra Dust (Good Quality)
+item.EquineMagic:equine_dust_spectra_radiant.name=Spectra Dust (Fine Quality)
+item.EquineMagic:equine_dust_hafnium.name=Hafnium Dust
+item.EquineMagic:equine_dust_dolomite.name=Magnesium Dust
+item.EquineMagic:equine_dust_magnesium.name=Magnesium Dust
+item.EquineMagic:equine_dust_magnesium_celestate.name=Magnesium Celestate Dust
+
+item.EquineMagic:equine_gem_opal.name=Opal
+item.EquineMagic:equine_gem_black_opal.name=Black Opal
+item.EquineMagic:equine_gem_chroma.name=Chroma
+item.EquineMagic:equine_gem_dolomite.name=Dolomite
+item.EquineMagic:equine_gem_zircon.name=Zircon
+item.EquineMagic:equine_gem_hafnium.name=Hafnium
+item.EquineMagic:equine_gem_spectra.name=Refined Spectra
+
+tile.EquineMagic:log.name=Everfree Oak Log
+tile.EquineMagic:equine_leaves.name=Everfree Oak Leaves
 
 tile.EquineMagic:block_decor_0.name=Decorium Block
 tile.EquineMagic:block_decor_1.name=Decorium Block Variation 1
@@ -39,9 +57,10 @@ tile.EquineMagic:block_decor_13.desc=Decorium Block Variation 13
 tile.EquineMagic:block_decor_14.desc=Decorium Block Variation 14
 tile.EquineMagic:block_decor_15.desc=Decorium Block Variation 15
 
-tile.EquineMagic:ore_pegagin.name=Pegagin Ore
-tile.EquineMagic:ore_chroma.name=Chroma Ore
-tile.EquineMagic:ore_spectra.name=Spectra Ore
+tile.EquineMagic:equine_ore_opal.name=Opal Ore
+tile.EquineMagic:equine_ore_dolomite.name=Dolomite Ore
+tile.EquineMagic:equine_ore_zircon.name=Zircon Ore
+tile.EquineMagic:equine_ore_spectra.name=Spectra Relic Ore
 
 tile.EquineMagic:equine_tnt.name=Silky TNT
 _

@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic.item;
 import com.yaricraft.equinemagic.api.tileentity.ITileSpectralManipulator;
 import com.yaricraft.equinemagic.tileentity.TileSpectralManipulator;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -15,17 +16,15 @@ public interface IItemSpectralChip
     public boolean greedy = false;
 
     // Returns what to replace a block with when it's processed.
-    public Block replaceBlock(int meta, Block block);
+    public Block replaceBlock(int metaChip, Block block);
 
     // Return what a mined block should drop.
-    public ItemStack mineBlock(int meta, Block block, int quantity, int minedMeta);
+    public ItemStack alterDrop(int metaChip, Block minedBlock, int minedMeta, Item dropItem, int dropQuantity, int dropMeta);
 
     // Decides where to drop the ItemStack based on the Devices position.
     // Returns if the stack was successfully stored.
-    public boolean storeStack(int meta, ItemStack itemstack, World world, int x, int y, int z);
+    public boolean storeStack(int metaChip, ItemStack itemstack, World world, int x, int y, int z);
 
-    //public
-
-    // Return what a mined block should drop.
-    public void install(int meta, TileSpectralManipulator manipulator);
+    // Alter the manipulator's pattern.
+    public void install(int metaChip, TileSpectralManipulator manipulator);
 }

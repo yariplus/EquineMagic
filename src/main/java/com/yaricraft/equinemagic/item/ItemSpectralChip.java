@@ -108,9 +108,9 @@ public class ItemSpectralChip extends EquineMagicItem implements IItemSpectralCh
 
     // What do you get when the block is mined?
     @Override
-    public ItemStack mineBlock(int meta, Block block, int quantity, int minedMeta)
+    public ItemStack alterDrop(int chipMeta, Block minedBlock, int minedMeta, Item dropItem, int dropQuantity, int dropMeta)
     {
-        switch (ESpectralChip.values()[meta])
+        switch (ESpectralChip.values()[chipMeta])
         {
             case AREA:
                 break;
@@ -125,7 +125,7 @@ public class ItemSpectralChip extends EquineMagicItem implements IItemSpectralCh
             case PLANE:
                 break;
             case SILK:
-                return new ItemStack(block);
+                return new ItemStack(minedBlock);
             case TARGET:
                 break;
             case TILES:

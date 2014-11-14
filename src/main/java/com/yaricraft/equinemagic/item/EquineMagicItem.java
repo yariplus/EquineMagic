@@ -35,9 +35,6 @@ public class EquineMagicItem extends Item
     public static final EquineMagicItem warmWing = new ItemWarmWing();
 
     public static final EquineMagicItem dustAlicorn = new ItemDustAlicorn();
-    public static final EquineMagicItem dustChroma  = new ItemDustChroma();
-    public static final EquineMagicItem dustPegagin = new ItemDustPegagin();
-    public static final EquineMagicItem dustSpectra = new ItemDustSpectra();
     public static final EquineMagicItem dustSilky = new ItemDustSilky();
     public static final EquineMagicItem dustSilkyGunpowder = new ItemDustSilkyGunpowder();
 
@@ -64,9 +61,6 @@ public class EquineMagicItem extends Item
         GameRegistry.registerItem(warmWing, warmWing.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
         GameRegistry.registerItem(dustAlicorn, dustAlicorn.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        GameRegistry.registerItem(dustChroma, dustChroma.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        GameRegistry.registerItem(dustPegagin, dustPegagin.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-        GameRegistry.registerItem(dustSpectra, dustSpectra.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(dustSilky, dustSilky.getUnlocalizedName().substring(6 + ModData.MODID.length()));
         GameRegistry.registerItem(dustSilkyGunpowder, dustSilkyGunpowder.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 

@@ -15,7 +15,7 @@ public enum EEquineDust
     IMPURE_SPECTRA   ("spectra_impure"),
     COMMON_SPECTRA   ("spectra_common"),
     RADIANT_SPECTRA  ("spectra_radiant"),
-    DIRTY_SPECTRA    ("spectra_dirty");
+    DIRTY_SPECTRA    ("spectra");
 
     private final String name;
 
