@@ -15,4 +15,6 @@ public interface IProxy
     public void registerIcons(TextureStitchEvent.Pre event);
 
     public void initializeIcons(TextureStitchEvent.Post event);
+
+    public void registerKeybindings();
 }

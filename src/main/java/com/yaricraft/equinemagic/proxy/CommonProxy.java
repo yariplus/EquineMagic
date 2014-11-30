@@ -15,6 +15,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public abstract class CommonProxy implements IProxy
 {
+    @Override
     public void registerEventHandlers()
     {
         BucketHandler.INSTANCE.buckets.put(EquineMagicFluid.blockFluidSpectraSlurry, EquineMagicFluid.itemBucketSpectraSlurry);
@@ -26,16 +27,4 @@ public abstract class CommonProxy implements IProxy
 
         NetworkRegistry.INSTANCE.registerGuiHandler(EquineMagic.instance, new GuiHandler());
     }
-
-    public void registerRenderers() {}
-
-    // cpw
-    public World getClientWorld()
-    {
-        return null;
-    }
-
-    public void registerIcons(TextureStitchEvent.Pre event) {};
-
-    public void initializeIcons(TextureStitchEvent.Post event) {};
 }

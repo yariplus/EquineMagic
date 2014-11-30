@@ -2,28 +2,31 @@
 package com.yaricraft.equinemagic.proxy;
 
 import cofh.core.render.IconRegistry;
-import cofh.lib.util.helpers.StringHelper;
+import com.yaricraft.equinemagic.block.EquineMagicBlock;
+import com.yaricraft.equinemagic.client.handler.KeyInputHandler;
+import com.yaricraft.equinemagic.client.renderer.RendererBell;
+import com.yaricraft.equinemagic.client.settings.KeyBindings;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
-import com.yaricraft.equinemagic.handler.ClientTickHandler;
+import com.yaricraft.equinemagic.client.gui.GuiEquineHUD;
 import com.yaricraft.equinemagic.reference.ModData;
-import com.yaricraft.equinemagic.reference.ModNames;
-import com.yaricraft.equinemagic.renderer.RendererTileSpectralAscensionDevice;
+import com.yaricraft.equinemagic.client.renderer.RendererTileSpectralAscensionDevice;
 import com.yaricraft.equinemagic.tileentity.TileSpectralCauldron;
-import com.yaricraft.equinemagic.renderer.RendererTileSolarCauldron;
+import com.yaricraft.equinemagic.client.renderer.RendererTileSolarCauldron;
 import com.yaricraft.equinemagic.tileentity.TileSpectralAscender;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
-
-import java.util.Map;
 
 public class ClientProxy extends CommonProxy
 {
@@ -32,7 +35,10 @@ public class ClientProxy extends CommonProxy
         ClientRegistry.bindTileEntitySpecialRenderer(TileSpectralCauldron.class, new RendererTileSolarCauldron());
         ClientRegistry.bindTileEntitySpecialRenderer(TileSpectralAscender.class, new RendererTileSpectralAscensionDevice());
 
-        FMLCommonHandler.instance().bus().register(new ClientTickHandler());
+        //FMLCommonHandler.instance().bus().register(new ClientTickHandler());
+        MinecraftForge.EVENT_BUS.register(new GuiEquineHUD(Minecraft.getMinecraft()));
+
+        RenderingRegistry.registerBlockHandler(EquineMagicBlock.equine_bell.getRenderType(), new RendererBell());
     }
 
     // cpw
@@ -54,22 +60,30 @@ public class ClientProxy extends CommonProxy
         }
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public void initializeIcons(TextureStitchEvent.Post event) {
-        setFluidIcons(EquineMagicFluid.fluidSpectraSlurry);
-    }
-
     public static void registerFluidIcons(Fluid fluid, IIconRegister ir)
     {
         IconRegistry.addIcon("fluid", ModData.MODID + ":" + fluid.getUnlocalizedName().substring(fluid.getUnlocalizedName().indexOf(".") + 1) + "_still", ir);
         IconRegistry.addIcon("fluid", ModData.MODID + ":" + fluid.getUnlocalizedName().substring(fluid.getUnlocalizedName().indexOf(".") + 1) + "_flowing", ir);
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void initializeIcons(TextureStitchEvent.Post event)
+    {
+        setFluidIcons(EquineMagicFluid.fluidSpectraSlurry);
+    }
+
     public static void setFluidIcons(Fluid fluid)
     {
-        String name = StringHelper.titleCase(fluid.getName());
         fluid.setIcons(IconRegistry.getIcon("fluid"), IconRegistry.getIcon("fluid", 1));
+    }
+
+    @Override
+    public void registerKeybindings()
+    {
+        ClientRegistry.registerKeyBinding(KeyBindings.hud_toggle);
+
+        FMLCommonHandler.instance().bus().register(new KeyInputHandler());
     }
 }
