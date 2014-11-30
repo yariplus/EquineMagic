@@ -5,7 +5,7 @@ import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
 import com.yaricraft.equinemagic.reference.ModData;
 
-import com.yaricraft.equinemagic.utility.LogHelper;
+import com.yaricraft.equinemagic.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,39 +21,29 @@ import net.minecraft.world.World;
 public abstract class EquineMagicBlock extends Block
 {
     // Static declarations
-    public static final EquineMagicBlock equine_log      = new BlockELog();
-    public static final EquineMagicBlock equine_leaves   = new BlockELeaves();
-
-    public static final EquineMagicBlock equine_ore      = new BlockEquineOre();
-
-    public static final EquineMagicBlock blockDecor      = new BlockDecor();
-
-    public static final EquineMagicBlock blockEquineCrafter = new BlockEquineCrafter();
-
-    public static final EquineMagicBlock equine_tnt = new BlockEquineTNT();
-
-    public static final EquineMagicBlock spectral_cauldron = new BlockSpectralCauldron();
-
-    public static final EquineMagicBlock spectral_ascender  = new BlockSpectralAscender();
-    public static final EquineMagicBlock spectral_miner = new BlockSpectralMiner();
-    public static final EquineMagicBlock spectral_cannon = new BlockSpectralCannon();
+    public static final EquineMagicBlock equine_log           = new BlockELog();
+    public static final EquineMagicBlock equine_leaves        = new BlockELeaves();
+    public static final EquineMagicBlock equine_bell          = new BlockBell();
+    public static final EquineMagicBlock equine_statue        = new BlockEquineStatue();
+    public static final EquineMagicBlock equine_ore           = new BlockEquineOre();
+    public static final EquineMagicBlock blockDecor           = new BlockDecor();
+    public static final EquineMagicBlock blockEquineCrafter   = new BlockEquineCrafter();
+    public static final EquineMagicBlock equine_tnt           = new BlockEquineTNT();
+    public static final EquineMagicBlock spectral_cauldron    = new BlockSpectralCauldron();
+    public static final EquineMagicBlock spectral_miner       = new BlockSpectralMiner();
+    public static final EquineMagicBlock spectral_cannon      = new BlockSpectralCannon();
 
     public static void init()
     {
         GameRegistry.registerBlock(equine_log, EquineMagicItemBlock.class, equine_log.getRegistryName());
         GameRegistry.registerBlock(equine_leaves, EquineMagicItemBlock.class, equine_leaves.getRegistryName());
-
+        GameRegistry.registerBlock(equine_bell, EquineMagicItemBlock.class, equine_bell.getRegistryName());
+        GameRegistry.registerBlock(equine_statue, EquineMagicItemBlock.class, equine_statue.getRegistryName());
         GameRegistry.registerBlock(equine_ore, EquineMagicItemBlockWithMeta.class, equine_ore.getRegistryName());
-
         GameRegistry.registerBlock(blockDecor, EquineMagicItemBlockWithMeta.class, blockDecor.getRegistryName());
-
         GameRegistry.registerBlock(blockEquineCrafter, EquineMagicItemBlock.class, blockEquineCrafter.getRegistryName());
-
         GameRegistry.registerBlock(equine_tnt, EquineMagicItemBlock.class, equine_tnt.getRegistryName());
-
         GameRegistry.registerBlock(spectral_cauldron, EquineMagicItemBlock.class, spectral_cauldron.getRegistryName());
-
-        GameRegistry.registerBlock(spectral_ascender, EquineMagicItemBlock.class, spectral_ascender.getRegistryName());
         GameRegistry.registerBlock(spectral_miner, EquineMagicItemBlock.class, spectral_miner.getRegistryName());
         GameRegistry.registerBlock(spectral_cannon, EquineMagicItemBlock.class, spectral_cannon.getRegistryName());
     }

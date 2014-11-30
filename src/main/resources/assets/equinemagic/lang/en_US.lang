@@ -84,6 +84,8 @@ item.EquineMagic:spectral_chip_target.name=Spectral Chip (Target Upgrade)
 item.EquineMagic:spectral_chip_vortex.name=Spectral Chip (Vortex Upgrade)
 
 tile.EquineMagic:equine_crafter.name=Spectral Fabricator
+tile.EquineMagic:equine_bell.name=Equine Bell of Fate
+tile.EquineMagic:equine_statue.name=Equine Statue
 
 item.EquineMagic:book_research.name=Equine Research Notes
 
@@ -114,3 +116,7 @@ fluid.EquineMagic:spectra_slurry.name=Spectra Slurry
 item.EquineMagic:bucket_spectra_slurry.name=Bucket of Spectra Slurry
 
 itemGroup.EquineMagic=EquineMagic
+
+#Keybindings
+keys.EquineMagic:hud_toggle=Toggle HUD
+keys.EquineMagic:category=EquineMagic
