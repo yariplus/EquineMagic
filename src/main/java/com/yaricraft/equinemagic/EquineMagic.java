@@ -1,7 +1,6 @@
 
 package com.yaricraft.equinemagic;
 
-import codechicken.nei.api.API;
 import cofh.api.modhelpers.ThermalExpansionHelper;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.entity.monster.EntityChangeling;
@@ -10,24 +9,26 @@ import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EEquineOre;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
+import com.yaricraft.equinemagic.network.EquineMessageExtendedProperties;
+import com.yaricraft.equinemagic.network.EquineMessageHandlerExtendedProperties;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
 
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
-import com.yaricraft.equinemagic.utility.StringHelper;
-import com.yaricraft.equinemagic.worldgen.EquineWorldGenerator;
-import cpw.mods.fml.common.Loader;
+import com.yaricraft.equinemagic.util.StringHelper;
+import com.yaricraft.equinemagic.world.gen.feature.EquineWorldGenerator;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
+import cpw.mods.fml.relauncher.Side;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -45,6 +46,8 @@ public class EquineMagic
 	@SidedProxy(clientSide = ModData.CLIENT_PROXY_CLASS, serverSide = ModData.SERVER_PROXY_CLASS)
 	public static IProxy		proxy;
 
+    public static SimpleNetworkWrapper network;
+
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -55,11 +58,20 @@ public class EquineMagic
         proxy.registerRenderers();
         EquineMagicTile.init();
         registerDictionaryItems();
+
+
+
+        network = NetworkRegistry.INSTANCE.newSimpleChannel(ModData.MODID);
+        // Message1 is handled by the Message1Handler class, it has discriminator id 1 and it's on the client
+        network.registerMessage(EquineMessageHandlerExtendedProperties.class, EquineMessageExtendedProperties.class, 1, Side.CLIENT);
+
+
     }
 
     @Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+        proxy.registerKeybindings();
         //
         GameRegistry.registerWorldGenerator(new EquineWorldGenerator(), 10);
 
@@ -103,11 +115,7 @@ public class EquineMagic
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-        if (Loader.isModLoaded("NotEnoughItems"))
-        {
-            API.hideItem(new ItemStack(EquineMagicBlock.spectral_ascender));
-            API.hideItem(new ItemStack(EquineMagicBlock.spectral_cauldron));
-        }
+
     }
 
     private void registerDictionaryItems()
@@ -127,9 +135,8 @@ public class EquineMagic
         OreDictionary.registerOre(ModNames.EQUINE_DECOR, EquineMagicBlock.blockDecor);
         OreDictionary.registerOre(ModNames.EQUINE_TNT, EquineMagicBlock.equine_tnt);
 
-        OreDictionary.registerOre(ModNames.SPECTRAL_CAULDRON, EquineMagicItem.spectral_cauldron);
+        OreDictionary.registerOre(ModNames.SPECTRAL_CAULDRON, EquineMagicBlock.spectral_cauldron);
 
-        OreDictionary.registerOre(ModNames.SPECTRAL_ASCENDER, EquineMagicItem.spectral_ascender);
         OreDictionary.registerOre(ModNames.SPECTRAL_CANNON, EquineMagicBlock.spectral_cannon);
         OreDictionary.registerOre(ModNames.SPECTRAL_MINER, EquineMagicBlock.spectral_miner);
 
@@ -204,16 +211,6 @@ public class EquineMagic
                 'C', Items.cauldron
         });
 
-        GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.SPECTRAL_ASCENDER).get(0).getItem()), new Object[]{
-                "DED",
-                "GCG",
-                "DGD",
-                'D', new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem()),
-                'G', Blocks.glass_pane,
-                'C', EquineMagicItem.crystalPrimatic,
-                'E', Items.ender_eye
-        });
-
         GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.CRYSTAL_PRIMATIC).get(0).getItem()), new Object[]{
                 " O ",
                 "ODO",
@@ -250,6 +247,14 @@ public class EquineMagic
                 'P', Blocks.piston,
                 'I', Items.iron_ingot,
                 'C', Blocks.crafting_table
+        });
+
+        GameRegistry.addRecipe(new ItemStack(EquineMagicBlock.equine_bell), new Object[]{
+                " I ",
+                "ICI",
+                "I I",
+                'I', Items.iron_ingot,
+                'C', new ItemStack(OreDictionary.getOres(ModNames.CRYSTAL_PRIMATIC).get(0).getItem())
         });
     }
 }

@@ -13,9 +13,10 @@ public class EquineMagicPlayer implements IExtendedEntityProperties
 {
     public final static String NAME = "EquineMagicPlayer";
 
-    private EntityPlayer player;
+    //private EntityPlayer player;
 
-    private int magic, chaos, darkness;
+    public int magic, chaos, darkness;
+    public boolean hud;
 
     @Override
     public void saveNBTData(NBTTagCompound compound)
@@ -24,7 +25,9 @@ public class EquineMagicPlayer implements IExtendedEntityProperties
 
         properties.setInteger("Magic", this.magic);
         properties.setInteger("Chaos", this.chaos);
-        properties.setInteger("Darkness", this.darkness);
+        properties.setInteger("Shadow", this.darkness);
+
+        properties.setBoolean("HUD", this.hud);
 
         compound.setTag(NAME, properties);
     }
@@ -36,7 +39,9 @@ public class EquineMagicPlayer implements IExtendedEntityProperties
 
         this.magic = properties.getInteger("Magic");
         this.chaos = properties.getInteger("Chaos");
-        this.darkness = properties.getInteger("Darkness");
+        this.darkness = properties.getInteger("Shadow");
+
+        this.hud = properties.getBoolean("HUD");
     }
 
     @Override
@@ -45,7 +50,10 @@ public class EquineMagicPlayer implements IExtendedEntityProperties
         this.chaos = 0;
         this.darkness = 0;
         this.magic = 0;
-        this.player = (EntityPlayer)entity;
+
+        this.hud = true;
+
+        //this.player = (EntityPlayer)entity;
     }
 
     public static EquineMagicPlayer get(EntityPlayer player)

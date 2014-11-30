@@ -1,18 +1,8 @@
 package com.yaricraft.equinemagic.tileentity;
 
 import com.yaricraft.equinemagic.enums.ESpectralManipulator;
-import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
-import com.yaricraft.equinemagic.item.ItemSpectralChip;
-import com.yaricraft.equinemagic.utility.LogHelper;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockAir;
-import net.minecraft.entity.player.EntityPlayer;
+import com.yaricraft.equinemagic.util.LogHelper;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 

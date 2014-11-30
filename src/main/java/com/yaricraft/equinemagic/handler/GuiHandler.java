@@ -1,8 +1,8 @@
 package com.yaricraft.equinemagic.handler;
 
-import com.yaricraft.equinemagic.gui.GuiEquineResearch;
+import com.yaricraft.equinemagic.client.gui.GuiEquineResearch;
 import com.yaricraft.equinemagic.reference.ModData;
-import com.yaricraft.equinemagic.utility.LogHelper;
+import com.yaricraft.equinemagic.util.LogHelper;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

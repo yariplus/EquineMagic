@@ -1,22 +1,17 @@
 package com.yaricraft.equinemagic.handler;
 
 import com.yaricraft.equinemagic.block.BlockEquineOre;
-import com.yaricraft.equinemagic.block.BlockSpectralMiner;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EEquineOre;
 import com.yaricraft.equinemagic.item.EquineMagicItem;
 import com.yaricraft.equinemagic.tileentity.TileSpectralInventory;
-import com.yaricraft.equinemagic.tileentity.TileSpectralMiner;
-import com.yaricraft.equinemagic.utility.LogHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockMycelium;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.event.world.BlockEvent;

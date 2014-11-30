@@ -26,12 +26,6 @@ public class BlockSpectralAscender extends EquineMagicBlock implements ITileEnti
     }
 
     @Override
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
-    {
-        return EquineMagicItem.spectral_ascender;
-    }
-
-    @Override
     public TileEntity createNewTileEntity(World world, int meta)
     {
         return new TileSpectralAscender();

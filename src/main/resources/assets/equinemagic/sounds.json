@@ -1,8 +1,4 @@
 {
-    "pageturn": {
-        "category": "master",
-        "sounds": [
-            "pageturn"
-        ]
-    }
+    "airRod": { "category":"neutral", "sounds":["airRod"] },
+    "pageturn": { "category":"master", "sounds":["pageturn"] }
 }

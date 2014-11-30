@@ -3,14 +3,17 @@ package com.yaricraft.equinemagic.reference;
 /**
  * Created by Yari on 9/10/2014.
  */
-public class ModNames
+public final class ModNames
 {
     public static final String EQUINE_ORE              = "equine_ore";
     public static final String EQUINE_DUST             = "equine_dust";
     public static final String EQUINE_GEM              = "equine_gem";
     public static final String EQUINE_DECOR            = "block_decor";
 
-    public static final String EQUINE_LEAVES            = "equine_leaves";
+    public static final String EQUINE_BELL             = "equine_bell";
+    public static final String EQUINE_STATUE           = "equine_statue";
+
+    public static final String EQUINE_LEAVES           = "equine_leaves";
 
     public static final String EQUINE_CRAFTER          = "equine_crafter";
 
@@ -44,4 +47,10 @@ public class ModNames
     public static final String CRYSTAL_PRIMATIC        = "crystal_primatic";
 
     public static final String SPECTRAL_CHIP           = "spectral_chip";
+
+    public static final class Keys
+    {
+        public static final String HUD_TOGGLE       = "keys." + ModData.MODID + ":hud_toggle";
+        public static final String CATEGORY         = "keys." + ModData.MODID + ":category";
+    }
 }

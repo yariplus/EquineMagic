@@ -5,7 +5,6 @@ import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
-import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.reference.ModData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -15,7 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 
 import java.util.List;
 
@@ -40,9 +38,6 @@ public class EquineMagicItem extends Item
 
     public static final EquineMagicItem bookResearch = new ItemBookResearchNotes();
 
-    public static final Item spectral_cauldron = (new ItemReed(EquineMagicBlock.spectral_cauldron)).setUnlocalizedName(EquineMagicBlock.spectral_cauldron.getUnwrappedUnlocalizedName()).setTextureName("cauldron").setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-    public static final Item spectral_ascender = (new ItemReed(EquineMagicBlock.spectral_ascender)).setUnlocalizedName(EquineMagicBlock.spectral_ascender.getUnwrappedUnlocalizedName()).setTextureName("magma_cream").setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-
     public static final EquineMagicItem itemSpectralChip = new ItemSpectralChip();
 
     public static final Item crystalPrimatic = new ItemCrystalPrimatic();
@@ -65,9 +60,6 @@ public class EquineMagicItem extends Item
         GameRegistry.registerItem(dustSilkyGunpowder, dustSilkyGunpowder.getUnlocalizedName().substring(6 + ModData.MODID.length()));
 
         GameRegistry.registerItem(bookResearch, bookResearch.getUnlocalizedName().substring(6 + ModData.MODID.length()));
-
-        GameRegistry.registerItem(spectral_ascender, EquineMagicBlock.spectral_ascender.getRegisteryNameAsItem());
-        GameRegistry.registerItem(spectral_cauldron, EquineMagicBlock.spectral_cauldron.getRegisteryNameAsItem());
 
         GameRegistry.registerItem(itemSpectralChip, itemSpectralChip.getRegistryName());
 

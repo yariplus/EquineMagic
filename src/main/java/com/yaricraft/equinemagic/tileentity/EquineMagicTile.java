@@ -8,7 +8,6 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 /**
  * Created by Yari on 9/16/2014.
@@ -25,6 +24,8 @@ public abstract class EquineMagicTile extends TileEntity
         GameRegistry.registerTileEntity(TileSpectralCannon.class, ModNames.SPECTRAL_CANNON);
         GameRegistry.registerTileEntity(TileSpectralMiner.class, ModNames.SPECTRAL_MINER);
         GameRegistry.registerTileEntity(TileEquineCrafter.class, ModNames.EQUINE_CRAFTER);
+        GameRegistry.registerTileEntity(TileEquineStatue.class, ModNames.EQUINE_STATUE);
+        GameRegistry.registerTileEntity(TileBell.class, ModNames.EQUINE_BELL);
     }
 
     /**

@@ -1,6 +1,5 @@
 package com.yaricraft.equinemagic.item;
 
-import com.yaricraft.equinemagic.api.tileentity.ITileSpectralManipulator;
 import com.yaricraft.equinemagic.tileentity.TileSpectralManipulator;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

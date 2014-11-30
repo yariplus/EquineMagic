@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.List;
 
@@ -30,6 +31,16 @@ public class EquineMagicItemBlock extends ItemBlock
         {
             list.add(1, "Focus: " + block.foci.toString());
         }
+
+        NBTTagCompound tagCompound = itemStack.getTagCompound();
+        if (tagCompound != null)
+        {
+            if (tagCompound.hasKey("FluidStack") && tagCompound.getCompoundTag("FluidStack").hasKey("Amount"))
+            {
+                list.add(2, "Contains " + tagCompound.getCompoundTag("FluidStack").getInteger("Amount") + "mb Spectra.");
+            }
+        }
+
     }
 
     @Override

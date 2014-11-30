@@ -1,13 +1,11 @@
 package com.yaricraft.equinemagic.item;
 
-import com.yaricraft.equinemagic.api.tileentity.ITileSpectralManipulator;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.enums.ESpectralChip;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.TileSpectralManipulator;
-import com.yaricraft.equinemagic.utility.LogHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -17,7 +15,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;

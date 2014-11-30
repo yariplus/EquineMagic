@@ -1,6 +1,6 @@
 package com.yaricraft.equinemagic.enums;
 
-import com.yaricraft.equinemagic.utility.StringHelper;
+import com.yaricraft.equinemagic.util.StringHelper;
 
 /**
  * Created by Yari on 11/1/2014.
