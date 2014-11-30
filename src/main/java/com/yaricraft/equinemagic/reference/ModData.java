@@ -5,7 +5,7 @@ public class ModData
 {
 	public static final String	MODID				= "EquineMagic";
 	public static final String	MODNAME				= "EquineMagic";
-	public static final String	VERSION				= "0.0.8.2";
+	public static final String	VERSION				= "@VERSION@";
 
 	public static final boolean	DEBUG				= true;
 

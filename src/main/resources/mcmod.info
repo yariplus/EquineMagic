@@ -3,7 +3,7 @@
   "modid": "EquineMagic",
   "name": "EquineMagic",
   "description": "A magic mod based on Equestrian lore.",
-  "version": "0.0.8.2",
+  "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "http://www.planetminecraft.com/mod/equinemagic/",
   "updateUrl": "",

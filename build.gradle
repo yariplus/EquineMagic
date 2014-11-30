@@ -15,39 +15,46 @@ buildscript {
     }
 }
 
-apply plugin: 'forge'
+allprojects {
+    apply plugin: 'forge'
+    group = "com.yaricraft.equinemagic"
 
-version = "1.7.10-0.0.8.2"
-group= "com.yaricraft.equinemagic"
+    minecraft {
+        version = "1.7.10-10.13.0.1207"
+        runDir = "./run"
+    }
+
+    processResources {
+        // this will ensure that this task is redone when the versions change.
+        inputs.property "version", project.version
+        inputs.property "mcversion", project.minecraft.version
+        inputs.property "revision", versionBuild
+
+        // replace stuff in mcmod.info, nothing else
+        from(sourceSets.main.resources.srcDirs) {
+            include 'mcmod.info'
+
+            // replace version and mcversion
+            expand 'version':project.version, 'mcversion':project.minecraft.version, 'revision':versionBuild
+        }
+
+        // copy everything else, thats not the mcmod.info
+        from(sourceSets.main.resources.srcDirs) {
+            exclude 'mcmod.info'
+        }
+    }
+}
+
 archivesBaseName = "EquineMagic"
+version = String.format("%s-%s.%s.%s", mcversion, versionMajor, versionMinor, versionRevision)
 
 minecraft {
-    version = "1.7.10-10.13.0.1207"
-    runDir = "./run"
+    // Replace the version string
+    replace "@VERSION@", project.version
 }
 
 dependencies {
     compile files("jars/CoFHCore-[1.7.10]3.0.0B6-32.jar")
-    compile files("jars/NotEnoughItems-1.7.10-1.0.3.64-universal.jar")
-    compile files("jars/OpenModsLib-1.7.10-0.6-snapshot-231.jar")
-}
-
-processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
+    // compile files("jars/NotEnoughItems-1.7.10-1.0.3.64-universal.jar")
+    // compile files("jars/OpenModsLib-1.7.10-0.6-snapshot-231.jar")
 }
