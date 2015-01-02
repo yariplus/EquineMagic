@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
 import com.yaricraft.equinemagic.tileentity.TileSpectralCauldron;
@@ -7,14 +8,18 @@ import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.List;
 
 /**
  * Created by Yari on 9/15/2014.
@@ -26,8 +31,41 @@ public class BlockSpectralCauldron extends EquineMagicBlock implements ITileEnti
         super(Material.iron);
         this.setBlockTextureName(ModNames.SPECTRAL_CAULDRON);
         this.setBlockName(ModNames.SPECTRAL_CAULDRON);
-        disableStats();
-        this.foci = EEquineFoci.PEGASUS;
+        this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
+    }
+
+    @Override
+    public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB aabb, List list, Entity entity)
+    {
+        float f = 0.0625F;
+        float f2 = f*6;
+
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f*2, 1.0F);
+        super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, f, f2, 1.0F);
+        super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f2, f);
+        super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+
+        this.setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, f2, 1.0F);
+        super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+        this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, f2, 1.0F);
+        super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+
+        this.setBlockBoundsForItemRender();
+
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F * 5, 1.0F);
+    }
+
+    @Override
+    public EEquineFoci getFoci(int meta)
+    {
+        switch (1)
+        {
+            default:
+                return EEquineFoci.PEGASUS;
+        }
     }
 
     @Override
@@ -48,11 +86,6 @@ public class BlockSpectralCauldron extends EquineMagicBlock implements ITileEnti
             if (!world.isRemote && world.getGameRules().getGameRuleBooleanValue("doTileDrops"))
             {
                 TileSpectralCauldron cauldron = (TileSpectralCauldron) tileEntity;
-                //if (captureDrops.get())
-                //{
-                //    capturedDrops.get().add(itemStack);
-                //    return;
-                //}
                 float f = 0.7F;
                 double d0 = (double) (world.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
                 double d1 = (double) (world.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;

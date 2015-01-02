@@ -35,7 +35,16 @@ public class BlockSpectralCannon extends BlockEHorizontalPillar implements ITile
         this.setBlockName(ModNames.SPECTRAL_CANNON);
         this.setBlockTextureName(ModNames.SPECTRAL_CANNON);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EEquineFoci.PEGASUS;
+    }
+
+    @Override
+    public EEquineFoci getFoci(int meta)
+    {
+        switch (1)
+        {
+            default:
+                return EEquineFoci.PEGASUS;
+        }
     }
 
     @Override

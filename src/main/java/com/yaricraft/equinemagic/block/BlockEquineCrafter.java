@@ -22,7 +22,6 @@ public class BlockEquineCrafter extends EquineMagicBlock implements ITileEntityP
         this.setBlockName(ModNames.EQUINE_CRAFTER);
         this.setBlockTextureName(ModNames.EQUINE_CRAFTER);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EEquineFoci.PEGASUS;
     }
 
     @Override

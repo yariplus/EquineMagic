@@ -46,7 +46,7 @@ allprojects {
 }
 
 archivesBaseName = "EquineMagic"
-version = String.format("%s-%s.%s.%s", mcversion, versionMajor, versionMinor, versionRevision)
+version = String.format("%s-%s.%s.%s-B%s", mcversion, versionMajor, versionMinor, versionRevision, versionBuild)
 
 minecraft {
     // Replace the version string

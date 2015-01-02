@@ -2,14 +2,16 @@ package com.yaricraft.equinemagic.handler;
 
 import com.yaricraft.equinemagic.block.BlockEquineOre;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
+import com.yaricraft.equinemagic.enums.EEquineDust;
 import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EEquineOre;
-import com.yaricraft.equinemagic.item.EquineMagicItem;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
 import com.yaricraft.equinemagic.tileentity.TileSpectralInventory;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockMycelium;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -44,6 +46,18 @@ public class BlockEventHandler
             if (rand < 0.04D)
             {
                 event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(EquineMagicItem.warmEgg)));
+            }
+        }else if(event.block == Blocks.gold_ore)
+        {
+            ItemStack stack = event.getPlayer().getHeldItem();
+            if (stack != null)
+            {
+                Item tool = stack.getItem();
+
+                if (tool == Items.diamond_pickaxe)
+                {
+                    event.world.spawnEntityInWorld(new EntityItem(event.world, event.x + 0.5D, event.y + 0.5D, event.z + 0.5D, new ItemStack(EquineMagicItem.equine_dust, random.nextInt(2)*(random.nextInt(2)+1), EEquineDust.AURUM.ordinal())));
+                }
             }
         }else if(event.block instanceof EquineMagicBlock)
         {

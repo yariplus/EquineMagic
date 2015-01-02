@@ -3,26 +3,24 @@ package com.yaricraft.equinemagic.block;
 import com.yaricraft.equinemagic.EquineMagic;
 import com.yaricraft.equinemagic.EquineMagicPlayer;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
+import com.yaricraft.equinemagic.enums.EElementalShard;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EFatedMob;
-import com.yaricraft.equinemagic.item.EquineMagicItem;
-import com.yaricraft.equinemagic.network.EquineMessageExtendedProperties;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
+import com.yaricraft.equinemagic.network.MessageExtendedProperties;
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.TileBell;
-import com.yaricraft.equinemagic.util.LogHelper;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -46,7 +44,6 @@ public class BlockBell extends EquineMagicBlock implements ITileEntityProvider
         super(Material.iron);
         this.setBlockName(ModNames.EQUINE_BELL);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EEquineFoci.SHADOW;
         setHardness(2.0F);
 
         renderId = RenderingRegistry.getNextAvailableRenderId();
@@ -54,6 +51,15 @@ public class BlockBell extends EquineMagicBlock implements ITileEntityProvider
         fatedEntities.add(EntityZombie.class);
     }
 
+    @Override
+    public EEquineFoci getFoci(int meta)
+    {
+        switch (1)
+        {
+            default:
+                return EEquineFoci.SHADOW;
+        }
+    }
 
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ)
     {
@@ -75,14 +81,37 @@ public class BlockBell extends EquineMagicBlock implements ITileEntityProvider
                                 entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10);
                                 if (entity.getHealth() <= 0)
                                 {
-                                    switch (world.rand.nextInt(3))
+                                    switch (world.rand.nextInt(9))
                                     {
                                         case 0:
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.BLUE.ordinal())));
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.GREEN.ordinal())));
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.ORANGE.ordinal())));
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.VIOLET.ordinal())));
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.PINK.ordinal())));
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.RED.ordinal())));
                                         case 1:
-                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.equine_gem, 1+world.rand.nextInt(2), EEquineGem.BLACK_OPAL.ordinal())));
-                                            break;
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.equine_gem, 1+world.rand.nextInt(4), EEquineGem.BLACK_OPAL.ordinal())));
                                         case 2:
                                             world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.equine_gem, 1+world.rand.nextInt(2), EEquineGem.CHROMA.ordinal())));
+                                            break;
+                                        case 3:
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.BLUE.ordinal())));
+                                            break;
+                                        case 4:
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.RED.ordinal())));
+                                            break;
+                                        case 5:
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.PINK.ordinal())));
+                                            break;
+                                        case 6:
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.VIOLET.ordinal())));
+                                            break;
+                                        case 7:
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.ORANGE.ordinal())));
+                                            break;
+                                        case 8:
+                                            world.spawnEntityInWorld(new EntityItem(world, x + 0.5D, y - 0.5D, z + 0.5D, new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.GREEN.ordinal())));
                                             break;
                                     }
                                 }
@@ -120,7 +149,7 @@ public class BlockBell extends EquineMagicBlock implements ITileEntityProvider
             equineMagicPlayer.darkness += 50;
             if (equineMagicPlayer.darkness > 500) equineMagicPlayer.darkness = 500;
 
-            EquineMessageExtendedProperties message = new EquineMessageExtendedProperties();
+            MessageExtendedProperties message = new MessageExtendedProperties();
             message.darkness = equineMagicPlayer.darkness;
             EquineMagic.network.sendTo(message, (EntityPlayerMP)player);
         }

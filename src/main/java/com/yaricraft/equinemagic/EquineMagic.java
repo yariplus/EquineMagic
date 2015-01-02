@@ -4,13 +4,17 @@ package com.yaricraft.equinemagic;
 import cofh.api.modhelpers.ThermalExpansionHelper;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.entity.monster.EntityChangeling;
+import com.yaricraft.equinemagic.entity.passive.EntityAura;
+import com.yaricraft.equinemagic.enums.EElementalShard;
 import com.yaricraft.equinemagic.enums.EEquineDust;
 import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EEquineOre;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
-import com.yaricraft.equinemagic.item.EquineMagicItem;
-import com.yaricraft.equinemagic.network.EquineMessageExtendedProperties;
-import com.yaricraft.equinemagic.network.EquineMessageHandlerExtendedProperties;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
+import com.yaricraft.equinemagic.network.HandlerExtendedProperties;
+import com.yaricraft.equinemagic.network.HandlerPlayerMovement;
+import com.yaricraft.equinemagic.network.MessageExtendedProperties;
+import com.yaricraft.equinemagic.network.MessagePlayerMovement;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
 
@@ -29,10 +33,12 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
@@ -59,13 +65,16 @@ public class EquineMagic
         EquineMagicTile.init();
         registerDictionaryItems();
 
-
-
         network = NetworkRegistry.INSTANCE.newSimpleChannel(ModData.MODID);
         // Message1 is handled by the Message1Handler class, it has discriminator id 1 and it's on the client
-        network.registerMessage(EquineMessageHandlerExtendedProperties.class, EquineMessageExtendedProperties.class, 1, Side.CLIENT);
+        // Send Magic Levels to the client.
+        network.registerMessage(HandlerExtendedProperties.class, MessageExtendedProperties.class, 1, Side.CLIENT);
 
+        // Send player movement to the server.
+        network.registerMessage(HandlerPlayerMovement.class, MessagePlayerMovement.class, 2, Side.SERVER);
 
+        // Send Cloud Remote info to the client.
+        //network.registerMessage(HandlerCloud.class, MessageCloud.class, 3, Side.CLIENT);
     }
 
     @Mod.EventHandler
@@ -110,6 +119,26 @@ public class EquineMagic
                 new ItemStack(EquineMagicItem.equine_gem,1,EEquineGem.ZIRCON.ordinal()),
                 new ItemStack(EquineMagicItem.equine_dust,2,EEquineDust.ZIRCON.ordinal())
         );
+
+        ThermalExpansionHelper.addPulverizerRecipe(2400,
+                new ItemStack(EquineMagicItem.equine_gem,1,EEquineGem.OPAL.ordinal()),
+                new ItemStack(EquineMagicItem.equine_dust,8,EEquineDust.OPAL.ordinal())
+        );
+
+        ThermalExpansionHelper.addPulverizerRecipe(2400,
+                new ItemStack(EquineMagicItem.equine_gem,1,EEquineGem.BLACK_OPAL.ordinal()),
+                new ItemStack(EquineMagicItem.equine_dust,8,EEquineDust.BLACK_OPAL.ordinal())
+        );
+
+        int id = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityChangeling.class, "changeling", id, 128, 0);
+        EntityRegistry.registerModEntity(EntityChangeling.class, "changeling", id, instance, 20, 5, true);
+
+        EntityRegistry.addSpawn(EntityChangeling.class, 30, 1, 2, EnumCreatureType.monster, BiomeGenBase.plains);
+
+        id = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityAura.class, "equine_aura", id, 64, 48);
+        EntityRegistry.registerModEntity(EntityAura.class, "equine_aura", id, instance, 20, 5, true);
 	}
 
 	@Mod.EventHandler
@@ -151,9 +180,6 @@ public class EquineMagic
                 OreDictionary.registerOre("blockWool", new ItemStack(Blocks.wool, 1, i));
             }
         }
-
-        EntityRegistry.registerGlobalEntityID(EntityChangeling.class, "changeling", 423, 128, 0);
-        EntityRegistry.registerModEntity(EntityChangeling.class, "changeling", 423, instance, 20, 5, true);
     }
 
     private void addRecipes()
@@ -167,24 +193,44 @@ public class EquineMagic
             );
         }
 
+        for ( EEquineGem gem : EEquineGem.values() )
+        {
+            GameRegistry.addRecipe(new ItemStack(EquineMagicBlock.block_compressed, 1, gem.ordinal()), new Object[]{
+                    "GGG",
+                    "GGG",
+                    "GGG",
+                    'G', new ItemStack(EquineMagicItem.equine_gem, 1, gem.ordinal())
+            });
 
-            GameRegistry.addShapelessRecipe(
-                    new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY).get(0).getItem(), 4),
-                    new ItemStack(OreDictionary.getOres(StringHelper.dictPrefix(ModNames.EQUINE_DUST) + StringHelper.vanillaCaseToCamelCase(EEquineDust.DIRTY_SPECTRA.toString())).get(0).getItem()),
-                    Blocks.wool);
+            GameRegistry.addShapelessRecipe(new ItemStack(EquineMagicItem.equine_gem, 9, gem.ordinal()), new ItemStack(EquineMagicBlock.block_compressed, 1, gem.ordinal()) );
+        }
+
+        GameRegistry.addShapelessRecipe(
+            new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY).get(0).getItem(), 4),
+            new ItemStack(OreDictionary.getOres(StringHelper.dictPrefix(ModNames.EQUINE_DUST) + StringHelper.vanillaCaseToCamelCase(EEquineDust.DIRTY_SPECTRA.toString())).get(0).getItem()),
+            Blocks.wool);
 
 
 
-            GameRegistry.addShapelessRecipe(
-                    new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY).get(0).getItem(), 8),
-                    new ItemStack(OreDictionary.getOres(StringHelper.dictPrefix(ModNames.EQUINE_DUST) + StringHelper.vanillaCaseToCamelCase(EEquineDust.IMPURE_SPECTRA.toString())).get(0).getItem()),
-                    Blocks.wool);
+        GameRegistry.addShapelessRecipe(
+            new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY).get(0).getItem(), 8),
+            new ItemStack(OreDictionary.getOres(StringHelper.dictPrefix(ModNames.EQUINE_DUST) + StringHelper.vanillaCaseToCamelCase(EEquineDust.IMPURE_SPECTRA.toString())).get(0).getItem()),
+            Blocks.wool);
 
 
         GameRegistry.addShapelessRecipe(
                 new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY_GUNPOWDER).get(0).getItem()),
                 new ItemStack(OreDictionary.getOres(ModNames.DUST_SILKY).get(0).getItem()),
                 Items.gunpowder);
+
+        GameRegistry.addShapelessRecipe(
+            new ItemStack(EquineMagicItem.aura_summoner, 1, 0),
+            new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.BLUE.ordinal()),
+            new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.GREEN.ordinal()),
+            new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.RED.ordinal()),
+            new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.ORANGE.ordinal()),
+            new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.PINK.ordinal()),
+            new ItemStack(EquineMagicItem.elemental_shard, 1, EElementalShard.VIOLET.ordinal()));
 
         GameRegistry.addRecipe(new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem(), 32), new Object[]{
                 "SDS",
@@ -255,6 +301,21 @@ public class EquineMagic
                 "I I",
                 'I', Items.iron_ingot,
                 'C', new ItemStack(OreDictionary.getOres(ModNames.CRYSTAL_PRIMATIC).get(0).getItem())
+        });
+
+        GameRegistry.addRecipe(new ItemStack(EquineMagicBlock.cloudavator, 4), new Object[]{
+                " D ",
+                "DSD",
+                " D ",
+                'D', new ItemStack(OreDictionary.getOres(ModNames.EQUINE_DECOR).get(0).getItem()),
+                'S', new ItemStack(EquineMagicItem.equine_dust, 1, EEquineDust.DIRTY_SPECTRA.ordinal())
+        });
+
+        GameRegistry.addRecipe(new ItemStack(EquineMagicItem.cloud_remote), new Object[]{
+                "R",
+                "S",
+                'R', Blocks.redstone_torch,
+                'S', new ItemStack(EquineMagicItem.equine_dust, 1, EEquineDust.DIRTY_SPECTRA.ordinal())
         });
     }
 }

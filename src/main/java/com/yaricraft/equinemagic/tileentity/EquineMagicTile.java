@@ -26,6 +26,7 @@ public abstract class EquineMagicTile extends TileEntity
         GameRegistry.registerTileEntity(TileEquineCrafter.class, ModNames.EQUINE_CRAFTER);
         GameRegistry.registerTileEntity(TileEquineStatue.class, ModNames.EQUINE_STATUE);
         GameRegistry.registerTileEntity(TileBell.class, ModNames.EQUINE_BELL);
+        GameRegistry.registerTileEntity(TilePedestal.class, ModNames.Blocks.PEDESTAL);
     }
 
     /**

@@ -1,6 +1,7 @@
 
 package com.yaricraft.equinemagic.proxy;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 
@@ -17,4 +18,6 @@ public interface IProxy
     public void initializeIcons(TextureStitchEvent.Post event);
 
     public void registerKeybindings();
+
+    public ResourceLocation getPlayerSkin();
 }

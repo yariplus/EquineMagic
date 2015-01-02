@@ -2,6 +2,7 @@
 package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.enums.EEquineFoci;
+import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
 import com.yaricraft.equinemagic.reference.ModData;
 
@@ -32,6 +33,11 @@ public abstract class EquineMagicBlock extends Block
     public static final EquineMagicBlock spectral_cauldron    = new BlockSpectralCauldron();
     public static final EquineMagicBlock spectral_miner       = new BlockSpectralMiner();
     public static final EquineMagicBlock spectral_cannon      = new BlockSpectralCannon();
+    public static final EquineMagicBlock block_compressed     = new BlockCompressed();
+
+    public static final EquineMagicBlock cloudavator          = new BlockEquineCloudavator();
+
+    public static final EquineMagicBlock pedestal             = new BlockPedestal();
 
     public static void init()
     {
@@ -46,10 +52,19 @@ public abstract class EquineMagicBlock extends Block
         GameRegistry.registerBlock(spectral_cauldron, EquineMagicItemBlock.class, spectral_cauldron.getRegistryName());
         GameRegistry.registerBlock(spectral_miner, EquineMagicItemBlock.class, spectral_miner.getRegistryName());
         GameRegistry.registerBlock(spectral_cannon, EquineMagicItemBlock.class, spectral_cannon.getRegistryName());
+        GameRegistry.registerBlock(block_compressed, EquineMagicItemBlockWithMeta.class, block_compressed.getRegistryName());
+
+        GameRegistry.registerBlock(cloudavator, EquineMagicItemBlock.class, cloudavator.getRegistryName());
+
+        GameRegistry.registerBlock(pedestal, EquineMagicItemBlock.class, pedestal.getRegistryName());
     }
 
-    public EEquineFoci foci;
     protected String[] subNames = ModData.ASSETSUF_META.clone();
+
+    public EEquineFoci getFoci(int meta)
+    {
+        return null;
+    }
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)

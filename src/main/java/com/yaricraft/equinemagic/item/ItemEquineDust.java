@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic.item;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.enums.EEquineDust;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 import cpw.mods.fml.relauncher.Side;
@@ -53,12 +54,8 @@ public class ItemEquineDust extends EquineMagicItem
         return getUnlocalizedName() + ModData.ASSET_SPACER + EEquineDust.values()[i].toString();
     }
 
-    /**
-     * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
-     * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
-     */
     @Override
-    public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_)
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ)
     {
         return false;
     }

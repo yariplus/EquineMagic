@@ -2,7 +2,7 @@ package com.yaricraft.equinemagic.tileentity;
 
 import com.yaricraft.equinemagic.enums.EEquineDust;
 import com.yaricraft.equinemagic.enums.ESpectralChip;
-import com.yaricraft.equinemagic.item.EquineMagicItem;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
 import com.yaricraft.equinemagic.item.ItemDustSilky;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;

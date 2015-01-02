@@ -4,10 +4,18 @@ package com.yaricraft.equinemagic.proxy;
 import cofh.core.render.IconRegistry;
 import com.yaricraft.equinemagic.block.EquineMagicBlock;
 import com.yaricraft.equinemagic.client.handler.KeyInputHandler;
+import com.yaricraft.equinemagic.client.model.ModelAura;
+import com.yaricraft.equinemagic.client.model.ModelChangeling;
 import com.yaricraft.equinemagic.client.renderer.RendererBell;
+import com.yaricraft.equinemagic.client.renderer.RendererPedestal;
+import com.yaricraft.equinemagic.client.renderer.entity.RenderAura;
+import com.yaricraft.equinemagic.client.renderer.entity.RenderChangeling;
 import com.yaricraft.equinemagic.client.settings.KeyBindings;
+import com.yaricraft.equinemagic.entity.monster.EntityChangeling;
+import com.yaricraft.equinemagic.entity.passive.EntityAura;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
 import com.yaricraft.equinemagic.client.gui.GuiEquineHUD;
+import com.yaricraft.equinemagic.handler.PlayerHandler;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.client.renderer.RendererTileSpectralAscensionDevice;
 import com.yaricraft.equinemagic.tileentity.TileSpectralCauldron;
@@ -21,8 +29,10 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,6 +40,14 @@ import net.minecraftforge.fluids.Fluid;
 
 public class ClientProxy extends CommonProxy
 {
+    @Override
+    public void registerEventHandlers()
+    {
+        super.registerEventHandlers();
+
+        FMLCommonHandler.instance().bus().register(new PlayerHandler());
+    }
+
     public void registerRenderers()
     {
         ClientRegistry.bindTileEntitySpecialRenderer(TileSpectralCauldron.class, new RendererTileSolarCauldron());
@@ -39,6 +57,16 @@ public class ClientProxy extends CommonProxy
         MinecraftForge.EVENT_BUS.register(new GuiEquineHUD(Minecraft.getMinecraft()));
 
         RenderingRegistry.registerBlockHandler(EquineMagicBlock.equine_bell.getRenderType(), new RendererBell());
+        RenderingRegistry.registerBlockHandler(EquineMagicBlock.pedestal.getRenderType(), new RendererPedestal());
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityChangeling.class, new RenderChangeling(new ModelChangeling(), 0.5F));
+        RenderingRegistry.registerEntityRenderingHandler(EntityAura.class, new RenderAura());
+    }
+
+    @Override
+    public ResourceLocation getPlayerSkin()
+    {
+        return Minecraft.getMinecraft().thePlayer.getLocationSkin();
     }
 
     // cpw

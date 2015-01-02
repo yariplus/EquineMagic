@@ -1,11 +1,10 @@
 package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.enums.EEquineDust;
-import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EEquineOre;
-import com.yaricraft.equinemagic.item.EquineMagicItem;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -33,7 +32,6 @@ public class BlockEquineOre extends EquineMagicBlock
         super(Material.iron);
         this.setBlockName(ModNames.EQUINE_ORE);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EEquineFoci.ELEMENTAL;
         for (int i = 0; i < EEquineOre.values().length; i++ ) this.subNames[i] = EEquineOre.values()[i].toString();
         setHardness(3.0F);
         for (EEquineOre ore: EEquineOre.values())
@@ -128,7 +126,6 @@ public class BlockEquineOre extends EquineMagicBlock
             for(int j = 0; j < MCData.THREE_SIDED; j++)
             {
                 icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName() + ModData.ASSET_SPACER + subNames[i]);
-                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedName() + ModData.ASSETSUF_ICON[j] + "_0");
             }
         }
     }

@@ -19,12 +19,14 @@ public class ModData
     public static final String ASSETSUF_ICON_BACK   = "_back";
     public static final String ASSETSUF_ICON_LEFT   = "_left";
     public static final String ASSETSUF_ICON_RIGHT  = "_right";
-    public static final String ASSETSUF_ICON_SIDE  = "_side";
+    public static final String ASSETSUF_ICON_SIDE   = "_side";
 
-    public static final String[] ASSETSUF_ICON     = new String[] {ASSETSUF_ICON_BOTTOM, ASSETSUF_ICON_TOP, ASSETSUF_ICON_FRONT, ASSETSUF_ICON_BACK, ASSETSUF_ICON_LEFT, ASSETSUF_ICON_RIGHT};
-    public static final String[] ASSETSUF_META     = new String[] {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
+    public static final String[] ASSETSUF_ICON      = new String[] {ASSETSUF_ICON_BOTTOM, ASSETSUF_ICON_TOP, ASSETSUF_ICON_FRONT, ASSETSUF_ICON_BACK, ASSETSUF_ICON_LEFT, ASSETSUF_ICON_RIGHT};
+    public static final String[] ASSETSUF_META      = new String[] {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
 
-    public static final String ASSET_SPACER        = "_";
+    public static final String ASSET_SPACER         = "_";
+
+    public static final String REGISTRY_KEY_PREFIX    = "keys." + MODID + ":";
 
     public static final int GUIID_BOOK_RESEARCH = 1;
 

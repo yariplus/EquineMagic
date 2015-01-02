@@ -3,8 +3,7 @@ package com.yaricraft.equinemagic.block;
 import com.yaricraft.equinemagic.EquineMagic;
 import com.yaricraft.equinemagic.EquineMagicPlayer;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
-import com.yaricraft.equinemagic.enums.EEquineFoci;
-import com.yaricraft.equinemagic.network.EquineMessageExtendedProperties;
+import com.yaricraft.equinemagic.network.MessageExtendedProperties;
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.util.LogHelper;
 import net.minecraft.block.ITileEntityProvider;
@@ -24,7 +23,6 @@ public class BlockEquineStatue extends EquineMagicBlock implements ITileEntityPr
         super(Material.iron);
         this.setBlockName(ModNames.EQUINE_STATUE);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EEquineFoci.ELEMENTAL;
     }
 
     @Override
@@ -39,7 +37,7 @@ public class BlockEquineStatue extends EquineMagicBlock implements ITileEntityPr
         if (!world.isRemote)
         {
             LogHelper.info("client increment");
-            EquineMessageExtendedProperties message = new EquineMessageExtendedProperties();
+            MessageExtendedProperties message = new MessageExtendedProperties();
             message.chaos = ((EquineMagicPlayer) player.getExtendedProperties("EquineMagicPlayer")).chaos;
             ((EquineMagicPlayer) player.getExtendedProperties("EquineMagicPlayer")).darkness = ((EquineMagicPlayer) player.getExtendedProperties("EquineMagicPlayer")).darkness + 50;
             message.darkness = ((EquineMagicPlayer) player.getExtendedProperties("EquineMagicPlayer")).darkness;

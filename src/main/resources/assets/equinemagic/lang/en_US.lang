@@ -1,3 +1,7 @@
+entity.changeling.name=Changeling
+entity.parasprite.name=Parasprite
+entity.diamond_wolf.name=Diamond Wolf
+
 item.EquineMagic:equine_dust_opal.name=Opal Dust
 item.EquineMagic:equine_dust_black_opal.name=Black Opal Dust
 item.EquineMagic:equine_dust_zircon.name=Zircon Dust
@@ -11,6 +15,7 @@ item.EquineMagic:equine_dust_hafnium.name=Hafnium Dust
 item.EquineMagic:equine_dust_dolomite.name=Magnesium Dust
 item.EquineMagic:equine_dust_magnesium.name=Magnesium Dust
 item.EquineMagic:equine_dust_magnesium_celestate.name=Magnesium Celestate Dust
+item.EquineMagic:equine_dust_aurum.name=Aurum Celestate Dust
 
 item.EquineMagic:equine_gem_opal.name=Opal
 item.EquineMagic:equine_gem_black_opal.name=Black Opal
@@ -20,8 +25,29 @@ item.EquineMagic:equine_gem_zircon.name=Zircon
 item.EquineMagic:equine_gem_hafnium.name=Hafnium
 item.EquineMagic:equine_gem_spectra.name=Refined Spectra
 
+tile.EquineMagic:block.name=Missing Name
+tile.EquineMagic:block_opal.name=Block of Opal
+tile.EquineMagic:block_black_opal.name=Block of Black Opal
+tile.EquineMagic:block_chroma.name=Block of Chroma
+tile.EquineMagic:block_dolomite.name=Block of Dolomite
+tile.EquineMagic:block_zircon.name=Block of Zircon
+tile.EquineMagic:block_hafnium.name=Block of Hafnium
+tile.EquineMagic:block_spectra.name=Block of Refined Spectra
+
+item.EquineMagic:elemental_shard_blue.name=Laughter Shard
+item.EquineMagic:elemental_shard_violet.name=Generosity Shard
+item.EquineMagic:elemental_shard_pink.name=Kindness Shard
+item.EquineMagic:elemental_shard_red.name=Loyalty Shard
+item.EquineMagic:elemental_shard_orange.name=Honesty Shard
+item.EquineMagic:elemental_shard_green.name=Magic Shard
+item.EquineMagic:elemental_shard_white.name=Elemental Shard
+item.EquineMagic:elemental_shard_primatic.name=Primatic Shard
+
 tile.EquineMagic:log.name=Everfree Oak Log
 tile.EquineMagic:equine_leaves.name=Everfree Oak Leaves
+
+tile.EquineMagic:cloudavator.name=Cloudavator
+item.EquineMagic:cloud_remote.name=Cloud Remote
 
 tile.EquineMagic:block_decor_0.name=Decorium Block
 tile.EquineMagic:block_decor_1.name=Decorium Block Variation 1
@@ -115,8 +141,14 @@ fluid.EquineMagic:spectra_slurry.name=Spectra Slurry
 
 item.EquineMagic:bucket_spectra_slurry.name=Bucket of Spectra Slurry
 
+item.EquineMagic:aura_summoner.name=Aura Summoner
+tile.EquineMagic:pedestal.name=Pedestal
+
+item.EquineMagic:armor_chroma.name=Chroma Chestplate
+
 itemGroup.EquineMagic=EquineMagic
 
 #Keybindings
 keys.EquineMagic:hud_toggle=Toggle HUD
+keys.EquineMagic:aura_switch=Switch Aura Spell
 keys.EquineMagic:category=EquineMagic

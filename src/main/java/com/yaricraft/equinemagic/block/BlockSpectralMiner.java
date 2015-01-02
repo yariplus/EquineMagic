@@ -35,7 +35,16 @@ public class BlockSpectralMiner extends EquineMagicBlock implements ITileEntityP
         this.setBlockName(ModNames.SPECTRAL_MINER);
         this.setBlockTextureName(ModNames.SPECTRAL_MINER);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EEquineFoci.PEGASUS;
+    }
+
+    @Override
+    public EEquineFoci getFoci(int meta)
+    {
+        switch (1)
+        {
+            default:
+                return EEquineFoci.PEGASUS;
+        }
     }
 
     @Override

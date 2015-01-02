@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -26,11 +27,8 @@ public class EquineMagicItemBlock extends ItemBlock
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
     {
-        EquineMagicBlock block = ((EquineMagicBlock)Block.getBlockFromItem(itemStack.getItem()));
-        if (block.foci != null)
-        {
-            list.add(1, "Focus: " + block.foci.toString());
-        }
+        EEquineFoci foci = ((EquineMagicBlock)Block.getBlockFromItem(itemStack.getItem())).getFoci(itemStack.getItemDamage());
+        if (foci != null) list.add(1, "Focus: " + foci.toString());
 
         NBTTagCompound tagCompound = itemStack.getTagCompound();
         if (tagCompound != null)

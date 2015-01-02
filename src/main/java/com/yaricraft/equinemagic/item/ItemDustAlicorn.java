@@ -1,24 +1,26 @@
 package com.yaricraft.equinemagic.item;
 
+import com.yaricraft.equinemagic.EquineMagic;
+import com.yaricraft.equinemagic.EquineMagicPlayer;
+import com.yaricraft.equinemagic.entity.passive.EntityAura;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.block.BlockEquineTNT;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
+import com.yaricraft.equinemagic.network.MessageExtendedProperties;
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.util.LogHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.material.MaterialLiquid;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Yari on 9/8/2014.
@@ -30,12 +32,6 @@ public class ItemDustAlicorn extends EquineMagicItem
         this.setUnlocalizedName(ModNames.DUST_ALICORN);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
         this.foci = EEquineFoci.UNICORN;
-    }
-
-    @Override
-    public ItemStack onItemRightClick(ItemStack itemStack, World p_77659_2_, EntityPlayer player)
-    {
-        return itemStack;
     }
 
     @Override
@@ -185,9 +181,68 @@ public class ItemDustAlicorn extends EquineMagicItem
                         }
                     }
                 }
+
+                return true;
             }
         }
 
         return false;
+    }
+
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        if (!world.isRemote)
+        {
+            Vec3 lookVec = player.getLookVec();
+            int blockX;
+            int blockY;
+            int blockZ;
+            int _try = 1;
+            while (_try <= 30)
+            {
+                LogHelper.info("try " + _try);
+
+                blockX = MathHelper.floor_double(player.posX + lookVec.xCoord * _try);
+                blockY = MathHelper.floor_double((player.posY + 1.5D) + lookVec.yCoord * _try);
+                blockZ = MathHelper.floor_double(player.posZ + lookVec.zCoord * _try);
+                Block block = world.getBlock(blockX, blockY, blockZ);
+
+                if (block != null && !(block instanceof BlockAir))
+                {
+                    int x = (int)player.posX;
+                    int y = (int)player.posY;
+                    int z = (int)player.posZ;
+                    List<EntityAura> entities = world.getEntitiesWithinAABB(EntityAura.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1, z + 1).expand(12, 6, 12));
+                    EquineMagicPlayer equineMagicPlayer = (EquineMagicPlayer) player.getExtendedProperties(EquineMagicPlayer.NAME);
+
+                    if (entities != null && entities.size() > 0)
+                    {
+                        String uuid;
+
+                        for (EntityAura entity : entities)
+                        {
+                            if (equineMagicPlayer.magic < 5) break;
+                            equineMagicPlayer.magic -= 5;
+
+                            uuid = entity.getUniqueID().toString();
+                            if (!equineMagicPlayer.aEquineAuras.contains(uuid)) equineMagicPlayer.aEquineAuras.add(uuid);
+
+                            entity.Shoot(Vec3.createVectorHelper(blockX, blockY, blockZ));
+                        }
+
+                        MessageExtendedProperties message = new MessageExtendedProperties();
+                        message.magic = equineMagicPlayer.magic;
+                        EquineMagic.network.sendTo(message, (EntityPlayerMP)player);
+                    }
+
+                    break;
+                }
+
+                _try++;
+            }
+        }
+
+        return itemStack;
     }
 }

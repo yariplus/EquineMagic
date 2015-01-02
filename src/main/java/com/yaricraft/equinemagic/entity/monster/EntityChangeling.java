@@ -1,9 +1,13 @@
 package com.yaricraft.equinemagic.entity.monster;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.ai.EntityAIArrowAttack;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -12,9 +16,23 @@ import net.minecraft.world.World;
  */
 public class EntityChangeling extends EntitySkeleton
 {
+    private EntityAIArrowAttack aiBoltAttack = new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F);
+
     public EntityChangeling(World p_i1745_1_)
     {
         super(p_i1745_1_);
+    }
+
+    @Override
+    public EnumCreatureAttribute getCreatureAttribute()
+    {
+        return EnumCreatureAttribute.UNDEFINED;
+    }
+
+    @Override
+    public void onLivingUpdate()
+    {
+        super.onLivingUpdate();
     }
 
     @Override

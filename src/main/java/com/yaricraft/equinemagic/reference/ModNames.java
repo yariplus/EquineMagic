@@ -48,9 +48,26 @@ public final class ModNames
 
     public static final String SPECTRAL_CHIP           = "spectral_chip";
 
+    public static final String CLOUDAVATOR             = "cloudavator";
+
     public static final class Keys
     {
-        public static final String HUD_TOGGLE       = "keys." + ModData.MODID + ":hud_toggle";
+        //public static final String HUD_TOGGLE       = "keys." + ModData.MODID + ":hud_toggle";
         public static final String CATEGORY         = "keys." + ModData.MODID + ":category";
     }
+
+    public static final class Items
+    {
+        public static final String CLOUD_REMOTE       = "cloud_remote";
+        public static final String ELEMENTAL_SHARD    = "elemental_shard";
+        public static final String AURA_SUMMONER      = "aura_summoner";
+        public static final String ALICORN_WAND       = "alicorn_wand";
+    }
+
+    public static final class Blocks
+    {
+        public static final String PEDESTAL      = "pedestal";
+    }
+
+    public static final String BLOCK_COMPRESSED         = "block";
 }

@@ -19,7 +19,6 @@ public class BlockEquineTNT extends EquineMagicBlock
         this.setBlockName(ModNames.EQUINE_TNT);
         this.setBlockTextureName(ModNames.EQUINE_TNT);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
-        this.foci = EEquineFoci.EQUICORN;
     }
 
     @SideOnly(Side.CLIENT)

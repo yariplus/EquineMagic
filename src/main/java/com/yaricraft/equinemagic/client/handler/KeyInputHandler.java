@@ -43,6 +43,9 @@ public class KeyInputHandler
                     properties.hud = true;
                 }
                 break;
+            case AURA_SWITCH:
+                LogHelper.info("AURA_SWITCH key pressed.");
+                break;
             case UNKNOWN:
                 break;
         }

@@ -2,9 +2,15 @@ package com.yaricraft.equinemagic;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Yari on 9/25/2014.
@@ -18,6 +24,8 @@ public class EquineMagicPlayer implements IExtendedEntityProperties
     public int magic, chaos, darkness;
     public boolean hud;
 
+    public ArrayList<String> aEquineAuras = new ArrayList<String>();
+
     @Override
     public void saveNBTData(NBTTagCompound compound)
     {
@@ -28,6 +36,10 @@ public class EquineMagicPlayer implements IExtendedEntityProperties
         properties.setInteger("Shadow", this.darkness);
 
         properties.setBoolean("HUD", this.hud);
+
+        NBTTagList listAura = new NBTTagList();
+        for (String uuid : aEquineAuras) listAura.appendTag(new NBTTagString(uuid));
+        properties.setTag("Attached Auras", listAura);
 
         compound.setTag(NAME, properties);
     }
@@ -42,6 +54,14 @@ public class EquineMagicPlayer implements IExtendedEntityProperties
         this.darkness = properties.getInteger("Shadow");
 
         this.hud = properties.getBoolean("HUD");
+
+        this.aEquineAuras = new ArrayList<String>();
+
+        NBTTagList listAura = properties.getTagList("Attached Auras", 8);
+        for (int i = 0; i < listAura.tagCount() ; i++ )
+        {
+            this.aEquineAuras.add(listAura.getStringTagAt(i));
+        }
     }
 
     @Override

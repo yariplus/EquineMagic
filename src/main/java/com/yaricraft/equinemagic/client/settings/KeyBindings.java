@@ -9,5 +9,6 @@ import org.lwjgl.input.Keyboard;
  */
 public class KeyBindings
 {
-    public static KeyBinding hud_toggle = new KeyBinding(ModNames.Keys.HUD_TOGGLE, Keyboard.KEY_O, ModNames.Keys.CATEGORY);
+    public static KeyBinding hud_toggle = new KeyBinding(Key.HUD_TOGGLE.getRegistryName(), Keyboard.KEY_O, ModNames.Keys.CATEGORY);
+    public static KeyBinding aura_switch = new KeyBinding(Key.AURA_SWITCH.getRegistryName(), Keyboard.KEY_1, ModNames.Keys.CATEGORY);
 }

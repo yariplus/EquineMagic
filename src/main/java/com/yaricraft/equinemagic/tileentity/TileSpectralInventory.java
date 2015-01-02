@@ -1,6 +1,6 @@
 package com.yaricraft.equinemagic.tileentity;
 
-import com.yaricraft.equinemagic.item.EquineMagicItem;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.ModData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

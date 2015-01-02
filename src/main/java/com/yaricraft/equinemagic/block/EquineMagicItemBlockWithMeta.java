@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.reference.ModData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,8 +31,8 @@ public class EquineMagicItemBlockWithMeta extends ItemBlock
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool)
     {
-        EquineMagicBlock block = ((EquineMagicBlock)Block.getBlockFromItem(itemStack.getItem()));
-        if (block.foci != null) list.add(1, "Focus: " + block.foci.toString());
+        EEquineFoci foci = ((EquineMagicBlock)Block.getBlockFromItem(itemStack.getItem())).getFoci(itemStack.getItemDamage());
+        if (foci != null) list.add(1, "Focus: " + foci.toString());
     }
 
     @Override

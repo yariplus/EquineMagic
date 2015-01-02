@@ -1,7 +1,7 @@
 package com.yaricraft.equinemagic.handler;
 
 import com.yaricraft.equinemagic.enums.EEquineDust;
-import com.yaricraft.equinemagic.item.EquineMagicItem;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityBat;

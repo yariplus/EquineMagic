@@ -7,14 +7,15 @@ import com.yaricraft.equinemagic.item.IItemSpectralChip;
 import com.yaricraft.equinemagic.item.ItemSpectralChip;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
+import com.yaricraft.equinemagic.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockLiquid;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -34,9 +35,13 @@ public abstract class TileSpectralManipulator extends TileSpectralInventory impl
 {
     public ArrayList<ArrayList<ArrayList<Integer>>> patterns = new ArrayList<ArrayList<ArrayList<Integer>>>();
     public ArrayList<Block> fillers = new ArrayList<Block>();
+    public ArrayList<ItemStack> heldItems = new ArrayList<ItemStack>();
 
     public ESpectralManipulator type = ESpectralManipulator.MINER;
-    public ForgeDirection storageDirection = ForgeDirection.UNKNOWN;
+
+    public ForgeDirection connectedDirection = ForgeDirection.NORTH;
+    private int connectedSlot = 0;
+    boolean useEmptySlots = false;
 
     protected int workColumn = -1;
     protected int workRow = 0;
@@ -152,16 +157,18 @@ public abstract class TileSpectralManipulator extends TileSpectralInventory impl
             {
                 if (chargeAmount >= chargeNeeded && tank.getFluidAmount() >= 1)
                 {
-                    if (storageDirection == ForgeDirection.UNKNOWN)
+                    if (!heldItems.isEmpty())
                     {
-                        checkForStorage();
-                    } else
-                    {
-                        shoot();
-                        shoot();
-                        shoot();
-                        tank.drain(1, true);
+                        storeItems();
                     }
+                    if (heldItems.size() < 6)
+                    {
+                        shoot();
+                        shoot();
+                        shoot();
+                    }
+
+                    tank.drain(1, true);
                 } else
                 {
                     if (tank.getFluidAmount() >= 1000)
@@ -182,16 +189,180 @@ public abstract class TileSpectralManipulator extends TileSpectralInventory impl
         }
     }
 
-    public void checkForStorage()
+    public void storeItems()
     {
-        for (ForgeDirection dir : ForgeDirection.values())
+        connectedSlot = 0;
+
+        // Check for storage.
+        IInventory connectedInventory = getConnectedInventory();
+        if (connectedInventory == null) return;
+
+        if (connectedInventory instanceof ISidedInventory)
         {
-            if (dir != ForgeDirection.UNKNOWN && worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ ) instanceof IInventory)
+            int[] sidedSlots = ((ISidedInventory) connectedInventory).getAccessibleSlotsFromSide(connectedDirection.getOpposite().ordinal());
+            if (!(sidedSlots.length > 0))
             {
-                storageDirection = dir;
+                switchDirection();
                 return;
+            }else
+            {
+                storeSided(connectedInventory, sidedSlots);
+            }
+        }else
+        {
+            storeInventory(connectedInventory);
+        }
+    }
+
+    private void storeSided(IInventory connectedInventory, int[] sidedSlots)
+    {
+        // Check 200 times for a free slot, or until reached end of sidedSlots.length.
+        boolean doStore = false;
+        storageCheck:
+        for (int i = 0; i < sidedSlots.length; i++)
+        {
+            connectedSlot = sidedSlots[i];
+
+            // Get the slot contents.
+            ItemStack connectedItemStack = connectedInventory.getStackInSlot(connectedSlot);
+
+            // See if it's empty.
+            if (connectedItemStack == null && connectedInventory.isItemValidForSlot(connectedSlot, heldItems.get(0)))
+            {
+                //if (useEmptySlots == true)
+                //{
+                    doStore = true;
+                    break storageCheck;
+                //}
+            }else
+            {
+                if (connectedInventory.isItemValidForSlot(connectedSlot, heldItems.get(0)) &&
+                    connectedItemStack.getItem() == heldItems.get(0).getItem() &&
+                    connectedItemStack.stackSize < connectedItemStack.getMaxStackSize() &&
+                    connectedItemStack.getItemDamage() == heldItems.get(0).getItemDamage())
+                {
+                    doStore = true;
+                    break storageCheck;
+                }
             }
         }
+
+        if (doStore)
+        {
+            storeStack(connectedInventory);
+        }else
+        {
+            switchDirection();
+        }
+    }
+
+    private void storeInventory(IInventory connectedInventory)
+    {
+        // Check 200 times for a free slot, or until reached end of inventory.
+        boolean doStore = false;
+        storageCheck:
+        for (int _try = 0; _try < 200; _try++)
+        {
+            // Get the slot contents.
+            ItemStack connectedItemStack = connectedInventory.getStackInSlot(connectedSlot);
+
+            // See if it's empty.
+            if (connectedItemStack == null && connectedInventory.isItemValidForSlot(connectedSlot, heldItems.get(0)))
+            {
+                doStore = true;
+                break storageCheck;
+            }else
+            {
+                if (connectedInventory.isItemValidForSlot(connectedSlot, heldItems.get(0)) &&
+                    connectedItemStack.getItem() == heldItems.get(0).getItem() &&
+                    connectedItemStack.stackSize < connectedItemStack.getMaxStackSize() &&
+                    connectedItemStack.getItemDamage() == heldItems.get(0).getItemDamage())
+                {
+                    doStore = true;
+                    break storageCheck;
+                }
+            }
+
+            // Return if the increment switches the direction.
+            if (!incrementSlot(connectedInventory.getSizeInventory())) return;
+        }
+
+        if (doStore) storeStack(connectedInventory);
+    }
+
+    private void storeStack(IInventory connectedInventory)
+    {
+        ItemStack connectedStack = connectedInventory.getStackInSlot(connectedSlot);
+        if (connectedStack == null)
+        {
+            connectedInventory.setInventorySlotContents(connectedSlot, heldItems.get(0));
+            heldItems.remove(0);
+        }else
+        {
+            if (connectedStack.stackSize + heldItems.get(0).stackSize <= connectedStack.getMaxStackSize())
+            {
+                int newsize = connectedStack.stackSize + heldItems.get(0).stackSize;
+                connectedInventory.setInventorySlotContents(connectedSlot, new ItemStack(heldItems.get(0).getItem(), newsize, heldItems.get(0).getItemDamage()));
+                heldItems.remove(0);
+            }else
+            {
+                int store = connectedStack.getItem().getItemStackLimit(connectedStack) - connectedStack.stackSize;
+                int hold = heldItems.get(0).stackSize - store;
+                connectedInventory.getStackInSlot(connectedSlot).stackSize = connectedStack.getItem().getItemStackLimit(connectedStack);
+                heldItems.get(0).stackSize = hold;
+            }
+        }
+    }
+
+    private IInventory getConnectedInventory()
+    {
+        validateDirection();
+        TileEntity connectedTE = worldObj.getTileEntity(xCoord + connectedDirection.offsetX, yCoord + connectedDirection.offsetY, zCoord + connectedDirection.offsetZ);
+        if (connectedTE == null || !(connectedTE instanceof IInventory) || ((IInventory)connectedTE).getSizeInventory() == 0)
+        {
+            switchDirection();
+            connectedSlot = 0;
+            return null;
+        }
+        return (IInventory)connectedTE;
+    }
+
+    private boolean validateDirection()
+    {
+        if (connectedDirection == ForgeDirection.NORTH || connectedDirection == ForgeDirection.EAST || connectedDirection == ForgeDirection.SOUTH || connectedDirection == ForgeDirection.WEST) return true;
+        LogHelper.error("A manipulator at " +xCoord+ "," +yCoord+ "," +zCoord+ " was set to an invalid storage direction. (" +connectedDirection.toString()+ ")");
+        connectedDirection = ForgeDirection.NORTH;
+        return false;
+    }
+
+    private boolean incrementSlot(int inventorySize)
+    {
+        connectedSlot++;
+        if (connectedSlot >= inventorySize)
+        {
+            connectedSlot = 0;
+            switchDirection();
+            return false;
+        }
+
+        return true;
+    }
+
+    private void switchDirection()
+    {
+        switch (connectedDirection)
+        {
+            case NORTH: connectedDirection = ForgeDirection.EAST; break;
+            case EAST: connectedDirection = ForgeDirection.SOUTH; break;
+            case SOUTH: connectedDirection = ForgeDirection.WEST; break;
+            case WEST: connectedDirection = ForgeDirection.NORTH; break;
+            default:
+                LogHelper.error("A manipulator at " +xCoord+ "," +yCoord+ "," +zCoord+ " was set to an invalid storage direction. (" +connectedDirection.toString()+ ")");
+                connectedDirection = ForgeDirection.NORTH;
+                break;
+        }
+
+        LogHelper.info("Changed direction to " +connectedDirection.toString() );
     }
 
     @Override
@@ -204,13 +375,15 @@ public abstract class TileSpectralManipulator extends TileSpectralInventory impl
         int minedBlockMeta = worldObj.getBlockMetadata(x, y, z);
         TileEntity minedBlockTile = worldObj.getTileEntity(x, y, z);
 
+        // getItemDropped( meta, random, fortune );
+        // returns null for shurbs etc.
         Item dropItem = minedBlock.getItemDropped( minedBlockMeta, new Random(), 0 );
         int dropMeta = minedBlock.damageDropped(minedBlockMeta);
         int dropQuantity = minedBlock.quantityDropped( minedBlockMeta, 0, new Random() );
         ItemStack dropStack = new ItemStack(dropItem, dropQuantity, dropMeta);
 
         // Can we replace the Block?
-        if (minedBlockTile == null && !(minedBlock == Blocks.bedrock))
+        if (minedBlockTile == null && minedBlock != Blocks.bedrock && !(minedBlock instanceof BlockAir))
         {
             // Replace the Block.
             for (int i = 0; i < itemStacks.length; i++)
@@ -220,81 +393,23 @@ public abstract class TileSpectralManipulator extends TileSpectralInventory impl
             worldObj.setBlock( x, y, z, filler);
 
             // Can we harvest the Block?
-            if (!worldObj.isRemote && !(minedBlock instanceof BlockLiquid || minedBlock instanceof BlockAir))
+            if (!worldObj.isRemote && !(minedBlock instanceof BlockLiquid))
             {
-                // Harvest the Block.
-                // Get the itemStack dropped.
-                ItemStack newStack = null;
-                for (int i = 0; i < itemStacks.length; i++)
+                /*for (int i = 0; i < itemStacks.length; i++)
                 {
                     if (itemStacks[i] != null) newStack = ((IItemSpectralChip) itemStacks[i].getItem()).alterDrop(itemStacks[i].getItemDamage(), minedBlock, minedBlockMeta, dropItem, dropQuantity, dropMeta);
                     if (newStack != null)
                     {
                         dropItem = newStack.getItem();
-                        dropStack = newStack;
+                        //dropStack = newStack;
                         i = itemStacks.length;
                     }
-                }
+                }*/
 
                 // Grass and shrubs will be null.
                 if (dropItem != null)
                 {
-                    // Check for storage.
-                    if (storageDirection != ForgeDirection.UNKNOWN)
-                    {
-                        TileEntity storageTE = worldObj.getTileEntity(xCoord + storageDirection.offsetX, yCoord + storageDirection.offsetY, zCoord + storageDirection.offsetZ);
-                        if (storageTE instanceof IInventory)
-                        {
-                            for (int i = 0; i < ((IInventory) storageTE).getSizeInventory(); i++)
-                            {
-                                int sizeInvStack = 0;
-                                if (((IInventory) storageTE).getStackInSlot(i) != null)
-                                {
-                                    if (((IInventory) storageTE).getStackInSlot(i).getItem() == dropItem && ((IInventory) storageTE).getStackInSlot(i).getItemDamage() == dropMeta && ((IInventory) storageTE).isItemValidForSlot(i, dropStack))
-                                    {
-                                        //IInventoryHandler
-                                        sizeInvStack = ((IInventory) storageTE).getStackInSlot(i).stackSize;
-
-                                        int totalSize = dropQuantity + sizeInvStack;
-                                        if (totalSize <= 64)
-                                        {
-                                            ((IInventory) storageTE).getStackInSlot(i).stackSize = totalSize;
-                                            return;
-                                        } else
-                                        {
-                                            ((IInventory) storageTE).getStackInSlot(i).stackSize = 64;
-                                            dropQuantity -= 64 - sizeInvStack;
-                                        }
-                                    }
-                                } else
-                                {
-                                    if (((IInventory) storageTE).isItemValidForSlot(i, dropStack))
-                                    {
-                                        if (dropQuantity <= 64)
-                                        {
-                                            ((IInventory) storageTE).setInventorySlotContents(i, new ItemStack(dropItem, dropQuantity, dropMeta));
-                                            return;
-                                        } else
-                                        {
-                                            ((IInventory) storageTE).setInventorySlotContents(i, new ItemStack(dropItem, 64, dropMeta));
-                                            dropQuantity -= 64;
-                                        }
-                                    }
-                                }
-                            }
-                        } else
-                        {
-                            storageDirection = ForgeDirection.UNKNOWN;
-                        }
-                    }
-
-
-                    worldObj.spawnEntityInWorld(
-                            new EntityItem(worldObj,
-                                    xCoord + 0.5D,
-                                    yCoord + 1.5D,
-                                    zCoord + 0.5D,
-                                    dropStack));
+                    heldItems.add(dropStack);
                 }
             }
         }
