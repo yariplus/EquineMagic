@@ -1,7 +1,7 @@
 package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.TileEquineCrafter;
 import net.minecraft.block.ITileEntityProvider;

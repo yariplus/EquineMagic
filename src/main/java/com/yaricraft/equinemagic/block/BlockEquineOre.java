@@ -4,6 +4,7 @@ import com.yaricraft.equinemagic.enums.EEquineDust;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EEquineOre;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.init.EquineMagicItem;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;

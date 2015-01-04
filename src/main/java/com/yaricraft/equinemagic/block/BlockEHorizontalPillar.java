@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import net.minecraft.block.material.Material;
 
 /**

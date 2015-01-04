@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic.block;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.tileentity.TileSpectralCauldron;
 import com.yaricraft.equinemagic.reference.ModNames;
 import net.minecraft.block.Block;

@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.tileentity;
 
+import com.yaricraft.equinemagic.init.EquineMagicTile;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;

@@ -2,7 +2,7 @@
 package com.yaricraft.equinemagic;
 
 import cofh.api.modhelpers.ThermalExpansionHelper;
-import com.yaricraft.equinemagic.block.EquineMagicBlock;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.entity.monster.EntityChangeling;
 import com.yaricraft.equinemagic.entity.passive.EntityAura;
 import com.yaricraft.equinemagic.enums.EElementalShard;
@@ -19,7 +19,7 @@ import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.proxy.IProxy;
 
 import com.yaricraft.equinemagic.reference.ModNames;
-import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
+import com.yaricraft.equinemagic.init.EquineMagicTile;
 import com.yaricraft.equinemagic.util.StringHelper;
 import com.yaricraft.equinemagic.world.gen.feature.EquineWorldGenerator;
 import cpw.mods.fml.common.SidedProxy;

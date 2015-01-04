@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.block;
 
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.reference.ModNames;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,9 +18,9 @@ import java.util.ArrayList;
  */
 public class BlockELeaves extends EquineMagicBlock implements IShearable
 {
-    protected boolean field_150121_P;
+    public boolean field_150121_P;
 
-    protected BlockELeaves()
+    public BlockELeaves()
     {
         super(Material.leaves);
 

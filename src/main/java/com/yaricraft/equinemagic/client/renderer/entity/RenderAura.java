@@ -1,7 +1,6 @@
 package com.yaricraft.equinemagic.client.renderer.entity;
 
-import com.yaricraft.equinemagic.block.BlockDecor;
-import com.yaricraft.equinemagic.block.EquineMagicBlock;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.reference.ModData;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;

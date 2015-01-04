@@ -1,6 +1,6 @@
 package com.yaricraft.equinemagic.world.gen.feature;
 
-import com.yaricraft.equinemagic.block.EquineMagicBlock;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;

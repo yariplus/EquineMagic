@@ -1,7 +1,7 @@
 package com.yaricraft.equinemagic.handler;
 
 import com.yaricraft.equinemagic.block.BlockEquineOre;
-import com.yaricraft.equinemagic.block.EquineMagicBlock;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.enums.EEquineDust;
 import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EEquineOre;

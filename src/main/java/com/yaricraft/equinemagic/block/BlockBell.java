@@ -7,6 +7,7 @@ import com.yaricraft.equinemagic.enums.EElementalShard;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.enums.EEquineGem;
 import com.yaricraft.equinemagic.enums.EFatedMob;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.init.EquineMagicItem;
 import com.yaricraft.equinemagic.network.MessageExtendedProperties;
 import com.yaricraft.equinemagic.reference.ModNames;

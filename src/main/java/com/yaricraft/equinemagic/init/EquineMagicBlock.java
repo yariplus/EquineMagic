@@ -3,7 +3,6 @@ package com.yaricraft.equinemagic.init;
 
 import com.yaricraft.equinemagic.block.*;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
-import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
 import com.yaricraft.equinemagic.reference.ModData;
 
 import com.yaricraft.equinemagic.util.LogHelper;

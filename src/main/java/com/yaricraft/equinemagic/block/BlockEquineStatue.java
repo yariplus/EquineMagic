@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic.block;
 import com.yaricraft.equinemagic.EquineMagic;
 import com.yaricraft.equinemagic.EquineMagicPlayer;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.network.MessageExtendedProperties;
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.util.LogHelper;

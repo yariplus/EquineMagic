@@ -1,5 +1,6 @@
 package com.yaricraft.equinemagic.tileentity;
 
+import com.yaricraft.equinemagic.init.EquineMagicTile;
 import net.minecraft.entity.player.EntityPlayer;
 
 /**

@@ -2,25 +2,20 @@ package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
-import com.yaricraft.equinemagic.fluid.EquineMagicFluid;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.TilePedestal;
-import com.yaricraft.equinemagic.tileentity.TileSpectralCauldron;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 

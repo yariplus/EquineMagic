@@ -1,9 +1,9 @@
 
 package com.yaricraft.equinemagic.block;
 
-import com.yaricraft.equinemagic.enums.EEquineFoci;
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;

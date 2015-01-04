@@ -2,9 +2,8 @@
 package com.yaricraft.equinemagic.proxy;
 
 import cofh.core.render.IconRegistry;
-import com.yaricraft.equinemagic.block.EquineMagicBlock;
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.client.handler.KeyInputHandler;
-import com.yaricraft.equinemagic.client.model.ModelAura;
 import com.yaricraft.equinemagic.client.model.ModelChangeling;
 import com.yaricraft.equinemagic.client.renderer.RendererBell;
 import com.yaricraft.equinemagic.client.renderer.RendererPedestal;
@@ -29,9 +28,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
