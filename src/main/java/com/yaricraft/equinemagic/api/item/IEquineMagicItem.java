@@ -1,4 +1,4 @@
-package com.yaricraft.equinemagic.item;
+package com.yaricraft.equinemagic.api.item;
 
 /**
  * Created by Yari on 12/19/2014.

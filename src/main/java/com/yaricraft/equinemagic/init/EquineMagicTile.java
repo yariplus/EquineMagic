@@ -1,6 +1,7 @@
-package com.yaricraft.equinemagic.tileentity;
+package com.yaricraft.equinemagic.init;
 
 import com.yaricraft.equinemagic.reference.ModNames;
+import com.yaricraft.equinemagic.tileentity.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;

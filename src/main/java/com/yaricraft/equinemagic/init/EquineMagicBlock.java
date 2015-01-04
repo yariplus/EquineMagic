@@ -1,8 +1,8 @@
 
-package com.yaricraft.equinemagic.block;
+package com.yaricraft.equinemagic.init;
 
+import com.yaricraft.equinemagic.block.*;
 import com.yaricraft.equinemagic.enums.EEquineFoci;
-import com.yaricraft.equinemagic.reference.ModNames;
 import com.yaricraft.equinemagic.tileentity.EquineMagicTile;
 import com.yaricraft.equinemagic.reference.ModData;
 
@@ -22,22 +22,22 @@ import net.minecraft.world.World;
 public abstract class EquineMagicBlock extends Block
 {
     // Static declarations
-    public static final EquineMagicBlock equine_log           = new BlockELog();
-    public static final EquineMagicBlock equine_leaves        = new BlockELeaves();
-    public static final EquineMagicBlock equine_bell          = new BlockBell();
-    public static final EquineMagicBlock equine_statue        = new BlockEquineStatue();
-    public static final EquineMagicBlock equine_ore           = new BlockEquineOre();
-    public static final EquineMagicBlock blockDecor           = new BlockDecor();
-    public static final EquineMagicBlock blockEquineCrafter   = new BlockEquineCrafter();
-    public static final EquineMagicBlock equine_tnt           = new BlockEquineTNT();
-    public static final EquineMagicBlock spectral_cauldron    = new BlockSpectralCauldron();
-    public static final EquineMagicBlock spectral_miner       = new BlockSpectralMiner();
-    public static final EquineMagicBlock spectral_cannon      = new BlockSpectralCannon();
-    public static final EquineMagicBlock block_compressed     = new BlockCompressed();
+    public static final EquineMagicBlock equine_log         = new BlockELog();
+    public static final EquineMagicBlock equine_leaves      = new BlockELeaves();
+    public static final EquineMagicBlock equine_bell        = new BlockBell();
+    public static final EquineMagicBlock equine_statue      = new BlockEquineStatue();
+    public static final EquineMagicBlock equine_ore         = new BlockEquineOre();
+    public static final EquineMagicBlock blockDecor         = new BlockDecor();
+    public static final EquineMagicBlock blockEquineCrafter = new BlockEquineCrafter();
+    public static final EquineMagicBlock equine_tnt         = new BlockEquineTNT();
+    public static final EquineMagicBlock spectral_cauldron  = new BlockSpectralCauldron();
+    public static final EquineMagicBlock spectral_miner     = new BlockSpectralMiner();
+    public static final EquineMagicBlock spectral_cannon    = new BlockSpectralCannon();
+    public static final EquineMagicBlock block_compressed   = new BlockCompressed();
 
-    public static final EquineMagicBlock cloudavator          = new BlockEquineCloudavator();
+    public static final EquineMagicBlock cloudavator = new BlockEquineCloudavator();
 
-    public static final EquineMagicBlock pedestal             = new BlockPedestal();
+    public static final EquineMagicBlock pedestal = new BlockPedestal();
 
     public static void init()
     {
@@ -59,7 +59,7 @@ public abstract class EquineMagicBlock extends Block
         GameRegistry.registerBlock(pedestal, EquineMagicItemBlock.class, pedestal.getRegistryName());
     }
 
-    protected String[] subNames = ModData.ASSETSUF_META.clone();
+    public String[] subNames = ModData.ASSETSUF_META.clone();
 
     public EEquineFoci getFoci(int meta)
     {
