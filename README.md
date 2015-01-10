@@ -1,13 +1,7 @@
 EquineMagic
 ========================
 An Equestrian-themed mod and API.
-
-Weekly Goals and Review  
-http://goo.gl/IKxoOR
-
-Created by Radio Free Derp:  
-yariplus—Project Lead  
-cocopenguin—Modeller
+Created by RadioFreeDerp.
 
 Licenses
 ------------------------
@@ -26,5 +20,3 @@ By submitting a pull request, you affirm that your original content is public do
 Mod Packs
 ------------------------
 No need to ask or attribute.
-
-Any mod pack which uses EquineMagic takes full responsibility for user support queries.
