@@ -1,0 +1,65 @@
+{
+    "ore_chroma": {
+        "template": "uniform",
+        "block": {
+            "name": "EquineMagic:ore_chroma",
+            "metadata": 0
+        },
+        "clusterSize": 4,
+        "numClusters": 12,
+        "minHeight": 5,
+        "maxHeight": 75,
+        "retrogen": "true",
+        "biomeRestriction": "none",
+        "biomes": [
+            "all"
+        ],
+        "dimensionRestriction": "blacklist",
+        "dimensions": [
+            -1,
+            1
+        ]
+    },
+    "ore_pegagin": {
+        "template": "uniform",
+        "block": {
+            "name": "EquineMagic:ore_pegagin",
+            "metadata": 0
+        },
+        "clusterSize": 4,
+        "numClusters": 4,
+        "minHeight": 5,
+        "maxHeight": 48,
+        "retrogen": "true",
+        "biomeRestriction": "none",
+        "biomes": [
+            "all"
+        ],
+        "dimensionRestriction": "blacklist",
+        "dimensions": [
+            -1,
+            1
+        ]
+    },
+    "ore_spectra": {
+        "template": "uniform",
+        "block": {
+            "name": "EquineMagic:ore_spectra",
+            "metadata": 0
+        },
+        "clusterSize": 4,
+        "numClusters": 3,
+        "minHeight": 5,
+        "maxHeight": 32,
+        "retrogen": "true",
+        "biomeRestriction": "none",
+        "biomes": [
+            "all"
+        ],
+        "dimensionRestriction": "blacklist",
+        "dimensions": [
+            -1,
+            1
+        ]
+    }
+}

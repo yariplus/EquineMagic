@@ -3,6 +3,7 @@ package com.yaricraft.equinemagic.block;
 
 import com.yaricraft.equinemagic.creativetab.CreativeTabEquineMagic;
 
+import com.yaricraft.equinemagic.init.EquineMagicBlock;
 import com.yaricraft.equinemagic.reference.MCData;
 import com.yaricraft.equinemagic.reference.ModData;
 import com.yaricraft.equinemagic.reference.ModNames;
@@ -16,9 +17,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraftforge.common.MinecraftForge;
 
-import java.io.File;
 import java.util.List;
 
 public class BlockDecor extends EquineMagicBlock
@@ -27,7 +26,7 @@ public class BlockDecor extends EquineMagicBlock
     {
         super(material);
         this.setHardness(1.5f);
-        this.setBlockName(ModNames.BLOCK_DECOR);
+        this.setBlockName(ModNames.EQUINE_DECOR);
         this.setCreativeTab(CreativeTabEquineMagic.tabEquineMagic);
     }
 
@@ -49,8 +48,7 @@ public class BlockDecor extends EquineMagicBlock
         {
             for(int j = 0; j < MCData.THREE_SIDED; j++)
             {
-                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[2] + ModData.ASSETSUF_META[i]);
-                //icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName(this.getUnlocalizedName()) + ModData.ASSETSUF_ICON[j] + "_0");
+                icons[i * MCData.THREE_SIDED + j] = iconRegister.registerIcon(this.getUnwrappedUnlocalizedName() + ModData.ASSETSUF_ICON[2] + ModData.ASSET_SPACER + ModData.ASSETSUF_META[i]);
             }
         }
     }

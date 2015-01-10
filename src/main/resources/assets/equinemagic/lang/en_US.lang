@@ -1,78 +1,154 @@
-tile.EquineMagic:blockDecor.0.name=Decorium Block
-tile.EquineMagic:blockDecor.1.name=Decorium Block Variation 1
-tile.EquineMagic:blockDecor.2.name=Decorium Block Variation 2
-tile.EquineMagic:blockDecor.3.name=Decorium Block Variation 3
-tile.EquineMagic:blockDecor.4.name=Decorium Block Variation 4
-tile.EquineMagic:blockDecor.5.name=Decorium Block Variation 5
-tile.EquineMagic:blockDecor.6.name=Decorium Block Variation 6
-tile.EquineMagic:blockDecor.7.name=Decorium Block Variation 7
-tile.EquineMagic:blockDecor.8.name=Decorium Block Variation 8
-tile.EquineMagic:blockDecor.9.name=Decorium Block Variation 9
-tile.EquineMagic:blockDecor.10.name=Decorium Block Variation 10
-tile.EquineMagic:blockDecor.11.name=Decorium Block Variation 11
-tile.EquineMagic:blockDecor.12.name=Decorium Block Variation 12
-tile.EquineMagic:blockDecor.13.name=Decorium Block Variation 13
-tile.EquineMagic:blockDecor.14.name=Decorium Block Variation 14
-tile.EquineMagic:blockDecor.15.name=Decorium Block Variation 15
+entity.changeling.name=Changeling
+entity.parasprite.name=Parasprite
+entity.diamond_wolf.name=Diamond Wolf
 
-tile.EquineMagic:blockDecor.0.desc=Decorium Block
-tile.EquineMagic:blockDecor.1.desc=Decorium Block Variation 1
-tile.EquineMagic:blockDecor.2.desc=Decorium Block Variation 2
-tile.EquineMagic:blockDecor.3.desc=Decorium Block Variation 3
-tile.EquineMagic:blockDecor.4.desc=Decorium Block Variation 4
-tile.EquineMagic:blockDecor.5.desc=Decorium Block Variation 5
-tile.EquineMagic:blockDecor.6.desc=Decorium Block Variation 6
-tile.EquineMagic:blockDecor.7.desc=Decorium Block Variation 7
-tile.EquineMagic:blockDecor.8.desc=Decorium Block Variation 8
-tile.EquineMagic:blockDecor.9.desc=Decorium Block Variation 9
-tile.EquineMagic:blockDecor.10.desc=Decorium Block Variation 10
-tile.EquineMagic:blockDecor.11.desc=Decorium Block Variation 11
-tile.EquineMagic:blockDecor.12.desc=Decorium Block Variation 12
-tile.EquineMagic:blockDecor.13.desc=Decorium Block Variation 13
-tile.EquineMagic:blockDecor.14.desc=Decorium Block Variation 14
-tile.EquineMagic:blockDecor.15.desc=Decorium Block Variation 15
+item.EquineMagic:equine_dust_opal.name=Opal Dust
+item.EquineMagic:equine_dust_black_opal.name=Black Opal Dust
+item.EquineMagic:equine_dust_zircon.name=Zircon Dust
+item.EquineMagic:equine_dust_zircon_celestate.name=Zircon Celestate Dust
+item.EquineMagic:equine_dust_chroma.name=Chroma Dust (Opal Celestate)
+item.EquineMagic:equine_dust_spectra.name=Spectra Dust (Poor Quality)
+item.EquineMagic:equine_dust_spectra_impure.name=Spectra Dust (Average Quality)
+item.EquineMagic:equine_dust_spectra_common.name=Spectra Dust (Good Quality)
+item.EquineMagic:equine_dust_spectra_radiant.name=Spectra Dust (Fine Quality)
+item.EquineMagic:equine_dust_hafnium.name=Hafnium Dust
+item.EquineMagic:equine_dust_dolomite.name=Magnesium Dust
+item.EquineMagic:equine_dust_magnesium.name=Magnesium Dust
+item.EquineMagic:equine_dust_magnesium_celestate.name=Magnesium Celestate Dust
+item.EquineMagic:equine_dust_aurum.name=Aurum Celestate Dust
 
-tile.EquineMagic:orePegagin.name=Pegagin Ore
-tile.EquineMagic:oreChroma.name=Chroma Ore
-tile.EquineMagic:oreSpectra.name=Spectra Ore
+item.EquineMagic:equine_gem_opal.name=Opal
+item.EquineMagic:equine_gem_black_opal.name=Black Opal
+item.EquineMagic:equine_gem_chroma.name=Chroma
+item.EquineMagic:equine_gem_dolomite.name=Dolomite
+item.EquineMagic:equine_gem_zircon.name=Zircon
+item.EquineMagic:equine_gem_hafnium.name=Hafnium
+item.EquineMagic:equine_gem_spectra.name=Refined Spectra
 
-tile.EquineMagic:blockSilkyTNT.name=Silky TNT
+tile.EquineMagic:block.name=Missing Name
+tile.EquineMagic:block_opal.name=Block of Opal
+tile.EquineMagic:block_black_opal.name=Block of Black Opal
+tile.EquineMagic:block_chroma.name=Block of Chroma
+tile.EquineMagic:block_dolomite.name=Block of Dolomite
+tile.EquineMagic:block_zircon.name=Block of Zircon
+tile.EquineMagic:block_hafnium.name=Block of Hafnium
+tile.EquineMagic:block_spectra.name=Block of Refined Spectra
 
-item.EquineMagic:warmRod.name=Glowing Blaze Rod
-item.EquineMagic:warmMycelium.name=Warm Mycelium
-item.EquineMagic:warmTear.name=Warm Tear
-item.EquineMagic:warmEgg.name=Warm Egg
-item.EquineMagic:warmScale.name=Warm Scale
-item.EquineMagic:warmFeather.name=Warm Feather
-item.EquineMagic:warmWing.name=Warm Bat Wing
+item.EquineMagic:elemental_shard_blue.name=Laughter Shard
+item.EquineMagic:elemental_shard_violet.name=Generosity Shard
+item.EquineMagic:elemental_shard_pink.name=Kindness Shard
+item.EquineMagic:elemental_shard_red.name=Loyalty Shard
+item.EquineMagic:elemental_shard_orange.name=Honesty Shard
+item.EquineMagic:elemental_shard_green.name=Magic Shard
+item.EquineMagic:elemental_shard_white.name=Elemental Shard
+item.EquineMagic:elemental_shard_primatic.name=Primatic Shard
 
-item.EquineMagic:bookResearch.name=Equine Research Notes
+tile.EquineMagic:log.name=Everfree Oak Log
+tile.EquineMagic:equine_leaves.name=Everfree Oak Leaves
 
-item.EquineMagic:dustAlicorn.name=Alicorn Dust
-item.EquineMagic:dustChroma.name=Chroma Dust
-item.EquineMagic:dustPegagin.name=Pegagin Dust
-item.EquineMagic:dustSpectra.name=Spectra Dust
-item.EquineMagic:dustSilky.name=Silky Dust
-item.EquineMagic:dustSilkyGunpowder.name=Silky Gunpowder
+tile.EquineMagic:cloudavator.name=Cloudavator
+item.EquineMagic:cloud_remote.name=Cloud Remote
 
-tile.EquineMagic:cauldronSolar.name=Solar Cauldron
-tile.EquineMagic:cauldronSolar.desc=A primitive means of purifying Spectra.
-item.EquineMagic:itemSolarCauldron.name=Solar Cauldron
+tile.EquineMagic:block_decor_0.name=Decorium Block
+tile.EquineMagic:block_decor_1.name=Decorium Block Variation 1
+tile.EquineMagic:block_decor_2.name=Decorium Block Variation 2
+tile.EquineMagic:block_decor_3.name=Decorium Block Variation 3
+tile.EquineMagic:block_decor_4.name=Decorium Block Variation 4
+tile.EquineMagic:block_decor_5.name=Decorium Block Variation 5
+tile.EquineMagic:block_decor_6.name=Decorium Block Variation 6
+tile.EquineMagic:block_decor_7.name=Decorium Block Variation 7
+tile.EquineMagic:block_decor_8.name=Decorium Block Variation 8
+tile.EquineMagic:block_decor_9.name=Decorium Block Variation 9
+tile.EquineMagic:block_decor_10.name=Decorium Block Variation 10
+tile.EquineMagic:block_decor_11.name=Decorium Block Variation 11
+tile.EquineMagic:block_decor_12.name=Decorium Block Variation 12
+tile.EquineMagic:block_decor_13.name=Decorium Block Variation 13
+tile.EquineMagic:block_decor_14.name=Decorium Block Variation 14
+tile.EquineMagic:block_decor_15.name=Decorium Block Variation 15
 
-tile.EquineMagic:spectralAscensionDevice.name=Spectral Ascender
-tile.EquineMagic:blockSpectralAscender.name=Spectral Ascender
-tile.EquineMagic:blockSpectralCannon.name=Spectral Cannon
-tile.EquineMagic:blockSpectralMiner.name=Spectral Miner
+tile.EquineMagic:block_decor_0.desc=Decorium Block
+tile.EquineMagic:block_decor_1.desc=Decorium Block Variation 1
+tile.EquineMagic:block_decor_2.desc=Decorium Block Variation 2
+tile.EquineMagic:block_decor_3.desc=Decorium Block Variation 3
+tile.EquineMagic:block_decor_4.desc=Decorium Block Variation 4
+tile.EquineMagic:block_decor_5.desc=Decorium Block Variation 5
+tile.EquineMagic:block_decor_6.desc=Decorium Block Variation 6
+tile.EquineMagic:block_decor_7.desc=Decorium Block Variation 7
+tile.EquineMagic:block_decor_8.desc=Decorium Block Variation 8
+tile.EquineMagic:block_decor_9.desc=Decorium Block Variation 9
+tile.EquineMagic:block_decor_10.desc=Decorium Block Variation 10
+tile.EquineMagic:block_decor_11.desc=Decorium Block Variation 11
+tile.EquineMagic:block_decor_12.desc=Decorium Block Variation 12
+tile.EquineMagic:block_decor_13.desc=Decorium Block Variation 13
+tile.EquineMagic:block_decor_14.desc=Decorium Block Variation 14
+tile.EquineMagic:block_decor_15.desc=Decorium Block Variation 15
 
-item.EquineMagic:itemSpectralAscensionDevice.name=Spectral Ascender
-item.EquineMagic:itemSpectralAscender.name=Spectral Ascender
-item.EquineMagic:itemSpectralCannon.name=Spectral Cannon
-item.EquineMagic:itemSpectralMiner.name=Spectral Miner
+tile.EquineMagic:equine_ore_opal.name=Opal Ore
+tile.EquineMagic:equine_ore_dolomite.name=Dolomite Ore
+tile.EquineMagic:equine_ore_zircon.name=Zircon Ore
+tile.EquineMagic:equine_ore_spectra.name=Spectra Relic Ore
 
-item.EquineMagic:crystalPrimatic.name=Primatic Crystal
+tile.EquineMagic:equine_tnt.name=Silky TNT
+_
+item.EquineMagic:warm_rod.name=Glowing Blaze Rod
+item.EquineMagic:warm_mycelium.name=Warm Mycelium
+item.EquineMagic:warm_tear.name=Warm Tear
+item.EquineMagic:warm_egg.name=Warm Egg
+item.EquineMagic:warm_scale.name=Warm Scale
+item.EquineMagic:warm_feather.name=Warm Feather
+item.EquineMagic:warm_wing.name=Warm Bat Wing
 
-tile.EquineMagic:blockFluidSpectraSlurry.name=Spectra Slurry
+item.EquineMagic:spectral_chip_area.name=Spectral Chip (Area Upgrade)
+item.EquineMagic:spectral_chip_dome.name=Spectral Chip (Dome Upgrade)
+item.EquineMagic:spectral_chip_fill.name=Spectral Chip (Fill Upgrade)
+item.EquineMagic:spectral_chip_grind.name=Spectral Chip (Grind Upgrade)
+item.EquineMagic:spectral_chip_helix.name=Spectral Chip (Helix Upgrade)
+item.EquineMagic:spectral_chip_tiles.name=Spectral Chip (Tiles Upgrade)
+item.EquineMagic:spectral_chip_plane.name=Spectral Chip (Plane Upgrade)
+item.EquineMagic:spectral_chip_silk.name=Spectral Chip (Silk Upgrade)
+item.EquineMagic:spectral_chip_target.name=Spectral Chip (Target Upgrade)
+item.EquineMagic:spectral_chip_vortex.name=Spectral Chip (Vortex Upgrade)
 
-item.EquineMagic:itemBucketSpectraSlurry.name=Bucket of Spectra Slurry
+tile.EquineMagic:equine_crafter.name=Spectral Fabricator
+tile.EquineMagic:equine_bell.name=Equine Bell of Fate
+tile.EquineMagic:equine_statue.name=Equine Statue
+
+item.EquineMagic:book_research.name=Equine Research Notes
+
+item.EquineMagic:dust_alicorn.name=Alicorn Dust
+item.EquineMagic:dust_chroma.name=Chroma Dust
+item.EquineMagic:dust_pegagin.name=Pegagin Dust
+item.EquineMagic:dust_spectra.name=Spectra Dust
+item.EquineMagic:dust_silky.name=Silky Dust
+item.EquineMagic:dust_silky_gunpowder.name=Silky Gunpowder
+
+tile.EquineMagic:spectral_cauldron.name=Solar Cauldron
+item.EquineMagic:spectral_cauldron.name=Solar Cauldron
+tile.EquineMagic:spectral_cauldron.desc=A primitive means of purifying Spectra.
+
+tile.EquineMagic:spectral_ascender.name=Spectral Ascender
+tile.EquineMagic:spectral_cannon.name=Spectral Cannon
+tile.EquineMagic:spectral_miner.name=Spectral Miner
+
+item.EquineMagic:spectral_ascender.name=Spectral Ascender
+item.EquineMagic:spectral_cannon.name=Spectral Cannon
+item.EquineMagic:spectral_miner.name=Spectral Miner
+
+item.EquineMagic:crystal_primatic.name=Primatic Crystal
+
+tile.EquineMagic:spectra_slurry.name=Spectra Slurry
+fluid.EquineMagic:spectra_slurry.name=Spectra Slurry
+
+item.EquineMagic:bucket_spectra_slurry.name=Bucket of Spectra Slurry
+
+item.EquineMagic:aura_summoner.name=Aura Summoner
+tile.EquineMagic:pedestal.name=Pedestal
+
+item.EquineMagic:armor_chroma.name=Chroma Chestplate
 
 itemGroup.EquineMagic=EquineMagic
+
+#Keybindings
+keys.EquineMagic:hud_toggle=Toggle HUD
+keys.EquineMagic:aura_switch=Switch Aura Spell
+keys.EquineMagic:category=EquineMagic

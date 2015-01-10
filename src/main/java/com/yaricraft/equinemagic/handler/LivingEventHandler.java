@@ -1,16 +1,12 @@
 package com.yaricraft.equinemagic.handler;
 
-import com.yaricraft.equinemagic.items.EquineMagicItem;
+import com.yaricraft.equinemagic.enums.EEquineDust;
+import com.yaricraft.equinemagic.init.EquineMagicItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraft.world.gen.structure.StructureStrongholdPieces;
-import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.DungeonHooks;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 /**
@@ -28,20 +24,20 @@ public class LivingEventHandler
                 if (rand < 0.10) {
                     event.entityLiving.dropItem(EquineMagicItem.warmWing, 1);
                 }
-            }else if(event.entityLiving instanceof EntitySkeleton || event.entityLiving instanceof EntityZombie){
-                if (rand < 0.01)
+            }else if(event.entityLiving instanceof EntitySkeleton || event.entityLiving instanceof EntityZombie || event.entityLiving instanceof EntityCreeper) {
+                if (rand < 0.04)
                 {
                     event.entityLiving.dropItem(EquineMagicItem.dustAlicorn, 1);
                 }
                 rand = Math.random();
-                if (rand < 0.02)
+                if (rand < 0.1)
                 {
-                    event.entityLiving.dropItem(EquineMagicItem.dustChroma, 1);
+                    event.entityLiving.entityDropItem(new ItemStack(EquineMagicItem.equine_dust, 1, EEquineDust.CHROMA.ordinal()), 0.5F);
                 }
                 rand = Math.random();
-                if (rand < 0.02)
+                if (rand < 0.08)
                 {
-                    event.entityLiving.dropItem(EquineMagicItem.dustSpectra, 1);
+                    event.entityLiving.entityDropItem(new ItemStack(EquineMagicItem.equine_dust, 1, EEquineDust.DIRTY_SPECTRA.ordinal()), 0.5F);
                 }
             }else if(event.entityLiving instanceof EntityBlaze){
                 if (rand < 0.05)
